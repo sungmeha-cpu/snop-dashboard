@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S&OP 적중률 모니터링</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:#f5f5f5; }
+.frame-wrap { position:relative; width:100%; height:100vh; }
+.frame-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; visibility:hidden; pointer-events:none; }
+.frame-wrap iframe.active { visibility:visible; pointer-events:auto; z-index:1; }
+</style>
+</head>
+<body>
+
+<div class="frame-wrap">
+  <iframe id="frame-w12" class="active"></iframe>
+  <iframe id="frame-w13"></iframe>
+  <iframe id="frame-compare"></iframe>
+</div>
+
+<script>
+const ts = Date.now();
+document.getElementById('frame-w12').src = 'monitor_w12.html?t=' + ts;
+document.getElementById('frame-w13').src = 'monitor_w13.html?t=' + ts;
+document.getElementById('frame-compare').src = 'monitor_compare.html?t=' + ts;
+
+function switchWeek(week) {
+  document.querySelectorAll('.frame-wrap iframe').forEach(f => f.classList.remove('active'));
+  document.getElementById('frame-' + week).classList.add('active');
+}
+
+// iframe 내부에서 호출할 수 있도록 window에 등록
+window.switchWeek = switchWeek;
+
+// file:// cross-origin 우회: postMessage 수신
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.week) switchWeek(e.data.week);
+});
+</script>
+</body>
+</html>
