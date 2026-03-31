@@ -7,12 +7,33 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:#f5f5f5; }
-.frame-wrap { position:relative; width:100%; height:100vh; }
-.frame-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; visibility:hidden; pointer-events:none; }
+.top-bar {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:linear-gradient(135deg,#1a237e,#283593);
+  display:flex; align-items:center; gap:14px;
+  padding:8px 28px; color:#fff;
+}
+.top-bar h1 { font-size:17px; font-weight:700; }
+.week-btn {
+  padding:6px 18px; border:1px solid rgba(255,255,255,0.4); border-radius:6px;
+  background:transparent; color:#fff; font-size:13px; font-weight:600;
+  cursor:pointer; font-family:inherit; transition:.15s;
+}
+.week-btn:hover { background:rgba(255,255,255,0.15); }
+.week-btn.active { background:#fff; color:#1a237e; border-color:#fff; }
+.frame-wrap { position:relative; width:100%; height:100vh; padding-top:44px; }
+.frame-wrap iframe { position:absolute; top:44px; left:0; width:100%; height:calc(100vh - 44px); border:none; visibility:hidden; pointer-events:none; }
 .frame-wrap iframe.active { visibility:visible; pointer-events:auto; z-index:1; }
 </style>
 </head>
 <body>
+
+<div class="top-bar">
+  <h1>S&OP 적중률 모니터링</h1>
+  <button class="week-btn active" data-week="w12" onclick="switchWeek('w12')">W12 (03-16 ~ 03-21)</button>
+  <button class="week-btn" data-week="w13" onclick="switchWeek('w13')">W13 (03-23 ~ 03-28)</button>
+  <button class="week-btn" data-week="compare" onclick="switchWeek('compare')">주차별 비교</button>
+</div>
 
 <div class="frame-wrap">
   <iframe id="frame-w12" class="active"></iframe>
@@ -29,12 +50,13 @@ document.getElementById('frame-compare').src = 'monitor_compare.html?t=' + ts;
 function switchWeek(week) {
   document.querySelectorAll('.frame-wrap iframe').forEach(f => f.classList.remove('active'));
   document.getElementById('frame-' + week).classList.add('active');
+  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector('.week-btn[data-week="' + week + '"]').classList.add('active');
 }
 
-// iframe 내부에서 호출할 수 있도록 window에 등록
 window.switchWeek = switchWeek;
 
-// file:// cross-origin 우회: postMessage 수신
+// iframe 내부에서 postMessage로 주차 전환 요청 수신
 window.addEventListener('message', function(e) {
   if (e.data && e.data.week) switchWeek(e.data.week);
 });
