@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>S&OP 적중률 모니터링 — W12 2026-03-16 ~ 2026-03-21</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:#f5f5f5; color:#222; }
@@ -125,12 +126,16 @@ tbody tr:hover td { background:#e8eaf6; }
   <select id="weekSelector" onchange="(function(v){try{parent.postMessage({week:v},'*')}catch(_){} try{parent.switchWeek(v)}catch(_){}})(this.value)" style="margin-left:16px; padding:5px 28px 5px 10px; border:none; border-radius:6px; font-size:13px; font-weight:600; color:#1a237e; background:#fff; cursor:pointer; font-family:inherit; appearance:none; -webkit-appearance:none; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%231a237e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;); background-repeat:no-repeat; background-position:right 8px center;">
     <option value="w12" selected>W12 (03-16 ~ 03-21)</option>
     <option value="w13" >W13 (03-23 ~ 03-28)</option>
+    <option value="w14" >W14 (03-30 ~ 04-04)</option>
     <option value="compare">주차별 비교</option>
   </select>
   <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
+    <input type="file" id="xlsFileInput" accept=".xls,.xlsx" multiple style="display:none;" onchange="handleXlsUpload(this.files)">
+    <button onclick="document.getElementById('xlsFileInput').click()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C4; 실적 업로드</button>
+    <button id="clearUploadBtn" onclick="clearUploadedData()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; display:none;">&#x1F5D1; 초기화</button>
     <button onclick="syncMonitor()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x21BB; 동기화</button>
     <button onclick="openFolder()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C2; 폴더</button>
-    <div class="meta">생성: 2026-03-31 17:30 | 엔진: v3</div>
+    <div class="meta">생성: 2026-03-31 18:20 | 엔진: v3</div>
   </div>
 </div>
 
@@ -1188,6 +1193,424 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // (채널 차트 제거됨)
 });
+
+// ═══════════════════════════════════════════════════
+// XLS 실적 업로드 기능
+// ═══════════════════════════════════════════════════
+const STAGE_CODE_MAP = {
+  '1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기',
+  '1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'
+};
+const EXCLUDE_STAGES_SET = new Set(['1410','1420','1430','1440']);
+const UPLOAD_STORAGE_KEY = 'snop_uploaded_actual';
+
+function parseXlsDate(filename) {
+  // "3-26 출고수량.xls" → "2026-03-26"
+  const m = filename.match(/(\d+)-(\d+)/);
+  if (!m) return null;
+  const mon = parseInt(m[1]), day = parseInt(m[2]);
+  const year = mon <= 12 ? 2026 : 2025;
+  return year + '-' + String(mon).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+}
+
+function handleXlsUpload(files) {
+  if (!files || files.length === 0) return;
+  const results = {};
+  let pending = files.length;
+
+  Array.from(files).forEach(file => {
+    const dateStr = parseXlsDate(file.name);
+    if (!dateStr) {
+      alert('파일명에서 날짜를 파싱할 수 없습니다: ' + file.name + '\n예: "3-26 출고수량.xls"');
+      pending--;
+      if (pending === 0) finalizeUpload(results);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const data = new Uint8Array(e.target.result);
+        const wb = XLSX.read(data, {type:'array'});
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(ws, {header:1});
+
+        // 위치 기반 파싱 (15열): 단계명,단계코드,구분기호,상품코드,상품명,원료,총수량(병),필수,선택,클레배송(자사몰),택배송(자사몰),클레배송(외부몰),택배송(외부몰),백화점,기타
+        const menus = [];
+        let headerFound = false;
+        for (let i = 0; i < rows.length; i++) {
+          const r = rows[i];
+          if (!r || r.length < 7) continue;
+          // 첫 번째 행이 헤더인지 확인
+          if (!headerFound && (String(r[0]).includes('단계') || String(r[4]).includes('상품'))) {
+            headerFound = true;
+            continue;
+          }
+          const stageCode = String(r[1] || '').trim();
+          if (!stageCode || EXCLUDE_STAGES_SET.has(stageCode)) continue;
+          if (!STAGE_CODE_MAP[stageCode]) continue;
+
+          const totalQty = parseInt(r[6]) || 0;
+          const dept = parseInt(r[13]) || 0;
+          const onlineQty = totalQty - dept;
+          const cleJasa = parseInt(r[9]) || 0;
+          const taxJasa = parseInt(r[10]) || 0;
+          const cleOibu = parseInt(r[11]) || 0;
+          const taxOibu = parseInt(r[12]) || 0;
+
+          menus.push({
+            stage_code: stageCode,
+            stage: STAGE_CODE_MAP[stageCode] || stageCode,
+            product_code: String(r[3] || '').trim(),
+            product_name: String(r[4] || '').trim(),
+            qty: onlineQty,
+            jasa: cleJasa + taxJasa,
+            oibu: cleOibu + taxOibu,
+          });
+        }
+
+        if (menus.length === 0) {
+          alert('유효한 데이터를 찾을 수 없습니다: ' + file.name);
+        } else {
+          results[dateStr] = menus;
+        }
+      } catch(err) {
+        alert('파싱 오류: ' + file.name + '\n' + err.message);
+      }
+      pending--;
+      if (pending === 0) finalizeUpload(results);
+    };
+    reader.readAsArrayBuffer(file);
+  });
+
+  // 파일 입력 초기화
+  document.getElementById('xlsFileInput').value = '';
+}
+
+function finalizeUpload(results) {
+  if (Object.keys(results).length === 0) return;
+
+  // localStorage에 저장 (기존 데이터와 머지)
+  const stored = JSON.parse(localStorage.getItem(UPLOAD_STORAGE_KEY) || '{}');
+  Object.assign(stored, results);
+  localStorage.setItem(UPLOAD_STORAGE_KEY, JSON.stringify(stored));
+
+  // 대시보드에 반영
+  applyUploadedData(results);
+
+  const dates = Object.keys(results).sort();
+  alert('실적 업로드 완료!\n' + dates.map(d => d.substring(5)).join(', ') + ' (' + dates.length + '일)');
+}
+
+function applyUploadedData(uploadedData) {
+  for (const [dateStr, menus] of Object.entries(uploadedData)) {
+    const dr = dailyReports.find(d => d.date === dateStr);
+    if (!dr) continue;
+
+    // 실적 집계
+    let totalActual = 0;
+    const stageActual = {};
+    const chActual = { jasa: 0, oibu: 0 };
+
+    menus.forEach(m => {
+      totalActual += m.qty;
+      stageActual[m.stage] = (stageActual[m.stage] || 0) + m.qty;
+      chActual.jasa += m.jasa;
+      chActual.oibu += m.oibu;
+    });
+
+    dr.actual_total = totalActual;
+
+    // 메뉴별 매칭
+    if (dr.menu_hits) {
+      dr.menu_hits.forEach(mh => {
+        const match = menus.find(m => m.stage_code === mh.stage_code && m.product_code === mh.product_code);
+        if (match) {
+          mh.actual = match.qty;
+          mh.actual_jasa = match.jasa;
+          mh.actual_oibu = match.oibu;
+        } else {
+          mh.actual = 0;
+          mh.actual_jasa = 0;
+          mh.actual_oibu = 0;
+        }
+        mh.hit_rate = mh.planned > 0 ? Math.round(Math.min(mh.actual / mh.planned, mh.planned / mh.actual) * 1000) / 10 : 0;
+        mh.status = mh.actual === 0 ? 'under' : (mh.hit_rate >= 90 ? 'normal' : (mh.actual > mh.planned ? 'over' : 'under'));
+      });
+    }
+
+    // 단계별
+    if (dr.stage_hits) {
+      dr.stage_hits.forEach(sh => {
+        sh.actual = stageActual[sh.stage] || 0;
+        sh.hit_rate = sh.planned > 0 ? Math.round(Math.min(sh.actual / sh.planned, sh.planned / sh.actual) * 1000) / 10 : 0;
+        sh.status = sh.actual === 0 ? 'under' : (sh.hit_rate >= 90 ? 'normal' : (sh.actual > sh.planned ? 'over' : 'under'));
+      });
+    }
+
+    // 채널별
+    if (dr.channel_hits) {
+      dr.channel_hits.forEach(ch => {
+        if (ch.channel === '자사몰') { ch.actual = chActual.jasa; }
+        else if (ch.channel === '외부몰') { ch.actual = chActual.oibu; }
+        ch.hit_rate = ch.planned > 0 ? Math.round(Math.min(ch.actual / ch.planned, ch.planned / ch.actual) * 1000) / 10 : 0;
+      });
+    }
+
+    // 전체 적중률
+    dr.total_hit_rate = dr.planned_total > 0
+      ? Math.round(Math.min(totalActual / dr.planned_total, dr.planned_total / totalActual) * 1000) / 10
+      : 0;
+
+    // 정상/경고/위험
+    let normal = 0, warning = 0, critical = 0;
+    (dr.stage_hits || []).forEach(sh => {
+      if (sh.hit_rate >= 90) normal++;
+      else if (sh.hit_rate >= 70) warning++;
+      else critical++;
+    });
+    dr.summary = { normal, warning, critical };
+
+    rerenderDayTab(dr);
+  }
+
+  rerenderOverview();
+  updateNavDots();
+  document.getElementById('clearUploadBtn').style.display = '';
+}
+
+function rerenderDayTab(dr) {
+  const tab = document.getElementById('tab-day_' + dr.date);
+  if (!tab) return;
+
+  const hasAct = dr.actual_total > 0;
+  const hrClass = dr.total_hit_rate >= 90 ? 'kpi-green' : (dr.total_hit_rate >= 70 ? 'kpi-yellow' : 'kpi-red');
+  const gapTotal = dr.planned_total - dr.actual_total;
+
+  let html = '<h2 style="margin-bottom:12px; color:#1a237e;">' + dr.date + ' (' + dr.dow + ')</h2>';
+
+  if (!hasAct) {
+    tab.innerHTML = html + '<div class="kpi-row"><div class="kpi-card"><div class="kpi-label">상태</div><div class="kpi-value kpi-yellow">실적 대기</div></div></div>';
+    return;
+  }
+
+  // KPI
+  html += '<div class="kpi-row">';
+  html += '<div class="kpi-card"><div class="kpi-label">적중률</div><div class="kpi-value ' + hrClass + '">' + dr.total_hit_rate + '%</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">계획</div><div class="kpi-value kpi-blue">' + dr.planned_total.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">실적</div><div class="kpi-value kpi-blue">' + dr.actual_total.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">Gap</div><div class="kpi-value ' + (gapTotal > 0 ? 'kpi-red' : 'kpi-green') + '">' + (gapTotal > 0 ? '+' : '') + gapTotal.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">정상 / 경고 / 위험</div><div class="kpi-value">';
+  html += '<span class="kpi-green">' + dr.summary.normal + '</span> / <span class="kpi-yellow">' + dr.summary.warning + '</span> / <span class="kpi-red">' + dr.summary.critical + '</span>';
+  html += '</div></div></div>';
+
+  // 단계별 + 채널별
+  html += '<div class="section-row"><div class="section-half">';
+  html += '<h3 style="margin:0 0 6px; color:#1a237e;">단계별 적중률</h3>';
+  html += '<table><thead><tr><th>단계</th><th>계획</th><th>실적</th><th>적중률</th><th>상태</th></tr></thead><tbody>';
+  let sumPlan = 0, sumActual = 0;
+  (dr.stage_hits || []).forEach(sh => {
+    const hrCls = sh.hit_rate >= 90 ? 'hr-excellent' : (sh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+    const stText = {normal:'정상',over:'과다',under:'과소'}[sh.status] || '';
+    const stColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828'}[sh.status] || '#333';
+    html += '<tr><td>' + sh.stage + '</td><td class="num">' + sh.planned.toLocaleString() + '</td><td class="num">' + sh.actual.toLocaleString() + '</td>';
+    html += '<td class="' + hrCls + '">' + sh.hit_rate + '%</td><td style="color:' + stColor + '; font-weight:600;">' + stText + '</td></tr>';
+    sumPlan += sh.planned; sumActual += sh.actual;
+  });
+  const sumHR = sumPlan > 0 ? Math.round(Math.min(sumActual/sumPlan, sumPlan/sumActual) * 1000) / 10 : 0;
+  html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + sumPlan.toLocaleString() + '</td><td class="num">' + sumActual.toLocaleString() + '</td>';
+  html += '<td style="color:#1a237e;">' + sumHR + '%</td><td></td></tr>';
+  html += '</tbody></table></div><div class="section-half">';
+
+  // 채널별
+  html += '<h3 style="margin:0 0 6px; color:#1a237e;">채널별 적중률</h3>';
+  html += '<table><thead><tr><th>채널</th><th>계획</th><th>실적</th><th>적중률</th></tr></thead><tbody>';
+  let chSumP = 0, chSumA = 0;
+  (dr.channel_hits || []).forEach(ch => {
+    const hrCls = ch.hit_rate >= 90 ? 'hr-excellent' : (ch.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+    html += '<tr><td>' + ch.channel + '</td><td class="num">' + ch.planned.toLocaleString() + '</td><td class="num">' + ch.actual.toLocaleString() + '</td>';
+    html += '<td class="' + hrCls + '">' + ch.hit_rate + '%</td></tr>';
+    chSumP += ch.planned; chSumA += ch.actual;
+  });
+  const chSumHR = chSumP > 0 ? Math.round(Math.min(chSumA/chSumP, chSumP/chSumA) * 1000) / 10 : 0;
+  html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + chSumP.toLocaleString() + '</td><td class="num">' + chSumA.toLocaleString() + '</td>';
+  html += '<td style="color:#1a237e;">' + chSumHR + '%</td></tr>';
+  html += '</tbody></table></div></div>';
+
+  // 메뉴(SKU)별
+  const menuHits = dr.menu_hits || [];
+  const shown = menuHits.filter(m => m.planned > 0);
+  if (shown.length > 0) {
+    const stageBg = {};
+    const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+    stageOrder.forEach((sc,i) => { stageBg[STAGE_CODE_MAP[sc]] = i % 2 === 1 ? '#f5f5f5' : '#fff'; });
+
+    html += '<h3 style="margin:12px 0 6px; color:#1a237e;">메뉴(SKU)별 적중률 <span style="font-size:11px; color:#666; font-weight:400;">(' + shown.length + '개)</span></h3>';
+    html += '<div style="max-height:500px; overflow-y:auto; border:1px solid #c5cae9; border-radius:8px;"><table style="margin-bottom:0;">';
+    html += '<thead><tr class="hdr1"><th rowspan="2">단계</th><th rowspan="2">상품코드</th><th rowspan="2">상품명</th><th rowspan="2" style="border-right:2px solid #90caf9;">구분</th>';
+    html += '<th colspan="3" style="border-right:2px solid #90caf9;">예측</th><th colspan="3" style="border-right:2px solid #90caf9;">실적</th>';
+    html += '<th rowspan="2">적중률</th><th rowspan="2">상태</th></tr>';
+    html += '<tr class="hdr2"><th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th>';
+    html += '<th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th></tr></thead><tbody>';
+
+    const statusMap = {normal:'정상',over:'과다',under:'과소',unplanned:'미예측'};
+    const statusColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828',unplanned:'#757575'};
+    shown.forEach(mh => {
+      const bg = stageBg[mh.stage] || '#fff';
+      const hrCls = mh.hit_rate >= 90 ? 'hr-excellent' : (mh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+      const st = mh.status || 'normal';
+      const pj = mh.planned_jasa || 0, po = mh.planned_oibu || 0;
+      const aj = mh.actual_jasa || 0, ao = mh.actual_oibu || 0;
+      html += '<tr style="background:' + bg + ';"><td>' + mh.stage + '</td><td style="font-size:11px;">' + mh.product_code + '</td>';
+      html += '<td style="text-align:left;">' + (mh.product_name||'') + '</td>';
+      html += '<td style="font-size:11px; border-right:2px solid #90caf9;">' + (mh.label||'') + '</td>';
+      html += '<td class="num" style="font-size:11px;">' + pj.toLocaleString() + '</td><td class="num" style="font-size:11px;">' + po.toLocaleString() + '</td>';
+      html += '<td class="num" style="border-right:2px solid #90caf9;">' + mh.planned.toLocaleString() + '</td>';
+      html += '<td class="num" style="font-size:11px;">' + aj.toLocaleString() + '</td><td class="num" style="font-size:11px;">' + ao.toLocaleString() + '</td>';
+      html += '<td class="num" style="border-right:2px solid #90caf9;">' + mh.actual.toLocaleString() + '</td>';
+      html += '<td class="' + hrCls + '">' + mh.hit_rate + '%</td>';
+      html += '<td style="color:' + (statusColor[st]||'#333') + '; font-weight:600; font-size:12px;">' + (statusMap[st]||'') + '</td></tr>';
+    });
+
+    // 합계
+    const mSumP = shown.reduce((s,m)=>s+m.planned,0), mSumA = shown.reduce((s,m)=>s+m.actual,0);
+    const mSumPJ = shown.reduce((s,m)=>s+(m.planned_jasa||0),0), mSumPO = shown.reduce((s,m)=>s+(m.planned_oibu||0),0);
+    const mSumAJ = shown.reduce((s,m)=>s+(m.actual_jasa||0),0), mSumAO = shown.reduce((s,m)=>s+(m.actual_oibu||0),0);
+    const mSumHR = mSumP > 0 ? Math.round(Math.min(mSumA/mSumP, mSumP/mSumA)*1000)/10 : 0;
+    html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td></td><td style="border-right:2px solid #90caf9;"></td>';
+    html += '<td class="num">' + mSumPJ.toLocaleString() + '</td><td class="num">' + mSumPO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumP.toLocaleString() + '</td>';
+    html += '<td class="num">' + mSumAJ.toLocaleString() + '</td><td class="num">' + mSumAO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumA.toLocaleString() + '</td>';
+    html += '<td style="color:#1a237e;">' + mSumHR + '%</td><td></td></tr>';
+    html += '</tbody></table></div>';
+  }
+
+  tab.innerHTML = html;
+}
+
+function rerenderOverview() {
+  const tab = document.getElementById('tab-overview');
+  if (!tab) return;
+
+  const reported = dailyReports.filter(d => d.actual_total > 0);
+  const stgPlan = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.planned,0), 0);
+  const stgAct = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.actual,0), 0);
+  const stgHR = stgPlan > 0 ? Math.round(Math.min(stgAct/stgPlan, stgPlan/stgAct)*1000)/10 : 0;
+
+  // 일별 요약 tbody 갱신
+  const tbody = tab.querySelector('table tbody');
+  if (tbody) {
+    let rows = '';
+    const today = new Date().toISOString().split('T')[0];
+    dailyReports.forEach(dr => {
+      if (dr.actual_total > 0) {
+        const gap = dr.planned_total - dr.actual_total;
+        const hrCls = dr.total_hit_rate >= 90 ? 'hr-excellent' : (dr.total_hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+        const statusH = dr.date <= today ? '<span style="color:#2e7d32; font-weight:700;">확정</span>' : '<span style="color:#1565c0;">갱신 중</span>';
+        rows += '<tr><td>' + dr.date.substring(5) + '</td><td>' + dr.dow + '</td><td class="num">' + dr.planned_total.toLocaleString() + '</td>';
+        rows += '<td class="num">' + dr.actual_total.toLocaleString() + '</td><td class="num">' + (gap>0?'+':'') + gap.toLocaleString() + '</td>';
+        rows += '<td class="' + hrCls + '">' + dr.total_hit_rate + '%</td><td>' + statusH + '</td></tr>';
+      } else {
+        rows += '<tr><td>' + dr.date.substring(5) + '</td><td>' + dr.dow + '</td><td class="num">' + dr.planned_total.toLocaleString() + '</td>';
+        rows += '<td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>';
+      }
+    });
+    // 합계
+    const sumP = dailyReports.reduce((s,d)=>s+d.planned_total,0);
+    const sumA = dailyReports.reduce((s,d)=>s+d.actual_total,0);
+    const sumG = sumP - sumA;
+    const sumHR = reported.length > 0 ? Math.round(Math.min(sumA/sumP, sumP/sumA)*1000)/10 : 0;
+    rows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td class="num">' + sumP.toLocaleString() + '</td>';
+    rows += '<td class="num">' + sumA.toLocaleString() + '</td><td class="num">' + (sumG>0?'+':'') + sumG.toLocaleString() + '</td>';
+    rows += '<td style="color:#1a237e;">' + (reported.length>0?sumHR+'%':'-') + '</td><td></td></tr>';
+    tbody.innerHTML = rows;
+  }
+
+  // KPI 카드 갱신
+  const kpiCards = tab.querySelectorAll('.kpi-card');
+  if (kpiCards.length >= 6) {
+    const hrClass = stgHR >= 90 ? 'kpi-green' : (stgHR >= 70 ? 'kpi-yellow' : 'kpi-red');
+    kpiCards[0].querySelector('.kpi-value').className = 'kpi-value ' + hrClass;
+    kpiCards[0].querySelector('.kpi-value').textContent = stgHR + '%';
+    kpiCards[2].querySelector('.kpi-value').textContent = stgAct.toLocaleString();
+    const gap = stgPlan - stgAct;
+    kpiCards[3].querySelector('.kpi-value').textContent = (gap>0?'+':'') + gap.toLocaleString();
+    kpiCards[5].querySelector('.kpi-value').innerHTML = reported.length + '<span style="font-size:14px; color:#999;">/' + dailyReports.length + '</span>';
+  }
+
+  // 차트 재생성
+  ['chartDailyHR','chartPlanActual','chartStageHR'].forEach(id => {
+    const canvas = document.getElementById(id);
+    if (canvas) {
+      const existing = Chart.getChart(canvas);
+      if (existing) existing.destroy();
+    }
+  });
+
+  if (reported.length > 0) {
+    new Chart(document.getElementById('chartDailyHR'), {
+      type:'line',
+      data:{
+        labels:reported.map(d=>d.date.replace('2026-','')),
+        datasets:[{
+          label:'적중률(%)',data:reported.map(d=>d.total_hit_rate),
+          borderColor:'#1a237e',backgroundColor:'rgba(26,35,126,0.1)',fill:true,tension:0.3,pointRadius:5
+        },{label:'90',data:reported.map(()=>90),borderColor:'#e53935',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}]
+      },
+      options:{scales:{y:{min:60,max:100,ticks:{stepSize:10}}},plugins:{legend:{display:false}}}
+    });
+
+    new Chart(document.getElementById('chartPlanActual'), {
+      type:'bar',
+      data:{
+        labels:dailyReports.map(d=>d.date.replace('2026-','')+'('+d.dow+')'),
+        datasets:[
+          {label:'계획',data:dailyReports.map(d=>d.planned_total),backgroundColor:'#90caf9'},
+          {label:'실적',data:dailyReports.map(d=>d.actual_total||null),backgroundColor:'#1a237e'}
+        ]
+      },
+      options:{plugins:{legend:{position:'bottom'}}}
+    });
+  }
+}
+
+function updateNavDots() {
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    const tab = btn.getAttribute('data-tab');
+    if (!tab || !tab.startsWith('day_')) return;
+    const dateStr = tab.replace('day_','');
+    const dr = dailyReports.find(d => d.date === dateStr);
+    if (!dr) return;
+    const dot = btn.querySelector('.status-dot');
+    if (!dot) return;
+    if (dr.actual_total > 0 && dr.date <= today) {
+      dot.className = 'status-dot dot-green';
+    } else if (dr.actual_total > 0) {
+      dot.className = 'status-dot dot-yellow';
+    } else {
+      dot.className = 'status-dot dot-gray';
+    }
+  });
+}
+
+function clearUploadedData() {
+  if (!confirm('업로드된 실적 데이터를 모두 초기화하시겠습니까?\n페이지가 새로고침됩니다.')) return;
+  localStorage.removeItem(UPLOAD_STORAGE_KEY);
+  location.reload();
+}
+
+// 페이지 로드 시 localStorage에서 이전 업로드 복원
+(function() {
+  const stored = localStorage.getItem(UPLOAD_STORAGE_KEY);
+  if (stored) {
+    try {
+      const data = JSON.parse(stored);
+      if (Object.keys(data).length > 0) {
+        applyUploadedData(data);
+      }
+    } catch(e) {}
+  }
+})();
 </script>
 </div>
 </body>
