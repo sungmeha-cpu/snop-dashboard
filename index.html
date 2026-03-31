@@ -30,14 +30,16 @@ body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:
 
 <div class="top-bar">
   <h1>S&OP 적중률 모니터링</h1>
-  <button class="week-btn active" data-week="w12" onclick="switchWeek('w12')">W12 (03-16 ~ 03-21)</button>
+  <button class="week-btn" data-week="w12" onclick="switchWeek('w12')">W12 (03-16 ~ 03-21)</button>
   <button class="week-btn" data-week="w13" onclick="switchWeek('w13')">W13 (03-23 ~ 03-28)</button>
+  <button class="week-btn active" data-week="w14" onclick="switchWeek('w14')">W14 (03-30 ~ 04-04)</button>
   <button class="week-btn" data-week="compare" onclick="switchWeek('compare')">주차별 비교</button>
 </div>
 
 <div class="frame-wrap">
-  <iframe id="frame-w12" class="active"></iframe>
+  <iframe id="frame-w12"></iframe>
   <iframe id="frame-w13"></iframe>
+  <iframe id="frame-w14" class="active"></iframe>
   <iframe id="frame-compare"></iframe>
 </div>
 
@@ -45,6 +47,7 @@ body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:
 const ts = Date.now();
 document.getElementById('frame-w12').src = 'monitor_w12.html?t=' + ts;
 document.getElementById('frame-w13').src = 'monitor_w13.html?t=' + ts;
+document.getElementById('frame-w14').src = 'monitor_w14.html?t=' + ts;
 document.getElementById('frame-compare').src = 'monitor_compare.html?t=' + ts;
 
 function switchWeek(week) {
