@@ -890,7 +890,7 @@ function doUpload(files) {
     return;
   }
   localStorage.setItem('snop_uploader', name);
-  handleXlsUpload(files, name, function() {
+  previewAndConfirmUpload(files, name, function() {
     rerenderOverview();
     updateNavDots();
   });

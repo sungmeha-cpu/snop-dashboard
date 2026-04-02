@@ -98,29 +98,40 @@ async function fetchActualData() {
 // ── GitHub API: actual.json 쓰기 (커밋) ──
 async function commitActualData(newData, uploaderName) {
   const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${DATA_PATH}`;
+  console.log('[GitHub] commitActualData 시작, token length:', GITHUB_TOKEN.length);
 
   // 1. 현재 파일의 SHA 가져오기
   const getRes = await fetch(apiUrl, {
     headers: { 'Authorization': 'token ' + GITHUB_TOKEN }
   });
+  console.log('[GitHub] GET status:', getRes.status);
   let sha = null;
   let existingData = {};
   if (getRes.ok) {
     const fileInfo = await getRes.json();
     sha = fileInfo.sha;
+    console.log('[GitHub] 기존 파일 SHA:', sha);
     try {
       existingData = JSON.parse(atob(fileInfo.content));
-    } catch(e) {}
+      console.log('[GitHub] 기존 데이터 날짜:', Object.keys(existingData).length, '개');
+    } catch(e) {
+      console.warn('[GitHub] 기존 데이터 파싱 실패:', e);
+    }
+  } else {
+    const errBody = await getRes.text();
+    console.error('[GitHub] GET 실패:', getRes.status, errBody);
   }
 
   // 2. 기존 데이터와 머지
   const merged = Object.assign({}, existingData, newData);
+  console.log('[GitHub] 머지 후 날짜:', Object.keys(merged).length, '개');
 
   // 3. 커밋
   const content = btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2))));
   const dates = Object.keys(newData).sort().map(d => d.substring(5)).join(', ');
   const msg = (uploaderName || '담당자') + ' — ' + dates + ' 출고수량 실적 업로드';
 
+  console.log('[GitHub] PUT 요청:', msg);
   const putRes = await fetch(apiUrl, {
     method: 'PUT',
     headers: {
@@ -134,16 +145,19 @@ async function commitActualData(newData, uploaderName) {
     })
   });
 
+  console.log('[GitHub] PUT status:', putRes.status);
   if (!putRes.ok) {
     const err = await putRes.json();
+    console.error('[GitHub] PUT 실패:', err);
     throw new Error(err.message || 'GitHub API 오류');
   }
 
+  console.log('[GitHub] 커밋 성공!');
   return merged;
 }
 
-// ── 업로드 핸들러 ──
-function handleXlsUpload(files, uploaderName, onSuccess, onError) {
+// ── 파일 파싱 후 확인 팝업 → 업로드 ──
+function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
   if (!files || files.length === 0) return;
   const results = {};
   let pending = files.length;
@@ -153,26 +167,34 @@ function handleXlsUpload(files, uploaderName, onSuccess, onError) {
     if (!dateStr) {
       alert('파일명에서 날짜를 파싱할 수 없습니다: ' + file.name + '\n예: "3-26 출고수량.xls"');
       pending--;
-      if (pending === 0 && Object.keys(results).length > 0) finalizeAndCommit(results, uploaderName, onSuccess, onError);
+      if (pending === 0 && Object.keys(results).length > 0) showConfirmAndUpload(results, uploaderName, onSuccess, onError);
       return;
     }
 
     const reader = new FileReader();
     reader.onload = function(e) {
       try {
+        console.log('[업로드] 파싱 시작:', file.name, '날짜:', dateStr, '크기:', e.target.result.byteLength, 'bytes');
         const menus = parseXlsData(e.target.result);
+        console.log('[업로드] 파싱 결과:', file.name, '→', menus.length, '개 상품');
         if (menus.length === 0) {
           alert('유효한 데이터를 찾을 수 없습니다: ' + file.name);
         } else {
           results[dateStr] = menus;
         }
       } catch(err) {
+        console.error('[업로드] 파싱 오류:', file.name, err);
         alert('파싱 오류: ' + file.name + '\n' + err.message);
       }
       pending--;
       if (pending === 0 && Object.keys(results).length > 0) {
-        finalizeAndCommit(results, uploaderName, onSuccess, onError);
+        showConfirmAndUpload(results, uploaderName, onSuccess, onError);
       }
+    };
+    reader.onerror = function() {
+      console.error('[업로드] FileReader 오류:', file.name);
+      alert('파일 읽기 오류: ' + file.name);
+      pending--;
     };
     reader.readAsArrayBuffer(file);
   });
@@ -182,12 +204,44 @@ function handleXlsUpload(files, uploaderName, onSuccess, onError) {
   if (input) input.value = '';
 }
 
+function showConfirmAndUpload(results, uploaderName, onSuccess, onError) {
+  // 파싱 결과 요약 생성
+  const dateKeys = Object.keys(results).sort();
+  let summary = '업로드 진행하시겠습니까?\n\n';
+  dateKeys.forEach(dateStr => {
+    const menus = results[dateStr];
+    const totalQty = menus.reduce((s, m) => s + m.qty, 0);
+    const stageSet = new Set(menus.map(m => m.stage));
+    summary += '■ ' + dateStr + ': ' + menus.length + '개 상품, '
+             + totalQty.toLocaleString() + '병\n'
+             + '  단계: ' + Array.from(stageSet).join(', ') + '\n';
+  });
+  summary += '\n담당자: ' + (uploaderName || '미입력');
+
+  if (!confirm(summary)) {
+    console.log('[업로드] 사용자가 취소했습니다.');
+    return;
+  }
+
+  console.log('[업로드] 확인됨. 커밋 진행...');
+  finalizeAndCommit(results, uploaderName, onSuccess, onError);
+}
+
+// ── 기존 handleXlsUpload (하위 호환) ──
+function handleXlsUpload(files, uploaderName, onSuccess, onError) {
+  previewAndConfirmUpload(files, uploaderName, onSuccess, onError);
+}
+
 async function finalizeAndCommit(results, uploaderName, onSuccess, onError) {
   const dates = Object.keys(results).sort().map(d => d.substring(5)).join(', ');
+  console.log('[업로드] finalizeAndCommit 시작:', dates, '담당자:', uploaderName);
 
   // 즉시 화면에 반영 (대기 없이)
   if (typeof applyUploadedData === 'function') {
+    console.log('[업로드] applyUploadedData 호출');
     applyUploadedData(results);
+  } else {
+    console.warn('[업로드] applyUploadedData 함수가 정의되지 않음!');
   }
 
   // GitHub에 커밋
@@ -198,7 +252,9 @@ async function finalizeAndCommit(results, uploaderName, onSuccess, onError) {
       statusEl.style.display = '';
     }
 
+    console.log('[업로드] GitHub 커밋 시작...');
     await commitActualData(results, uploaderName);
+    console.log('[업로드] GitHub 커밋 성공!');
 
     if (statusEl) {
       statusEl.textContent = '저장 완료! (' + dates + ')';
@@ -209,7 +265,7 @@ async function finalizeAndCommit(results, uploaderName, onSuccess, onError) {
     alert('실적 업로드 완료!\n' + dates + ' (' + Object.keys(results).length + '일)\n\n모든 사용자에게 반영됩니다.');
     if (onSuccess) onSuccess(results);
   } catch(err) {
-    console.error('GitHub commit failed:', err);
+    console.error('[업로드] GitHub commit 실패:', err);
     // 실패 시 localStorage에 백업
     const stored = JSON.parse(localStorage.getItem('snop_uploaded_actual') || '{}');
     Object.assign(stored, results);
