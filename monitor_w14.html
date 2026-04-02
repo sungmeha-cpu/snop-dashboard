@@ -1300,13 +1300,30 @@ function clearUploadedData() {
 }
 
 // 페이지 로드 시 localStorage에서 이전 업로드 복원
+// ※ 하드코딩 실적이 이미 있는 날짜는 localStorage 데이터 무시
 (function() {
   const stored = localStorage.getItem(UPLOAD_STORAGE_KEY);
   if (stored) {
     try {
       const data = JSON.parse(stored);
-      if (Object.keys(data).length > 0) {
-        applyUploadedData(data);
+      // 하드코딩 실적이 이미 반영된 날짜는 제외
+      const filtered = {};
+      for (const [dateStr, menus] of Object.entries(data)) {
+        const dr = dailyReports.find(d => d.date === dateStr);
+        if (!dr || dr.actual_total === 0) {
+          filtered[dateStr] = menus;
+        }
+      }
+      if (Object.keys(filtered).length > 0) {
+        applyUploadedData(filtered);
+      }
+      // localStorage도 정리
+      if (Object.keys(filtered).length < Object.keys(data).length) {
+        if (Object.keys(filtered).length === 0) {
+          localStorage.removeItem(UPLOAD_STORAGE_KEY);
+        } else {
+          localStorage.setItem(UPLOAD_STORAGE_KEY, JSON.stringify(filtered));
+        }
       }
     } catch(e) {}
   }
