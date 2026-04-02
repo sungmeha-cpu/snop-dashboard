@@ -6,6 +6,7 @@
 <title>S&OP 적중률 모니터링 — W14 2026-03-30 ~ 2026-04-04</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="upload.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:#f5f5f5; color:#222; }
@@ -130,9 +131,10 @@ tbody tr:hover td { background:#e8eaf6; }
     <option value="compare">주차별 비교</option>
   </select>
   <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
-    <input type="file" id="xlsFileInput" accept=".xls,.xlsx" multiple style="display:none;" onchange="handleXlsUpload(this.files)">
+    <input type="text" id="uploaderName" placeholder="이름" value="" style="width:70px; padding:4px 8px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.1); color:#fff; font-size:12px; font-family:inherit;" onfocus="if(!this.value)this.value=localStorage.getItem('snop_uploader')||''" onblur="if(this.value)localStorage.setItem('snop_uploader',this.value)">
+    <input type="file" id="xlsFileInput" accept=".xls,.xlsx" multiple style="display:none;" onchange="doUpload(this.files)">
     <button onclick="document.getElementById('xlsFileInput').click()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C4; 실적 업로드</button>
-    <button id="clearUploadBtn" onclick="clearUploadedData()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; display:none;">&#x1F5D1; 초기화</button>
+    <span id="uploadStatus" style="display:none; font-size:11px; color:#fff;"></span>
     <button onclick="syncMonitor()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x21BB; 동기화</button>
     <button onclick="openFolder()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C2; 폴더</button>
     <div class="meta">생성: 2026-03-31 18:20 | 엔진: v3</div>
@@ -878,129 +880,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ═══════════════════════════════════════════════════
-// XLS 실적 업로드 기능
+// XLS 실적 업로드 (upload.js 공통 모듈 사용)
 // ═══════════════════════════════════════════════════
-const STAGE_CODE_MAP = {
-  '1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기',
-  '1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'
-};
-const EXCLUDE_STAGES_SET = new Set(['1410','1420','1430','1440']);
-const UPLOAD_STORAGE_KEY = 'snop_uploaded_actual';
-
-function parseXlsDate(filename) {
-  // "3-26 출고수량.xls" → "2026-03-26"
-  const m = filename.match(/(\d+)-(\d+)/);
-  if (!m) return null;
-  const mon = parseInt(m[1]), day = parseInt(m[2]);
-  const year = mon <= 12 ? 2026 : 2025;
-  return year + '-' + String(mon).padStart(2,'0') + '-' + String(day).padStart(2,'0');
-}
-
-function handleXlsUpload(files) {
-  if (!files || files.length === 0) return;
-  const results = {};
-  let pending = files.length;
-
-  Array.from(files).forEach(file => {
-    const dateStr = parseXlsDate(file.name);
-    if (!dateStr) {
-      alert('파일명에서 날짜를 파싱할 수 없습니다: ' + file.name + '\n예: "3-26 출고수량.xls"');
-      pending--;
-      if (pending === 0) finalizeUpload(results);
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      try {
-        const data = new Uint8Array(e.target.result);
-        const wb = XLSX.read(data, {type:'array'});
-        const ws = wb.Sheets[wb.SheetNames[0]];
-        const rows = XLSX.utils.sheet_to_json(ws, {header:1});
-
-        // 위치 기반 파싱 (15열): 단계명,단계코드,구분기호,상품코드,상품명,원료,총수량(병),필수,선택,클레배송(자사몰),택배송(자사몰),클레배송(외부몰),택배송(외부몰),백화점,기타
-        // ※ XLS(HTML) 파일의 단계명/단계코드에 rowspan이 있어 연속 행은 컬럼이 2칸 앞당겨짐
-        const menus = [];
-        let headerFound = false;
-        let lastStageCode = '';
-        for (let i = 0; i < rows.length; i++) {
-          const r = rows[i];
-          if (!r || r.length < 5) continue;
-          // 첫 번째 행이 헤더인지 확인
-          if (!headerFound && (String(r[0]).includes('단계') || String(r[4]).includes('상품') || String(r[2]).includes('상품'))) {
-            headerFound = true;
-            continue;
-          }
-
-          // rowspan 감지: r[1]이 유효한 단계코드인지 확인
-          let stageCode, off;
-          const col1 = String(r[1] || '').trim();
-          if (STAGE_CODE_MAP[col1] || EXCLUDE_STAGES_SET.has(col1)) {
-            stageCode = col1;
-            lastStageCode = stageCode;
-            off = 0;  // 정상 행 (15열)
-          } else if (lastStageCode) {
-            stageCode = lastStageCode;
-            off = -2; // rowspan 연속 행 (13열, 단계명·단계코드 없음)
-          } else {
-            continue;
-          }
-
-          if (EXCLUDE_STAGES_SET.has(stageCode)) continue;
-          if (!STAGE_CODE_MAP[stageCode]) continue;
-
-          const totalQty = parseInt(r[6 + off]) || 0;
-          const dept = parseInt(r[13 + off]) || 0;
-          const onlineQty = totalQty - dept;
-          const cleJasa = parseInt(r[9 + off]) || 0;
-          const taxJasa = parseInt(r[10 + off]) || 0;
-          const cleOibu = parseInt(r[11 + off]) || 0;
-          const taxOibu = parseInt(r[12 + off]) || 0;
-
-          const pcode = String(r[3 + off] || '').trim().replace(/^0+/, '');
-          menus.push({
-            stage_code: stageCode,
-            stage: STAGE_CODE_MAP[stageCode] || stageCode,
-            product_code: pcode,
-            product_name: String(r[4 + off] || '').trim(),
-            qty: onlineQty,
-            jasa: cleJasa + taxJasa,
-            oibu: cleOibu + taxOibu,
-          });
-        }
-
-        if (menus.length === 0) {
-          alert('유효한 데이터를 찾을 수 없습니다: ' + file.name);
-        } else {
-          results[dateStr] = menus;
-        }
-      } catch(err) {
-        alert('파싱 오류: ' + file.name + '\n' + err.message);
-      }
-      pending--;
-      if (pending === 0) finalizeUpload(results);
-    };
-    reader.readAsArrayBuffer(file);
+function doUpload(files) {
+  const name = document.getElementById('uploaderName').value || localStorage.getItem('snop_uploader') || '';
+  if (!name) {
+    alert('이름을 입력해 주세요.');
+    document.getElementById('uploaderName').focus();
+    return;
+  }
+  localStorage.setItem('snop_uploader', name);
+  handleXlsUpload(files, name, function() {
+    rerenderOverview();
+    updateNavDots();
   });
-
-  // 파일 입력 초기화
-  document.getElementById('xlsFileInput').value = '';
 }
 
-function finalizeUpload(results) {
-  if (Object.keys(results).length === 0) return;
-
-  // localStorage에 저장 (기존 데이터와 머지)
-  const stored = JSON.parse(localStorage.getItem(UPLOAD_STORAGE_KEY) || '{}');
-  Object.assign(stored, results);
-  localStorage.setItem(UPLOAD_STORAGE_KEY, JSON.stringify(stored));
-
-  // 대시보드에 반영
-  applyUploadedData(results);
-
-  const dates = Object.keys(results).sort();
-  alert('실적 업로드 완료!\n' + dates.map(d => d.substring(5)).join(', ') + ' (' + dates.length + '일)');
-}
+// handleXlsUpload, finalizeUpload → upload.js 공통 모듈로 이동
 
 function applyUploadedData(uploadedData) {
   for (const [dateStr, menus] of Object.entries(uploadedData)) {
@@ -1293,40 +1189,15 @@ function updateNavDots() {
   });
 }
 
-function clearUploadedData() {
-  if (!confirm('업로드된 실적 데이터를 모두 초기화하시겠습니까?\n페이지가 새로고침됩니다.')) return;
-  localStorage.removeItem(UPLOAD_STORAGE_KEY);
-  location.reload();
-}
-
-// 페이지 로드 시 localStorage에서 이전 업로드 복원
-// ※ 하드코딩 실적이 이미 있는 날짜는 localStorage 데이터 무시
+// 페이지 로드 시 GitHub에서 실적 데이터 불러오기
+loadActualData().then(() => {
+  rerenderOverview();
+  updateNavDots();
+});
+// 이름 복원
 (function() {
-  const stored = localStorage.getItem(UPLOAD_STORAGE_KEY);
-  if (stored) {
-    try {
-      const data = JSON.parse(stored);
-      // 하드코딩 실적이 이미 반영된 날짜는 제외
-      const filtered = {};
-      for (const [dateStr, menus] of Object.entries(data)) {
-        const dr = dailyReports.find(d => d.date === dateStr);
-        if (!dr || dr.actual_total === 0) {
-          filtered[dateStr] = menus;
-        }
-      }
-      if (Object.keys(filtered).length > 0) {
-        applyUploadedData(filtered);
-      }
-      // localStorage도 정리
-      if (Object.keys(filtered).length < Object.keys(data).length) {
-        if (Object.keys(filtered).length === 0) {
-          localStorage.removeItem(UPLOAD_STORAGE_KEY);
-        } else {
-          localStorage.setItem(UPLOAD_STORAGE_KEY, JSON.stringify(filtered));
-        }
-      }
-    } catch(e) {}
-  }
+  const name = localStorage.getItem('snop_uploader');
+  if (name) document.getElementById('uploaderName').value = name;
 })();
 </script>
 </div>
