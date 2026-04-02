@@ -24,7 +24,7 @@ function parseXlsDate(filename) {
   return year + '-' + String(mon).padStart(2,'0') + '-' + String(day).padStart(2,'0');
 }
 
-// ── XLS 파싱 (rowspan 대응) ──
+// ── XLS 파싱 (rowspan 대응 — SheetJS 패딩/비패딩 모두 지원) ──
 function parseXlsData(arrayBuffer) {
   const data = new Uint8Array(arrayBuffer);
   const wb = XLSX.read(data, {type:'array'});
@@ -35,24 +35,40 @@ function parseXlsData(arrayBuffer) {
   let headerFound = false;
   let lastStageCode = '';
 
+  console.log('[파싱] 총 행 수:', rows.length);
+
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i];
     if (!r || r.length < 5) continue;
 
-    if (!headerFound && (String(r[0]).includes('단계') || String(r[4]).includes('상품') || String(r[2]).includes('상품'))) {
+    // 헤더 행 감지
+    const r0 = String(r[0] || '');
+    const r2 = String(r[2] || '');
+    const r4 = String(r[4] || '');
+    if (!headerFound && (r0.includes('단계') || r4.includes('상품') || r2.includes('상품'))) {
       headerFound = true;
+      console.log('[파싱] 헤더 발견: row', i, '길이:', r.length);
       continue;
     }
 
     let stageCode, off;
     const col1 = String(r[1] || '').trim();
-    if (STAGE_CODE_MAP[col1] || EXCLUDE_STAGES_SET.has(col1)) {
+    const isStageCode = STAGE_CODE_MAP[col1] || EXCLUDE_STAGES_SET.has(col1);
+
+    if (isStageCode) {
+      // 정상 행: 단계명 + 단계코드가 있는 첫 번째 상품
       stageCode = col1;
       lastStageCode = stageCode;
       off = 0;
     } else if (lastStageCode) {
+      // continuation 행: rowspan 때문에 단계명/코드 없음
       stageCode = lastStageCode;
-      off = -2;
+      // SheetJS가 빈 셀로 패딩(15열) vs 생략(13열) 구분
+      if (!col1 && r.length >= 14) {
+        off = 0;   // 패딩된 행 — 컬럼 위치 동일
+      } else {
+        off = -2;  // 생략된 행 — 앞 2열 없음
+      }
     } else {
       continue;
     }
@@ -69,16 +85,26 @@ function parseXlsData(arrayBuffer) {
     const taxOibu = parseInt(r[12 + off]) || 0;
 
     const pcode = String(r[3 + off] || '').trim().replace(/^0+/, '');
+    const pname = String(r[4 + off] || '').trim();
+
+    if (i < 8 || totalQty === 0) {
+      console.log('[파싱] row', i, 'len=' + r.length, 'off=' + off, 'stage=' + stageCode,
+        'code=' + pcode, 'name=' + pname, 'total=' + totalQty, 'dept=' + dept, 'online=' + onlineQty);
+    }
+
     menus.push({
       stage_code: stageCode,
       stage: STAGE_CODE_MAP[stageCode] || stageCode,
       product_code: pcode,
-      product_name: String(r[4 + off] || '').trim(),
+      product_name: pname,
       qty: onlineQty,
       jasa: cleJasa + taxJasa,
       oibu: cleOibu + taxOibu,
     });
   }
+
+  const totalSum = menus.reduce((s, m) => s + m.qty, 0);
+  console.log('[파싱] 완료:', menus.length, '개 상품,', totalSum.toLocaleString(), '병');
   return menus;
 }
 
