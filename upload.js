@@ -16,6 +16,7 @@ const STAGE_CODE_MAP = {
 const EXCLUDE_STAGES_SET = new Set(['1410','1420','1430','1440']);
 
 // ── XLS 파일명에서 날짜 파싱 ──
+// .htm 파일(sheet001.htm 등)은 상위 폴더명에서 날짜를 추출
 function parseXlsDate(filename) {
   const m = filename.match(/(\d+)-(\d+)/);
   if (!m) return null;
@@ -26,11 +27,107 @@ function parseXlsDate(filename) {
 
 // ── XLS 파싱 (rowspan 대응 — SheetJS 패딩/비패딩 모두 지원) ──
 function parseXlsData(arrayBuffer) {
+  // HTML 감지
+  const textCheck = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 1000));
+  if (textCheck.includes('<html')) {
+    const fullText = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer));
+    // 프레임셋 형식: 테이블이 별도 파일(sheet001.htm)에 있는 경우
+    if (textCheck.includes('frameset') || (textCheck.includes('File-List') && !fullText.includes('<table'))) {
+      console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요');
+      return { error: 'frameset' };
+    }
+    // 단일 HTML 파일에 테이블이 있는 경우 직접 파싱
+    if (fullText.includes('<table') || fullText.includes('<TABLE')) {
+      console.log('[파싱] HTML 테이블 직접 파싱');
+      return parseHtmlTable(fullText);
+    }
+  }
+
   const data = new Uint8Array(arrayBuffer);
   const wb = XLSX.read(data, {type:'array'});
   const ws = wb.Sheets[wb.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(ws, {header:1});
 
+  const menus = parseRowsToMenus(rows);
+
+  // SheetJS 결과가 비어있으면 HTML 테이블 폴백
+  if (menus.length === 0) {
+    console.log('[파싱] SheetJS 결과 없음 → HTML 테이블 폴백 시도');
+    const text = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer));
+    if (text.includes('<table') || text.includes('<TABLE')) {
+      return parseHtmlTable(text);
+    }
+  }
+
+  return menus;
+}
+
+// ── HTML 테이블 직접 파싱 (프레임셋 XLS 대응) ──
+function parseHtmlTable(htmlText) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlText, 'text/html');
+  const table = doc.querySelector('table');
+  if (!table) {
+    console.log('[HTML파싱] 테이블 없음');
+    return [];
+  }
+
+  const trs = table.querySelectorAll('tr');
+  const rows = [];
+  const rowspanTracker = {}; // colIndex → {value, remaining}
+
+  for (const tr of trs) {
+    const cells = tr.querySelectorAll('td, th');
+    const row = [];
+    let colIdx = 0;
+
+    // 이전 행의 rowspan 값 채우기
+    while (rowspanTracker[colIdx] && rowspanTracker[colIdx].remaining > 0) {
+      row.push(rowspanTracker[colIdx].value);
+      rowspanTracker[colIdx].remaining--;
+      if (rowspanTracker[colIdx].remaining <= 0) delete rowspanTracker[colIdx];
+      colIdx++;
+    }
+
+    for (const cell of cells) {
+      // rowspan 빈 자리 건너뛰기
+      while (rowspanTracker[colIdx] && rowspanTracker[colIdx].remaining > 0) {
+        row.push(rowspanTracker[colIdx].value);
+        rowspanTracker[colIdx].remaining--;
+        if (rowspanTracker[colIdx].remaining <= 0) delete rowspanTracker[colIdx];
+        colIdx++;
+      }
+
+      const text = (cell.textContent || '').trim().replace(/\u00a0/g, ' ').trim();
+      const rs = parseInt(cell.getAttribute('rowspan')) || 1;
+      const cs = parseInt(cell.getAttribute('colspan')) || 1;
+
+      for (let c = 0; c < cs; c++) {
+        row.push(text);
+        if (rs > 1) {
+          rowspanTracker[colIdx] = { value: text, remaining: rs - 1 };
+        }
+        colIdx++;
+      }
+    }
+
+    // 남은 rowspan 채우기
+    while (rowspanTracker[colIdx] && rowspanTracker[colIdx].remaining > 0) {
+      row.push(rowspanTracker[colIdx].value);
+      rowspanTracker[colIdx].remaining--;
+      if (rowspanTracker[colIdx].remaining <= 0) delete rowspanTracker[colIdx];
+      colIdx++;
+    }
+
+    rows.push(row);
+  }
+
+  console.log('[HTML파싱] 행 수:', rows.length);
+  return parseRowsToMenus(rows);
+}
+
+// ── 행 배열 → 메뉴 데이터 변환 (공통 로직) ──
+function parseRowsToMenus(rows) {
   const menus = [];
   let headerFound = false;
   let lastStageCode = '';
@@ -63,7 +160,7 @@ function parseXlsData(arrayBuffer) {
     } else if (lastStageCode) {
       // continuation 행: rowspan 때문에 단계명/코드 없음
       stageCode = lastStageCode;
-      // SheetJS가 빈 셀로 패딩(15열) vs 생략(13열) 구분
+      // 패딩(15열) vs 생략(13열) 구분
       if (!col1 && r.length >= 14) {
         off = 0;   // 패딩된 행 — 컬럼 위치 동일
       } else {
@@ -189,12 +286,17 @@ function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
   let pending = files.length;
 
   Array.from(files).forEach(file => {
-    const dateStr = parseXlsDate(file.name);
+    let dateStr = parseXlsDate(file.name);
     if (!dateStr) {
-      alert('파일명에서 날짜를 파싱할 수 없습니다: ' + file.name + '\n예: "3-26 출고수량.xls"');
-      pending--;
-      if (pending === 0 && Object.keys(results).length > 0) showConfirmAndUpload(results, uploaderName, onSuccess, onError);
-      return;
+      // .htm 파일 등 파일명에 날짜가 없는 경우 사용자에게 입력 요청
+      const input = prompt('파일명에서 날짜를 찾을 수 없습니다: ' + file.name + '\n\n날짜를 입력해주세요 (예: 4-1)');
+      if (input) dateStr = parseXlsDate(input + '.xls');
+      if (!dateStr) {
+        alert('유효한 날짜를 입력해주세요. 예: "4-1"');
+        pending--;
+        if (pending === 0 && Object.keys(results).length > 0) showConfirmAndUpload(results, uploaderName, onSuccess, onError);
+        return;
+      }
     }
 
     const reader = new FileReader();
@@ -202,10 +304,15 @@ function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
       try {
         console.log('[업로드] 파싱 시작:', file.name, '날짜:', dateStr, '크기:', e.target.result.byteLength, 'bytes');
         const menus = parseXlsData(e.target.result);
-        console.log('[업로드] 파싱 결과:', file.name, '→', menus.length, '개 상품');
-        if (menus.length === 0) {
+        if (menus && menus.error === 'frameset') {
+          alert('이 파일은 Excel HTML 프레임셋 형식입니다.\n\n' +
+            '같은 폴더에 생성된 "' + file.name.replace(/\.xls$/i, '.files') + '" 폴더 안의\n' +
+            '"sheet001.htm" 파일을 업로드해주세요.\n\n' +
+            '또는 Excel에서 열어서 "다른 이름으로 저장" → ".xlsx" 형식으로 저장 후 업로드해주세요.');
+        } else if (menus.length === 0) {
           alert('유효한 데이터를 찾을 수 없습니다: ' + file.name);
         } else {
+          console.log('[업로드] 파싱 결과:', file.name, '→', menus.length, '개 상품');
           results[dateStr] = menus;
         }
       } catch(err) {

@@ -132,7 +132,7 @@ tbody tr:hover td { background:#e8eaf6; }
   </select>
   <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
     <input type="text" id="uploaderName" placeholder="이름" value="" style="width:70px; padding:4px 8px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.1); color:#fff; font-size:12px; font-family:inherit;" onfocus="if(!this.value)this.value=localStorage.getItem('snop_uploader')||''" onblur="if(this.value)localStorage.setItem('snop_uploader',this.value)">
-    <input type="file" id="xlsFileInput" accept=".xls,.xlsx" multiple style="display:none;" onchange="doUpload(this.files)">
+    <input type="file" id="xlsFileInput" accept=".xls,.xlsx,.htm,.html" multiple style="display:none;" onchange="doUpload(this.files)">
     <button onclick="document.getElementById('xlsFileInput').click()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C4; 실적 업로드</button>
     <span id="uploadStatus" style="display:none; font-size:11px; color:#fff;"></span>
     <button onclick="syncMonitor()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x21BB; 동기화</button>
