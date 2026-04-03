@@ -305,10 +305,21 @@ function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
         console.log('[업로드] 파싱 시작:', file.name, '날짜:', dateStr, '크기:', e.target.result.byteLength, 'bytes');
         const menus = parseXlsData(e.target.result);
         if (menus && menus.error === 'frameset') {
-          alert('이 파일은 Excel HTML 프레임셋 형식입니다.\n\n' +
-            '같은 폴더에 생성된 "' + file.name.replace(/\.xls$/i, '.files') + '" 폴더 안의\n' +
-            '"sheet001.htm" 파일을 업로드해주세요.\n\n' +
-            '또는 Excel에서 열어서 "다른 이름으로 저장" → ".xlsx" 형식으로 저장 후 업로드해주세요.');
+          // 프레임셋 감지 → sheet001.htm 자동 선택 유도
+          const folderName = file.name.replace(/\.xls$/i, '.files');
+          alert('이 파일은 프레임셋 형식이라 데이터가 별도 파일에 있습니다.\n\n' +
+            '다음 화면에서 "' + folderName + '" 폴더 안의\n' +
+            '"sheet001.htm" 파일을 선택해주세요.');
+          requestSheetFile(dateStr, function(sheetMenus) {
+            if (sheetMenus && sheetMenus.length > 0) {
+              results[dateStr] = sheetMenus;
+            }
+            pending--;
+            if (pending === 0 && Object.keys(results).length > 0) {
+              showConfirmAndUpload(results, uploaderName, onSuccess, onError);
+            }
+          });
+          return;
         } else if (menus.length === 0) {
           alert('유효한 데이터를 찾을 수 없습니다: ' + file.name);
         } else {
@@ -335,6 +346,57 @@ function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
   // 파일 입력 초기화
   const input = document.getElementById('xlsFileInput');
   if (input) input.value = '';
+}
+
+// ── 프레임셋 XLS → sheet001.htm 자동 선택 ──
+function requestSheetFile(dateStr, callback) {
+  const sheetInput = document.createElement('input');
+  sheetInput.type = 'file';
+  sheetInput.accept = '.htm,.html';
+  sheetInput.style.display = 'none';
+  document.body.appendChild(sheetInput);
+
+  let handled = false;
+  function finish(menus) {
+    if (handled) return;
+    handled = true;
+    if (sheetInput.parentNode) document.body.removeChild(sheetInput);
+    callback(menus);
+  }
+
+  sheetInput.onchange = function() {
+    const sheetFile = sheetInput.files[0];
+    if (!sheetFile) { finish(null); return; }
+
+    const reader2 = new FileReader();
+    reader2.onload = function(e2) {
+      try {
+        const menus = parseXlsData(e2.target.result);
+        if (menus && menus.length > 0) {
+          console.log('[업로드] sheet001.htm 파싱 성공:', menus.length, '개 상품');
+          finish(menus);
+        } else {
+          alert('sheet001.htm에서 유효한 데이터를 찾을 수 없습니다.');
+          finish(null);
+        }
+      } catch(err) {
+        console.error('[업로드] sheet001.htm 파싱 오류:', err);
+        alert('파싱 오류: ' + err.message);
+        finish(null);
+      }
+    };
+    reader2.readAsArrayBuffer(sheetFile);
+  };
+
+  // 파일 선택 취소 감지
+  window.addEventListener('focus', function onFocus() {
+    window.removeEventListener('focus', onFocus);
+    setTimeout(() => {
+      if (!sheetInput.files || sheetInput.files.length === 0) finish(null);
+    }, 300);
+  }, { once: true });
+
+  sheetInput.click();
 }
 
 function showConfirmAndUpload(results, uploaderName, onSuccess, onError) {
