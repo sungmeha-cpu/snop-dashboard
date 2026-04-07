@@ -27,9 +27,11 @@ function parseXlsDate(filename) {
 
 // ── XLS 파싱 (rowspan 대응 — SheetJS 패딩/비패딩 모두 지원) ──
 function parseXlsData(arrayBuffer) {
-  // HTML 감지
-  const textCheck = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 1000));
-  if (textCheck.includes('<html')) {
+  // HTML 감지 (<html> 태그 없이 <meta>+<table>로 시작하는 경우도 포함)
+  const textCheck = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 2000));
+  const isHtml = textCheck.includes('<html') || textCheck.includes('<HTML')
+    || textCheck.includes('vnd.ms-excel') || textCheck.includes('<table') || textCheck.includes('<TABLE');
+  if (isHtml) {
     const fullText = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer));
     // 프레임셋 형식: 테이블이 별도 파일(sheet001.htm)에 있는 경우
     if (textCheck.includes('frameset') || (textCheck.includes('File-List') && !fullText.includes('<table'))) {
