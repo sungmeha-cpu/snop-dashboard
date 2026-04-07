@@ -566,21 +566,34 @@ async function finalizeAndCommit(results, uploaderName, onSuccess, onError) {
 // ── 페이지 로드 시 데이터 불러오기 ──
 async function loadActualData() {
   try {
+    console.log('[로드] actual.json 불러오기 시작...');
     const data = await fetchActualData();
-    if (data && Object.keys(data).length > 0) {
+    const dates = data ? Object.keys(data).sort() : [];
+    console.log('[로드] actual.json 날짜:', dates.join(', ') || '(비어있음)');
+
+    if (data && dates.length > 0) {
       // 하드코딩 실적이 이미 있는 날짜는 제외
       const filtered = {};
       for (const [dateStr, menus] of Object.entries(data)) {
-        const dr = dailyReports.find(d => d.date === dateStr);
+        const dr = (typeof dailyReports !== 'undefined') ? dailyReports.find(d => d.date === dateStr) : null;
         if (!dr || dr.actual_total === 0) {
           filtered[dateStr] = menus;
+          console.log('[로드] 반영 대상:', dateStr, '(' + menus.length + '개 상품)');
+        } else {
+          console.log('[로드] 건너뜀 (이미 하드코딩):', dateStr, 'actual_total=' + dr.actual_total);
         }
       }
       if (Object.keys(filtered).length > 0 && typeof applyUploadedData === 'function') {
-        applyUploadedData(filtered);
+        console.log('[로드] applyUploadedData 호출:', Object.keys(filtered).sort().join(', '));
+        try {
+          applyUploadedData(filtered);
+          console.log('[로드] 화면 반영 완료');
+        } catch(applyErr) {
+          console.error('[로드] applyUploadedData 에러:', applyErr);
+        }
       }
     }
   } catch(e) {
-    console.warn('Failed to load actual data:', e);
+    console.error('[로드] actual.json 불러오기 실패:', e);
   }
 }
