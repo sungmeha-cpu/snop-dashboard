@@ -237,7 +237,12 @@ async function commitActualData(newData, uploaderName) {
     sha = fileInfo.sha;
     console.log('[GitHub] 기존 파일 SHA:', sha);
     try {
-      existingData = JSON.parse(atob(fileInfo.content));
+      // GitHub API base64에는 줄바꿈이 포함됨 → 제거 후 디코딩
+      const raw = atob(fileInfo.content.replace(/[\n\r\s]/g, ''));
+      // UTF-8 바이트를 올바르게 디코딩
+      const bytes = new Uint8Array(raw.length);
+      for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+      existingData = JSON.parse(new TextDecoder().decode(bytes));
       console.log('[GitHub] 기존 데이터 날짜:', Object.keys(existingData).length, '개');
     } catch(e) {
       console.warn('[GitHub] 기존 데이터 파싱 실패:', e);
