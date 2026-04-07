@@ -688,9 +688,11 @@ function rerenderOverview() {
     const hrClass = stgHR >= 90 ? 'kpi-green' : (stgHR >= 70 ? 'kpi-yellow' : 'kpi-red');
     kpiCards[0].querySelector('.kpi-value').className = 'kpi-value ' + hrClass;
     kpiCards[0].querySelector('.kpi-value').textContent = stgHR + '%';
+kpiCards[1].querySelector('.kpi-value').textContent = stgPlan.toLocaleString();
     kpiCards[2].querySelector('.kpi-value').textContent = stgAct.toLocaleString();
     const gap = stgPlan - stgAct;
     kpiCards[3].querySelector('.kpi-value').textContent = (gap>0?'+':'') + gap.toLocaleString();
+var _n=0,_w=0,_c=0; reported.forEach(function(d){(d.stage_hits||[]).forEach(function(sh){if(sh.hit_rate>=90)_n++;else if(sh.hit_rate>=70)_w++;else _c++;});}); kpiCards[4].querySelector('.kpi-value').innerHTML='<span class="kpi-green">'+_n+'</span> / <span class="kpi-yellow">'+_w+'</span> / <span class="kpi-red">'+_c+'</span>';
     kpiCards[5].querySelector('.kpi-value').innerHTML = reported.length + '<span style="font-size:14px; color:#999;">/' + dailyReports.length + '</span>';
   }
 
