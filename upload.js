@@ -223,67 +223,119 @@ async function fetchActualData() {
 // ── GitHub API: actual.json 쓰기 (커밋) ──
 async function commitActualData(newData, uploaderName) {
   const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${DATA_PATH}`;
-  console.log('[GitHub] commitActualData 시작, token length:', GITHUB_TOKEN.length);
+  const log = (msg) => { console.log('[GitHub] ' + msg); };
+  const errlog = (msg) => { console.error('[GitHub] ' + msg); };
+
+  log('commitActualData 시작, token length: ' + GITHUB_TOKEN.length + ', token prefix: ' + GITHUB_TOKEN.substring(0,8));
 
   // 1. 현재 파일의 SHA 가져오기
-  const getRes = await fetch(apiUrl, {
-    headers: { 'Authorization': 'token ' + GITHUB_TOKEN }
-  });
-  console.log('[GitHub] GET status:', getRes.status);
+  let getRes;
+  try {
+    getRes = await fetch(apiUrl, {
+      headers: { 'Authorization': 'Bearer ' + GITHUB_TOKEN }
+    });
+  } catch(fetchErr) {
+    errlog('GET fetch 실패 (네트워크): ' + fetchErr.message);
+    throw new Error('GitHub API 연결 실패: ' + fetchErr.message);
+  }
+
+  log('GET status: ' + getRes.status);
   let sha = null;
   let existingData = {};
   if (getRes.ok) {
     const fileInfo = await getRes.json();
     sha = fileInfo.sha;
-    console.log('[GitHub] 기존 파일 SHA:', sha);
+    log('기존 파일 SHA: ' + sha);
     try {
-      // GitHub API base64에는 줄바꿈이 포함됨 → 제거 후 디코딩
       const raw = atob(fileInfo.content.replace(/[\n\r\s]/g, ''));
-      // UTF-8 바이트를 올바르게 디코딩
       const bytes = new Uint8Array(raw.length);
       for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
       existingData = JSON.parse(new TextDecoder().decode(bytes));
-      console.log('[GitHub] 기존 데이터 날짜:', Object.keys(existingData).length, '개');
+      log('기존 데이터 날짜: ' + Object.keys(existingData).length + '개 (' + Object.keys(existingData).sort().join(', ') + ')');
     } catch(e) {
-      console.warn('[GitHub] 기존 데이터 파싱 실패:', e);
+      errlog('기존 데이터 파싱 실패: ' + e.message);
     }
   } else {
     const errBody = await getRes.text();
-    console.error('[GitHub] GET 실패:', getRes.status, errBody);
+    errlog('GET 실패: ' + getRes.status + ' ' + errBody.substring(0, 300));
+    if (getRes.status === 401 || getRes.status === 403) {
+      throw new Error('GitHub 인증 실패 (토큰 만료 가능성). 관리자에게 문의하세요.');
+    }
   }
 
   // 2. 기존 데이터와 머지
   const merged = Object.assign({}, existingData, newData);
-  console.log('[GitHub] 머지 후 날짜:', Object.keys(merged).length, '개');
+  const mergedDates = Object.keys(merged).sort();
+  log('머지 결과: ' + mergedDates.length + '개 날짜 (' + mergedDates.join(', ') + ')');
 
   // 3. 커밋
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(merged, null, 2))));
+  const jsonStr = JSON.stringify(merged, null, 2);
+  const content = btoa(unescape(encodeURIComponent(jsonStr)));
   const dates = Object.keys(newData).sort().map(d => d.substring(5)).join(', ');
   const msg = (uploaderName || '담당자') + ' — ' + dates + ' 출고수량 실적 업로드';
 
-  console.log('[GitHub] PUT 요청:', msg);
-  const putRes = await fetch(apiUrl, {
-    method: 'PUT',
-    headers: {
-      'Authorization': 'token ' + GITHUB_TOKEN,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      message: msg,
-      content: content,
-      sha: sha
-    })
-  });
-
-  console.log('[GitHub] PUT status:', putRes.status);
-  if (!putRes.ok) {
-    const err = await putRes.json();
-    console.error('[GitHub] PUT 실패:', err);
-    throw new Error(err.message || 'GitHub API 오류');
+  log('PUT 요청: ' + msg + ' (content size: ' + content.length + ' bytes)');
+  let putRes;
+  try {
+    putRes = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Bearer ' + GITHUB_TOKEN,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: msg,
+        content: content,
+        sha: sha
+      })
+    });
+  } catch(putFetchErr) {
+    errlog('PUT fetch 실패 (네트워크): ' + putFetchErr.message);
+    throw new Error('GitHub 저장 연결 실패: ' + putFetchErr.message);
   }
 
-  console.log('[GitHub] 커밋 성공!');
+  log('PUT status: ' + putRes.status);
+  if (!putRes.ok) {
+    const errText = await putRes.text();
+    errlog('PUT 실패: ' + putRes.status + ' ' + errText.substring(0, 500));
+    if (putRes.status === 409) {
+      throw new Error('동시 수정 충돌. 페이지를 새로고침 후 다시 시도해주세요.');
+    }
+    throw new Error('GitHub 저장 실패 (HTTP ' + putRes.status + ')');
+  }
+
+  log('커밋 성공!');
   return merged;
+}
+
+// ── GitHub 연결 진단 ──
+async function testGitHubConnection() {
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${DATA_PATH}`;
+  const results = [];
+  results.push('토큰: ' + GITHUB_TOKEN.substring(0,8) + '... (길이 ' + GITHUB_TOKEN.length + ')');
+
+  try {
+    const res = await fetch(apiUrl, { headers: { 'Authorization': 'Bearer ' + GITHUB_TOKEN } });
+    results.push('GET 응답: ' + res.status);
+    if (res.ok) {
+      const info = await res.json();
+      results.push('SHA: ' + info.sha);
+      try {
+        const raw = atob(info.content.replace(/[\n\r\s]/g, ''));
+        const bytes = new Uint8Array(raw.length);
+        for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+        const data = JSON.parse(new TextDecoder().decode(bytes));
+        results.push('저장된 날짜: ' + Object.keys(data).sort().join(', '));
+      } catch(e) { results.push('디코딩 실패: ' + e.message); }
+    } else {
+      results.push('GET 실패: ' + await res.text());
+    }
+  } catch(e) { results.push('연결 실패: ' + e.message); }
+
+  const msg = '=== GitHub 연결 진단 ===\n' + results.join('\n');
+  console.log(msg);
+  alert(msg);
+  return results;
 }
 
 // ── 파일 파싱 후 확인 팝업 → 업로드 ──
