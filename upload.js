@@ -522,11 +522,13 @@ async function finalizeAndCommit(results, uploaderName, onSuccess, onError) {
   console.log('[업로드] finalizeAndCommit 시작:', dates, '담당자:', uploaderName);
 
   // 즉시 화면에 반영 (대기 없이)
-  if (typeof applyUploadedData === 'function') {
-    console.log('[업로드] applyUploadedData 호출');
-    applyUploadedData(results);
-  } else {
-    console.warn('[업로드] applyUploadedData 함수가 정의되지 않음!');
+  try {
+    if (typeof applyUploadedData === 'function') {
+      console.log('[업로드] applyUploadedData 호출');
+      applyUploadedData(results);
+    }
+  } catch(applyErr) {
+    console.warn('[업로드] 화면 반영 중 오류 (커밋은 계속):', applyErr);
   }
 
   // GitHub에 커밋
