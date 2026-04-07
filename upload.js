@@ -308,29 +308,60 @@ async function commitActualData(newData, uploaderName) {
   return merged;
 }
 
-// ── GitHub 연결 진단 ──
+// ── GitHub 연결 진단 (읽기 + 쓰기 테스트) ──
 async function testGitHubConnection() {
   const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${DATA_PATH}`;
   const results = [];
   results.push('토큰: ' + GITHUB_TOKEN.substring(0,8) + '... (길이 ' + GITHUB_TOKEN.length + ')');
 
+  let sha = null;
+  let existingData = null;
   try {
     const res = await fetch(apiUrl, { headers: { 'Authorization': 'Bearer ' + GITHUB_TOKEN } });
     results.push('GET 응답: ' + res.status);
     if (res.ok) {
       const info = await res.json();
-      results.push('SHA: ' + info.sha);
+      sha = info.sha;
+      results.push('SHA: ' + sha);
       try {
         const raw = atob(info.content.replace(/[\n\r\s]/g, ''));
         const bytes = new Uint8Array(raw.length);
         for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
-        const data = JSON.parse(new TextDecoder().decode(bytes));
-        results.push('저장된 날짜: ' + Object.keys(data).sort().join(', '));
+        existingData = JSON.parse(new TextDecoder().decode(bytes));
+        results.push('저장된 날짜: ' + Object.keys(existingData).sort().join(', '));
       } catch(e) { results.push('디코딩 실패: ' + e.message); }
     } else {
       results.push('GET 실패: ' + await res.text());
     }
-  } catch(e) { results.push('연결 실패: ' + e.message); }
+  } catch(e) { results.push('GET 연결 실패: ' + e.message); }
+
+  // PUT 쓰기 테스트 (기존 데이터 그대로 다시 저장)
+  if (sha && existingData) {
+    try {
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(existingData, null, 2))));
+      const putRes = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer ' + GITHUB_TOKEN,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: '연결 테스트 (데이터 변경 없음)',
+          content: content,
+          sha: sha
+        })
+      });
+      results.push('PUT 응답: ' + putRes.status);
+      if (!putRes.ok) {
+        const errText = await putRes.text();
+        results.push('PUT 실패 상세: ' + errText.substring(0, 200));
+      } else {
+        results.push('PUT 쓰기 테스트: 성공!');
+      }
+    } catch(e) {
+      results.push('PUT 연결 실패: ' + e.message);
+    }
+  }
 
   const msg = '=== GitHub 연결 진단 ===\n' + results.join('\n');
   console.log(msg);
