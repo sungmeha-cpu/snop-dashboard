@@ -649,7 +649,7 @@ function rerenderOverview() {
   if (!tab) return;
 
   const reported = dailyReports.filter(d => d.actual_total > 0);
-  const stgPlan = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.planned,0), 0);
+  const stgPlan = dailyReports.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.planned,0), 0);
   const stgAct = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.actual,0), 0);
   const stgHR = stgPlan > 0 ? Math.round(Math.min(stgAct/stgPlan, stgPlan/stgAct)*1000)/10 : 0;
 
