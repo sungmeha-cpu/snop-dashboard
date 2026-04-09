@@ -21,16 +21,12 @@ body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:
 }
 .week-btn:hover { background:rgba(255,255,255,0.15); }
 .week-btn.active { background:#fff; color:#1a237e; border-color:#fff; }
-.frame-wrap { position:relative; width:100%; height:100vh; padding-top:44px; }
-.frame-wrap iframe { position:absolute; top:44px; left:0; width:100%; height:calc(100vh - 44px); border:none; visibility:hidden; pointer-events:none; }
+.frame-wrap { position:relative; width:100%; height:100vh; }
+.frame-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100vh; border:none; visibility:hidden; pointer-events:none; }
 .frame-wrap iframe.active { visibility:visible; pointer-events:auto; z-index:1; }
 </style>
 </head>
 <body>
-
-<div class="top-bar">
-  <h1>S&OP 적중률 모니터링</h1>
-</div>
 
 <div class="frame-wrap">
   <iframe id="frame-w12"></iframe>
@@ -51,8 +47,6 @@ document.getElementById('frame-compare').src = 'monitor_compare.html?t=' + ts;
 function switchWeek(week) {
   document.querySelectorAll('.frame-wrap iframe').forEach(f => f.classList.remove('active'));
   document.getElementById('frame-' + week).classList.add('active');
-  document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector('.week-btn[data-week="' + week + '"]').classList.add('active');
 }
 
 window.switchWeek = switchWeek;
