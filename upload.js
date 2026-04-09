@@ -25,21 +25,39 @@ function parseXlsDate(filename) {
   return year + '-' + String(mon).padStart(2,'0') + '-' + String(day).padStart(2,'0');
 }
 
+// ── 인코딩 감지 후 텍스트 디코딩 ──
+function decodeWithCharset(arrayBuffer) {
+  // ASCII 범위에서 charset 힌트 찾기
+  const asciiCheck = new TextDecoder('ascii', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 3000));
+  const charsetMatch = asciiCheck.match(/charset\s*=\s*["']?([^"';\s>]+)/i);
+  let charset = 'utf-8';
+  if (charsetMatch) {
+    const detected = charsetMatch[1].toLowerCase().replace('ks_c_5601-1987', 'euc-kr');
+    if (['euc-kr', 'euc_kr', 'cp949', 'ms949', 'x-windows-949'].includes(detected.replace(/-/g,''))) {
+      charset = 'euc-kr';
+    } else {
+      charset = detected;
+    }
+  }
+  console.log('[파싱] 감지된 인코딩:', charset);
+  return new TextDecoder(charset, {fatal: false}).decode(new Uint8Array(arrayBuffer));
+}
+
 // ── XLS 파싱 (rowspan 대응 — SheetJS 패딩/비패딩 모두 지원) ──
 function parseXlsData(arrayBuffer) {
   // HTML 감지 (<html> 태그 없이 <meta>+<table>로 시작하는 경우도 포함)
-  const textCheck = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 2000));
+  const textCheck = new TextDecoder('ascii', {fatal: false}).decode(new Uint8Array(arrayBuffer).slice(0, 2000));
   const isHtml = textCheck.includes('<html') || textCheck.includes('<HTML')
     || textCheck.includes('vnd.ms-excel') || textCheck.includes('<table') || textCheck.includes('<TABLE');
   if (isHtml) {
-    const fullText = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer));
+    const fullText = decodeWithCharset(arrayBuffer);
     // 테이블이 있으면 바로 파싱 (frameset 여부와 무관)
     if (fullText.includes('<table') || fullText.includes('<TABLE')) {
       console.log('[파싱] HTML 테이블 직접 파싱');
       return parseHtmlTable(fullText);
     }
     // 프레임셋 형식: 테이블이 별도 파일(sheet001.htm)에 있는 경우
-    if (textCheck.includes('frameset') || textCheck.includes('File-List')) {
+    if (fullText.includes('frameset') || fullText.includes('File-List')) {
       console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요');
       return { error: 'frameset' };
     }
@@ -55,7 +73,7 @@ function parseXlsData(arrayBuffer) {
   // SheetJS 결과가 비어있으면 HTML 테이블 폴백
   if (menus.length === 0) {
     console.log('[파싱] SheetJS 결과 없음 → HTML 테이블 폴백 시도');
-    const text = new TextDecoder('utf-8', {fatal: false}).decode(new Uint8Array(arrayBuffer));
+    const text = decodeWithCharset(arrayBuffer);
     if (text.includes('<table') || text.includes('<TABLE')) {
       return parseHtmlTable(text);
     }
