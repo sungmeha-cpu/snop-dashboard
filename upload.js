@@ -51,15 +51,15 @@ function parseXlsData(arrayBuffer) {
     || textCheck.includes('vnd.ms-excel') || textCheck.includes('<table') || textCheck.includes('<TABLE');
   if (isHtml) {
     const fullText = decodeWithCharset(arrayBuffer);
-    // 테이블이 있으면 바로 파싱 (frameset 여부와 무관)
+    // 프레임셋 형식 우선 체크: 테이블이 별도 파일(sheet001.htm)에 있는 경우
+    if (fullText.includes('frameset') || fullText.includes('Frameset') || fullText.includes('File-List')) {
+      console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요');
+      return { error: 'frameset' };
+    }
+    // 테이블이 있으면 직접 파싱
     if (fullText.includes('<table') || fullText.includes('<TABLE')) {
       console.log('[파싱] HTML 테이블 직접 파싱');
       return parseHtmlTable(fullText);
-    }
-    // 프레임셋 형식: 테이블이 별도 파일(sheet001.htm)에 있는 경우
-    if (fullText.includes('frameset') || fullText.includes('File-List')) {
-      console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요');
-      return { error: 'frameset' };
     }
   }
 
