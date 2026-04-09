@@ -51,10 +51,14 @@ function parseXlsData(arrayBuffer) {
     || textCheck.includes('vnd.ms-excel') || textCheck.includes('<table') || textCheck.includes('<TABLE');
   if (isHtml) {
     const fullText = decodeWithCharset(arrayBuffer);
-    // 프레임셋 형식 우선 체크: 테이블이 별도 파일(sheet001.htm)에 있는 경우
-    if (fullText.includes('frameset') || fullText.includes('Frameset') || fullText.includes('File-List')) {
-      console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요');
-      return { error: 'frameset' };
+    // 프레임셋 형식 우선 체크: 실제 frameset 구조가 있는 경우만 (File-List만으로는 판단하지 않음)
+    if (fullText.includes('frameset') || fullText.includes('Frameset') || fullText.includes('fnBuildFrameset')) {
+      // .files 폴더의 실제 경로 추출
+      const hrefMatch = fullText.match(/href="([^"]*sheet001\.htm)"/i)
+                      || fullText.match(/href="([^"]*\.files\/[^"]+)"/i);
+      const folderPath = hrefMatch ? hrefMatch[1].replace(/\/[^/]+$/, '') : null;
+      console.log('[파싱] HTML 프레임셋 감지 — sheet001.htm 필요, 폴더:', folderPath);
+      return { error: 'frameset', folderPath: folderPath };
     }
     // 테이블이 있으면 직접 파싱
     if (fullText.includes('<table') || fullText.includes('<TABLE')) {
@@ -414,10 +418,10 @@ function previewAndConfirmUpload(files, uploaderName, onSuccess, onError) {
         const menus = parseXlsData(e.target.result);
         if (menus && menus.error === 'frameset') {
           // 프레임셋 감지 → sheet001.htm 자동 선택 유도
-          const folderName = file.name.replace(/\.xls$/i, '.files');
+          const folderName = menus.folderPath || file.name.replace(/\.xls$/i, '.files');
           alert('이 파일은 프레임셋 형식이라 데이터가 별도 파일에 있습니다.\n\n' +
-            '다음 화면에서 "' + folderName + '" 폴더 안의\n' +
-            '"sheet001.htm" 파일을 선택해주세요.');
+            '다음 화면에서 다운로드 폴더 안의\n' +
+            '"' + folderName + '" 폴더 → "sheet001.htm" 파일을 선택해주세요.');
           requestSheetFile(dateStr, function(sheetMenus) {
             if (sheetMenus && sheetMenus.length > 0) {
               results[dateStr] = sheetMenus;
