@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S&OP 적중률 모니터링 — W17 2026-04-20 ~ 2026-04-25</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="upload.js?v=10"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Malgun Gothic','Apple SD Gothic Neo',sans-serif; background:#f5f5f5; color:#222; }
+
+/* 헤더 */
+.header { background:linear-gradient(135deg,#1a237e,#283593); color:#fff; padding:16px 28px; display:flex; align-items:center; gap:14px; }
+.logo { height:40px; border-radius:6px; }
+.header h1 { font-size:20px; font-weight:700; }
+.header .meta { font-size:12px; opacity:.8; margin-top:3px; }
+
+/* 네비게이션 바 */
+.nav-bar { background:#fff; border-bottom:2px solid #c5cae9; padding:0 28px; display:flex; align-items:stretch; gap:0; }
+.nav-group { display:flex; align-items:stretch; }
+.nav-group-label { padding:10px 14px; font-size:11px; font-weight:700; color:#7986cb; display:flex; align-items:center;
+                    border-right:1px solid #e8eaf6; text-transform:uppercase; letter-spacing:0.5px; }
+.nav-btn { padding:10px 18px; border:none; background:transparent; cursor:grab; color:#1a237e;
+            font-size:13px; font-family:inherit; transition:.15s; position:relative; }
+.nav-btn:hover { background:#e8eaf6; }
+.nav-btn.dragging { opacity:0.4; }
+.nav-btn.drag-over { border-left:3px solid #1a237e; }
+.nav-btn.active { font-weight:700; color:#0d47a1; }
+.nav-btn.active::after { content:''; position:absolute; bottom:0; left:8px; right:8px; height:3px;
+                          background:#1a237e; border-radius:3px 3px 0 0; }
+.nav-btn .status-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-left:5px; vertical-align:middle; }
+.dot-green { background:#43a047; }
+.dot-yellow { background:#fdd835; }
+.dot-gray { background:#bdbdbd; }
+
+.main { padding:0 28px 40px; background:#fff; min-height:60vh; }
+.tab-content { display:none; padding-top:18px; }
+.tab-content.active { display:block; }
+
+/* KPI */
+.kpi-row { display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+.kpi-card { flex:1; min-width:130px; background:#fff; border:1px solid #c5cae9; border-radius:8px;
+             padding:12px 10px; text-align:center; }
+.kpi-label { font-size:11px; color:#666; margin-bottom:2px; }
+.kpi-value { font-size:24px; font-weight:700; }
+.kpi-sub { font-size:11px; color:#999; margin-top:2px; }
+.kpi-green { color:#2e7d32; }
+.kpi-yellow { color:#f57f17; }
+.kpi-red { color:#c62828; }
+.kpi-blue { color:#1565c0; }
+
+/* 테이블 */
+table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px; }
+thead th { background:#1a237e; color:#fff; padding:8px 6px; text-align:center; font-weight:600; position:sticky; top:0; z-index:2; }
+thead tr.hdr1 th { top:0; z-index:3; }
+thead tr.hdr2 th { top:34px; z-index:2; }
+tbody td { padding:7px 6px; border-bottom:1px solid #e0e0e0; text-align:center; }
+tbody tr:hover td { background:#e8eaf6; }
+.hr-excellent, .hr-good, .hr-poor { background:#e8f5e9; color:#2e7d32; font-weight:700; }
+.num { text-align:right; font-variant-numeric:tabular-nums; }
+
+/* 이상 탐지 */
+.anomaly-card { border-radius:8px; padding:14px 16px; margin-bottom:10px; border-left:4px solid; }
+.anomaly-high { background:#ffebee; border-color:#c62828; }
+.anomaly-medium { background:#fff8e1; border-color:#f57f17; }
+.anomaly-title { font-weight:700; font-size:14px; margin-bottom:6px; }
+.anomaly-detail { font-size:12px; line-height:1.7; color:#333; }
+.anomaly-action { font-size:12px; color:#1a237e; margin-top:6px; padding-left:12px; }
+.anomaly-action li { margin-bottom:3px; }
+
+/* 이상 탐지 KPI 툴팁 */
+.kpi-card.has-tooltip { position:relative; cursor:help; }
+.kpi-tooltip { display:none; position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%); width:280px; background:#263238; color:#fff; font-size:11px; line-height:1.7; padding:12px 14px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.25); z-index:100; text-align:left; pointer-events:none; }
+.kpi-tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:6px solid transparent; border-top-color:#263238; }
+.kpi-card.has-tooltip:hover .kpi-tooltip { display:block; }
+
+/* 차트 */
+.chart-row { display:flex; gap:12px; margin-bottom:14px; }
+.chart-box { flex:1; background:#fff; border:1px solid #c5cae9; border-radius:8px; padding:10px; min-width:0; }
+.chart-title { font-size:12px; font-weight:700; color:#1a237e; margin-bottom:6px; }
+
+/* 액션 */
+.action-board { background:#e3f2fd; border-radius:8px; padding:16px 20px; margin-bottom:16px; }
+.action-title { font-weight:700; color:#0d47a1; font-size:15px; margin-bottom:10px; }
+.action-item { background:#fff; border-radius:6px; padding:10px 14px; margin-bottom:8px;
+                border-left:3px solid #1565c0; font-size:13px; }
+.action-item.urgent { border-left-color:#c62828; background:#fff5f5; }
+.action-tag { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px;
+               font-weight:700; margin-right:6px; }
+.tag-urgent { background:#ffcdd2; color:#c62828; }
+.tag-action { background:#bbdefb; color:#0d47a1; }
+.tag-watch { background:#fff9c4; color:#f57f17; }
+
+/* Summary */
+.exec { background:#e8eaf6; border-left:4px solid #1a237e; padding:14px 18px; margin-bottom:16px; border-radius:0 8px 8px 0; }
+.exec-title { font-weight:700; color:#1a237e; margin-bottom:6px; }
+.exec p { font-size:13px; line-height:1.6; color:#333; }
+
+/* 섹션 구분 */
+.section-row { display:flex; gap:16px; margin-bottom:14px; }
+.section-half { flex:1; min-width:0; }
+
+/* 이상 탐지 툴팁 */
+.alert-wrap { position:relative; display:inline; }
+.alert-icon { cursor:help; font-size:14px; }
+.alert-tip {
+  display:none; position:absolute; left:20px; top:-8px; z-index:10;
+  background:#fff; border:1px solid #e0e0e0; border-radius:8px; padding:10px 14px;
+  box-shadow:0 4px 12px rgba(0,0,0,.15); font-size:12px; line-height:1.6;
+  width:280px; color:#333; font-weight:400; white-space:normal;
+}
+.alert-wrap:hover .alert-tip { display:block; }
+
+@media(max-width:900px) {
+  .header,.nav-bar,.main { padding-left:12px; padding-right:12px; }
+  .kpi-row,.chart-row,.section-row { flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img class="logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCABNAGMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9U6KKKACiiigAoopks0cC5kkWMerECgB9FQw3cFwcRTRyH/YYGpqACiiigAooooAKKKKACiivj39tn9tYfBlJfBng2WKfxnNFm5vCA6aajDjjoZSOQDwAQTnIFc9evDDwdSo9DmxOJp4Wm6tV6I9y+M37SXgH4EWXmeKdaSO+Zd0Wl2g827l+iA8D3Yge9fD3xN/4Kk+KdWllt/A/h+z0K16Ld6j/AKTcEeu3hFPthq+LdS1PV/GevS3d5Pea1rF7IWeSQtNNM5/Mk16Jpf7KXxf1jT1vbX4ea41uy7laS38tmHqFYgn8q+Tq5lisS2qKaXlv958PXzbGYttYdNLyV39/+Qni39qn4t+N5JDqnj7WjG/3oLS5NtEf+ARbV/SuZ8N6Z47+JWpm00ODXfEd6x+ZLTzZyD/tEdPxrL8W+BfEfgK/Fj4k0LUNCuyMiLULZ4Sw9tw5/Cv2J/Y28WeC/GPwL0O68FaRFolrbILO8sljAeO5RR5m5h98nO7ceSGFc+Ew8sbVcKs2mu+5y4LCzzCs6dao013vf8T8zfFn7MHxu+Hfgq68Xa3od9pmjWiq88v9oxtJEpIAYoshYDJHbjNcZ4Y/aB+JXg11bRvHOvWKqc+Ut/IYz9UJKn8RX6g/8FENZuNH/Za8RLbvs+2XNraye6NKCR/47X4/gFiAASScADqTRjqKwVVQpSewsyw6y+uqdCT2vv8A5H198Ov+CmfxM8MSRReJbfT/ABbaDhmliFtcY9njAX81NfanwN/bf+G3xtkg0+O+bw34hkwBperME8xvSKT7r/Thv9mvy08N/s3fFLxdZrd6T4B126tWG5ZjZtGjD2L4z+Fct4r8D+Jfh5qi2fiLRNR0C+HzJHfW7wsfdSRz9RWtHH4vDpOd3Hz/AMzahmeOwqUqico+f+Z++9Ffmt+xf+3fqGh6np3gX4i3732jzstvYa3cvmW0Y8KkrH70fYMeV47dP0oBDAEHIPIIr6vC4qnioc8Pmux9vg8ZSxtPnp/NdhaKKK7DvOX+KPjaL4b/AA58S+KJlDppOnzXYQ/xsqEqv4tgfjX4S+Itf1Hxl4kv9X1GZ73VNSuWnmkY5aSR2yf1NftV+1boF14n/Zy+IOn2Ss9y2lSSoijJby8SED3IQj8a/Gj4YXdpp/xM8JXOoBTYw6vaSXAcceWJkLZ/DNfJ5y5Sq04PY+I4gcpVqVN/D/wT9Y/2Q/2TtB+BHgyx1G+sob7xvfQrLe6hKgZrfcM+TFn7qr0JHLHJPYDh/wBsX9uq5+AvimHwh4T0uz1PxBHClxe3GobjDbhhlECqQWYrz1wAR17fYakFQR0I4r8Yv25tK1HS/wBqLxuNSVwbmeO4t2YcNA0a7CPUYGPqDXfjpvA4ZRoaa2PTzKby7BxjhtNbX/rqz9Sx4Ksv2hfgjpNr8R9Bsjdavp0dxcW9vk/ZZXQENE5+ZWGQc+vHIry3/gn/AOCbj4beCPiB4WuZBNNpHi26tDKBjeFihAb8Rg/jXzh8Mf8Agpd4k8OfDvTvDE3g1PEXiKytltLS9jnYCYKuEaSJVJJAAztIzjtmvof/AIJ0a9qPi74UeLPEOryGXVdW8T3d3dOV25kZIs4HYDGMdsVVHEUcRWpyp6ys7seHxWHxWIpSp6ySd3by6if8FMA3/DM8pViqjV7TcB3Hzf1rjv2BP2RtF0HwZpfxI8VafHqPiHVEFxpsF0m5LGA/ccKePMcfNu7AgDHOey/4KXru/ZjuTzxq1of1avf/AIQXtrqPwo8G3NiyNZy6PaNEU6bfJXArT2MKmOcpK9krG31enVzFzmr8sVb73qeB/tk/H74ofC3VdC0P4aeE7vUpbiI3V1qi6a93EBuKiFQowDwSSecEYr0Sy8Mad+1X8ANLX4heFZNJvNUtd09lcwmO4sbgEr5ke75k5G5c9VIznNcf+1B+2Un7NHizStJvPB9zrNtqNobmK9iuhEhIYqycqeRgHr/EK8XX/gq9ZSyhIvh1duWIVFGoKWJPbATrUzxFCnVnGtUunpytaIipisNSr1I16t09OVrRfgfCfxX+Hl78J/iP4h8I6g4ludJu3t/NUYEqdUcDtuUq341+r37BXxYu/ip+z7pZ1Oc3Gq6JK2lTyu2WkVADExPrsZQT3Kk96/Lr9oP4m3Pxh+MHiLxZd6Q2hT30kYOnuSXhCRrGAxIB3YQE8DrX6Bf8EtfD9zp3wV1/U5gVg1HWG8jPcRxopI/HI/A142WPlxko0/hd/u6HgZPJQx8oUvhd/u6H2fRRRX2R9+MmiS4ieKVFkjdSrIwyGB6g1+OX7ZX7MmofAH4h3F1ZW8kng3Vpmm027UZWEk5MDnsy9vVcH1x+yFYfjPwVofxD8OXmg+ItNg1XSbtdsttOuQfQg9QR1BHIrzsbg44uny7NbM8rMcBHHUuW9pLZnyL+xx+3V4e8UeFNN8IfEDVYNE8S2Ea20Go3riO3v41GFLOeEkxgHcQDjIOTivoL4s/AH4bftC2llP4o0y31Z7ZcW2o2lyY5VQ84EkZGV74OR3r4W/aB/wCCa/iXwnc3WrfDeRvEujElxpczBb2Af3VJwJQPwb2J5PyLfyeKfBd1NpN5Jq+hXERxLZTNLbsh90OMflXiyxtbDQ9ji6fMu/f/ADPnpZhXwkPq+Oo8y79/zTP0z8Z+KfgN+wnoV83hXSrC78bXERW3so5zdXbNjgyyMWMUeeSMjPYHtR/4Jl/EtPGPg7x3p97PF/bv9uSavNEgC7kuFBLKvpvVxx0yvrX5eu7SuXdi7MclmOSTXQeA/iH4j+GHiKHXfC2r3OjapECont2xuU9VYdGU+h4rjhmbjWjPltBdF5nBTzdxxEJ8iUI391ef6n7Q/tL/AAVPx/8AhFqnhCO/XTLqaSK4trp03IksbbhuA5weQcetedfDXxj4T/Y38A+F/h18QviNZX2rNK6W+Iiv2WJiWAcAkrGDkB3x19AcfA+v/t9fG7xDpbWMni4WaOMNLYWUMEp/4Gq5H4YrwPU9UvNav577ULue+vZ23y3FzIZJHPqWPJrrrZrSU/a0Ye9a1329EduIzqiqntsPB89rXfb0TP3O8aeCvh78fvCkdjrcGleK9GY+bDLFOsgQ4+9HIhypx3U14XrXgn9nL9i62uPFX9m2a6+ik2VrNdteXsj9lhSRm2e74AHc1+VGm3+o2sgj0+5uoZJCF2W0jKWPphTzX0j8FP2DfiX8ZLyDUddgm8KaHKQ0l9q6N9okX/YhPzE47tgdOtNZhLEy/dUE5997fh+o1mcsZL9zh06nfe34fqcFp+heLf2xPj9qE2nWKrqeu3jXVwyKfIsYMgbmP91FCjnkkAdTX7GfDD4eaX8KfAOieE9HTZYaXbrCrEfNI3V3b/aZiWPuawvgj8BPCPwC8MLo/hex2PIAbq/nw1xdOP4nbH5AYA7CvRq9bA4L6snOo7zlue5luXvCJ1KrvUluFFFFeqe2FFFFABXM+NPhn4U+Itn9m8TeHtO1uLGB9st1kZR/ssRkfga6aik4qSs1cmUVJWkro+W/Fv8AwTg+DniV5JLSx1Pw9K5yW0y9OB9FkDgfgK841H/glH4WkkJsfHOr26dhcW0Up/Mba+66K4JYDCz1dNfl+R5s8swc9XTXy0/I+DbT/glD4fRwbnx9qUqdxFYxofzLGu48M/8ABMf4TaK6vqNzruvnul1drEn5RIp/WvrqilHL8LHaC/MUcqwUHdU1+f5nn3gD4AfDz4YFH8NeEdM024XGLpYA8/8A38bLfrXoNFFd0YRgrRVkelCEaa5YKy8goooqywooooA//9k=">
+  <h1>S&OP 적중률 모니터링</h1>
+  <select id="weekSelector" onchange="(function(v){try{parent.postMessage({week:v},'*')}catch(_){} try{parent.switchWeek(v)}catch(_){}})(this.value)" style="margin-left:16px; padding:5px 28px 5px 10px; border:none; border-radius:6px; font-size:13px; font-weight:600; color:#1a237e; background:#fff; cursor:pointer; font-family:inherit; appearance:none; -webkit-appearance:none; background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%231a237e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E&quot;); background-repeat:no-repeat; background-position:right 8px center;">
+    <option value="w12" >W12 (03-16 ~ 03-21)</option>
+    <option value="w13" >W13 (03-23 ~ 03-28)</option>
+    <option value="w14" >W14 (03-30 ~ 04-04)</option>
+    <option value="w15" >W15 (04-06 ~ 04-11)</option>
+    <option value="w16" >W16 (04-13 ~ 04-18)</option>
+    <option value="w17" selected>W17 (04-20 ~ 04-25)</option>
+    <option value="compare">주차별 비교</option>
+  </select>
+  <div style="margin-left:auto; display:flex; align-items:center; gap:10px;">
+    <input type="text" id="uploaderName" placeholder="이름" value="" style="width:70px; padding:4px 8px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.1); color:#fff; font-size:12px; font-family:inherit;" onfocus="if(!this.value)this.value=localStorage.getItem('snop_uploader')||''" onblur="if(this.value)localStorage.setItem('snop_uploader',this.value)">
+    <input type="file" id="xlsFileInput" accept=".xls,.xlsx,.htm,.html" multiple style="display:none;" onchange="doUpload(this.files)">
+    <button onclick="document.getElementById('xlsFileInput').click()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:rgba(255,255,255,0.15); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C4; 실적 업로드</button>
+    <span id="uploadStatus" style="display:none; font-size:11px; color:#fff;"></span>
+    <button onclick="syncMonitor()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x21BB; 동기화</button>
+    <button onclick="testGitHubConnection()" style="padding:5px 8px; border:1px solid rgba(255,255,255,0.2); border-radius:6px; background:transparent; color:rgba(255,255,255,0.5); font-size:10px; cursor:pointer; font-family:inherit;" title="GitHub API 연결 진단">진단</button>
+    <button onclick="openFolder()" style="padding:5px 14px; border:1px solid rgba(255,255,255,0.4); border-radius:6px; background:transparent; color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit;">&#x1F4C2; 폴더</button>
+    <div class="meta">생성: 2026-04-14 19:36 | 엔진: v3</div>
+  </div>
+</div>
+
+<div class="nav-bar" id="navBar">
+    <button class="nav-btn active" draggable="true" data-tab="overview" onclick="showTab('overview')">Overview</button>
+    <button class="nav-btn" draggable="true" data-tab="action" onclick="showTab('action')">액션 보드</button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-20" onclick="showTab('day_2026-04-20')">04-20(월)<span class="status-dot dot-gray"></span></button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-21" onclick="showTab('day_2026-04-21')">04-21(화)<span class="status-dot dot-gray"></span></button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-22" onclick="showTab('day_2026-04-22')">04-22(수)<span class="status-dot dot-gray"></span></button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-23" onclick="showTab('day_2026-04-23')">04-23(목)<span class="status-dot dot-gray"></span></button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-24" onclick="showTab('day_2026-04-24')">04-24(금)<span class="status-dot dot-gray"></span></button>
+    <button class="nav-btn" draggable="true" data-tab="day_2026-04-25" onclick="showTab('day_2026-04-25')">04-25(토)<span class="status-dot dot-gray"></span></button>
+</div>
+<div class="main">
+<div id="tab-action" class="tab-content">
+<h2 style="margin-bottom:14px; color:#1a237e;">수요 드라이버 현황판</h2>
+<div class="kpi-row" style="margin-bottom:16px;">
+  <div class="kpi-card">
+    <div class="kpi-label">최근 7일 일평균 가입</div>
+    <div class="kpi-value" style="color:#1a237e;">0명</div>
+    <div class="kpi-sub">-</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">최근 7일 자사몰 매출</div>
+    <div class="kpi-value" style="color:#2e7d32;">0백만</div>
+    <div class="kpi-sub">전체 0백만</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">이번달 이벤트</div>
+    <div class="kpi-value" style="color:#1565c0;">0건</div>
+    <div class="kpi-sub">푸드발송 기준</div>
+  </div>
+</div>
+<div class="chart-row">
+  <div class="chart-box"><div class="chart-title">일별 신규회원 가입 추이</div><canvas id="chartMembers" style="max-height:200px;"></canvas></div>
+  <div class="chart-box"><div class="chart-title">일별 채널별 결제금액 (백만원)</div><canvas id="chartSales" style="max-height:200px;"></canvas></div>
+</div>
+<h3 style="margin:16px 0 8px; color:#1a237e;">이벤트 현황</h3>
+<p style="color:#888; font-size:13px;">이벤트 데이터 없음 (이벤트플랜_커머스실 파일 확인 필요)</p>
+
+<script>
+(function() {
+  const members = [];
+  const sales = [];
+
+  if (members.length > 0) {
+    new Chart(document.getElementById('chartMembers'), {
+      type: 'bar',
+      data: {
+        labels: members.map(m => m.date.replace('2026-','')),
+        datasets: [{
+          label: '가입자수',
+          data: members.map(m => m.count),
+          backgroundColor: members.map(m => m.count >= 300 ? '#1a237e' : '#90caf9'),
+          borderRadius: 3,
+        }]
+      },
+      options: {
+        scales: { y: { beginAtZero: true } },
+        plugins: { legend: { display: false } }
+      }
+    });
+  }
+
+  if (sales.length > 0) {
+    new Chart(document.getElementById('chartSales'), {
+      type: 'bar',
+      data: {
+        labels: sales.map(s => s.date.replace('2026-','')),
+        datasets: [
+          { label: '자사몰', data: sales.map(s => s.jasa), backgroundColor: '#1a237e' },
+          { label: '오프라인', data: sales.map(s => s.offline), backgroundColor: '#90caf9' },
+          { label: '입점몰', data: sales.map(s => s.external), backgroundColor: '#c5cae9' },
+        ]
+      },
+      options: {
+        scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } },
+        plugins: { legend: { position: 'bottom' } }
+      }
+    });
+  }
+})();
+</script>
+</div>
+<div id="tab-overview" class="tab-content active"><h2 style="margin-bottom:14px; color:#1a237e;">W17 Overview (04-20 ~ 04-25)</h2><div class="kpi-row">  <div class="kpi-card"><div class="kpi-label">주간 적중률</div><div class="kpi-value kpi-green">-</div></div>  <div class="kpi-card"><div class="kpi-label">계획 합계</div><div class="kpi-value kpi-blue">-</div></div>  <div class="kpi-card"><div class="kpi-label">실적 합계</div><div class="kpi-value kpi-blue">-</div></div>  <div class="kpi-card"><div class="kpi-label">Gap</div><div class="kpi-value">-</div></div>  <div class="kpi-card"><div class="kpi-label">단계 정상률</div><div class="kpi-value">-</div></div>  <div class="kpi-card"><div class="kpi-label">보고 완료</div><div class="kpi-value">-</div></div></div><h3 style="margin:16px 0 8px; color:#1a237e;">일별 요약</h3><table><thead><tr><th>날짜</th><th>요일</th><th>계획</th><th>실적</th><th>Gap</th><th>적중률</th><th>상태</th></tr></thead><tbody></tbody></table><div class="section-row" style="margin-top:20px;">  <div class="section-half"><h3 style="margin:0 0 8px; color:#1a237e;">일별 적중률 추이</h3><canvas id="chartDailyHR" height="200"></canvas></div>  <div class="section-half"><h3 style="margin:0 0 8px; color:#1a237e;">계획 vs 실적</h3><canvas id="chartPlanActual" height="200"></canvas></div></div></div>
+<div id="tab-day_2026-04-20" class="tab-content"></div>
+<div id="tab-day_2026-04-21" class="tab-content"></div>
+<div id="tab-day_2026-04-22" class="tab-content"></div>
+<div id="tab-day_2026-04-23" class="tab-content"></div>
+<div id="tab-day_2026-04-24" class="tab-content"></div>
+<div id="tab-day_2026-04-25" class="tab-content"></div>
+<script>
+const dailyReports = [{"date": "2026-04-20", "dow": "월", "planned_total": 20878, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 59, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 176, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 686, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 2988, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 6319, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 6008, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 1418, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 1070, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 2154, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 18703, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 2175, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 59, "planned_jasa": 55, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10005", "product_name": "단호박죽", "label": "본", "planned": 127, "planned_jasa": 118, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10007", "product_name": "브로컬리죽", "label": "본", "planned": 49, "planned_jasa": 43, "planned_oibu": 6, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10020", "product_name": "한우근대죽", "label": "본", "planned": 261, "planned_jasa": 251, "planned_oibu": 10, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10725", "product_name": "브로컬리사과죽", "label": "본", "planned": 261, "planned_jasa": 251, "planned_oibu": 10, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10688", "product_name": "한우당근죽", "label": "본", "planned": 82, "planned_jasa": 74, "planned_oibu": 8, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10691", "product_name": "순두부배죽", "label": "본", "planned": 82, "planned_jasa": 74, "planned_oibu": 8, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10113", "product_name": "한우오트밀죽", "label": "본", "planned": 1043, "planned_jasa": 981, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10078", "product_name": "팽이버섯치즈죽", "label": "본", "planned": 1043, "planned_jasa": 981, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10069", "product_name": "아기백숙", "label": "본", "planned": 449, "planned_jasa": 401, "planned_oibu": 48, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10081", "product_name": "한우검은콩죽", "label": "본", "planned": 447, "planned_jasa": 399, "planned_oibu": 48, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10112", "product_name": "한우연근비트죽", "label": "본", "planned": 6, "planned_jasa": 6, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10180", "product_name": "한우사과죽", "label": "본", "planned": 1836, "planned_jasa": 1700, "planned_oibu": 136, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10157", "product_name": "양송이콩소메", "label": "본", "planned": 1821, "planned_jasa": 1685, "planned_oibu": 136, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10755", "product_name": "닭가슴살단호박죽", "label": "본", "planned": 815, "planned_jasa": 741, "planned_oibu": 74, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10168", "product_name": "한우깻잎죽", "label": "본", "planned": 750, "planned_jasa": 635, "planned_oibu": 115, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10742", "product_name": "브로컬리새송이죽", "label": "본", "planned": 748, "planned_jasa": 633, "planned_oibu": 115, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "12432", "product_name": "가자미쑥갓죽", "label": "본", "planned": 326, "planned_jasa": 264, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10192", "product_name": "한우연근비트죽", "label": "본", "planned": 23, "planned_jasa": 23, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10915", "product_name": "새우살펌킨무른밥", "label": "본", "planned": 1867, "planned_jasa": 1695, "planned_oibu": 172, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10285", "product_name": "한우뿌리채소무른밥", "label": "본", "planned": 1216, "planned_jasa": 1107, "planned_oibu": 109, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10256", "product_name": "양송이콩소메무른밥", "label": "본", "planned": 1204, "planned_jasa": 1095, "planned_oibu": 109, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10216", "product_name": "닭가슴살배추버섯무른밥", "label": "본", "planned": 750, "planned_jasa": 604, "planned_oibu": 146, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10266", "product_name": "한우가지무른밥", "label": "본", "planned": 478, "planned_jasa": 385, "planned_oibu": 93, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10208", "product_name": "감자치즈그라탕", "label": "본", "planned": 474, "planned_jasa": 381, "planned_oibu": 93, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10295", "product_name": "한우연근비트무른밥", "label": "본", "planned": 19, "planned_jasa": 19, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10430", "product_name": "한우버섯파프리카볶음밥", "label": "본", "planned": 378, "planned_jasa": 351, "planned_oibu": 27, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10412", "product_name": "닭살프렌치빈짜장밥", "label": "본", "planned": 378, "planned_jasa": 351, "planned_oibu": 27, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10370", "product_name": "찰보리취나물밥", "label": "본", "planned": 312, "planned_jasa": 285, "planned_oibu": 27, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10407", "product_name": "한우콩나물비빔밥", "label": "본", "planned": 123, "planned_jasa": 98, "planned_oibu": 25, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10347", "product_name": "새송이볶음밥", "label": "본", "planned": 123, "planned_jasa": 98, "planned_oibu": 25, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10374", "product_name": "치킨리조또", "label": "본", "planned": 104, "planned_jasa": 79, "planned_oibu": 25, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10629", "product_name": "아기육개장", "label": "본", "planned": 337, "planned_jasa": 323, "planned_oibu": 14, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10563", "product_name": "새우살청경채탕", "label": "본", "planned": 337, "planned_jasa": 323, "planned_oibu": 14, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10580", "product_name": "단호박두부전골", "label": "본", "planned": 164, "planned_jasa": 150, "planned_oibu": 14, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10612", "product_name": "한우배추된장국", "label": "본", "planned": 94, "planned_jasa": 82, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10592", "product_name": "치킨커리", "label": "본", "planned": 94, "planned_jasa": 82, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10531", "product_name": "근대느타리국", "label": "본", "planned": 44, "planned_jasa": 32, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10482", "product_name": "한우무조림", "label": "본", "planned": 625, "planned_jasa": 565, "planned_oibu": 60, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "12451", "product_name": "가자미계란찜", "label": "본", "planned": 625, "planned_jasa": 565, "planned_oibu": 60, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10455", "product_name": "버섯감자볶음", "label": "본", "planned": 435, "planned_jasa": 375, "planned_oibu": 60, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10498", "product_name": "한우토마토조림", "label": "본", "planned": 173, "planned_jasa": 131, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10473", "product_name": "치킨단호박찜", "label": "본", "planned": 173, "planned_jasa": 131, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10461", "product_name": "새우고구마조림", "label": "본", "planned": 123, "planned_jasa": 81, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}, {"date": "2026-04-21", "dow": "화", "planned_total": 13629, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 34, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 113, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 376, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 1919, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 4060, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 3876, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 975, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 771, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 1505, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 11897, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 1732, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 34, "planned_jasa": 32, "planned_oibu": 2, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10007", "product_name": "브로컬리죽", "label": "본", "planned": 86, "planned_jasa": 82, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10005", "product_name": "단호박죽", "label": "본", "planned": 27, "planned_jasa": 23, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10688", "product_name": "한우당근죽", "label": "본", "planned": 149, "planned_jasa": 137, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10691", "product_name": "순두부배죽", "label": "본", "planned": 149, "planned_jasa": 137, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10020", "product_name": "한우근대죽", "label": "본", "planned": 39, "planned_jasa": 29, "planned_oibu": 10, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10725", "product_name": "브로컬리사과죽", "label": "본", "planned": 39, "planned_jasa": 29, "planned_oibu": 10, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10081", "product_name": "한우검은콩죽", "label": "본", "planned": 758, "planned_jasa": 703, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10069", "product_name": "아기백숙", "label": "본", "planned": 751, "planned_jasa": 696, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10113", "product_name": "한우오트밀죽", "label": "본", "planned": 202, "planned_jasa": 158, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10078", "product_name": "팽이버섯치즈죽", "label": "본", "planned": 202, "planned_jasa": 158, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10112", "product_name": "한우연근비트죽", "label": "본", "planned": 6, "planned_jasa": 6, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10168", "product_name": "한우깻잎죽", "label": "본", "planned": 1273, "planned_jasa": 1143, "planned_oibu": 130, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10742", "product_name": "브로컬리새송이죽", "label": "본", "planned": 1271, "planned_jasa": 1141, "planned_oibu": 130, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "12432", "product_name": "가자미쑥갓죽", "label": "본", "planned": 569, "planned_jasa": 502, "planned_oibu": 67, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10180", "product_name": "한우사과죽", "label": "본", "planned": 384, "planned_jasa": 279, "planned_oibu": 105, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10157", "product_name": "양송이콩소메", "label": "본", "planned": 383, "planned_jasa": 278, "planned_oibu": 105, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10755", "product_name": "닭가슴살단호박죽", "label": "본", "planned": 174, "planned_jasa": 123, "planned_oibu": 51, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10192", "product_name": "한우연근비트죽", "label": "본", "planned": 6, "planned_jasa": 5, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10216", "product_name": "닭가슴살배추버섯무른밥", "label": "본", "planned": 1318, "planned_jasa": 1176, "planned_oibu": 142, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10266", "product_name": "한우가지무른밥", "label": "본", "planned": 855, "planned_jasa": 776, "planned_oibu": 79, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10208", "product_name": "감자치즈그라탕", "label": "본", "planned": 849, "planned_jasa": 770, "planned_oibu": 79, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10915", "product_name": "새우살펌킨무른밥", "label": "본", "planned": 383, "planned_jasa": 269, "planned_oibu": 114, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10285", "product_name": "한우뿌리채소무른밥", "label": "본", "planned": 231, "planned_jasa": 171, "planned_oibu": 60, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10256", "product_name": "양송이콩소메무른밥", "label": "본", "planned": 229, "planned_jasa": 169, "planned_oibu": 60, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10295", "product_name": "한우연근비트무른밥", "label": "본", "planned": 11, "planned_jasa": 11, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10407", "product_name": "한우콩나물비빔밥", "label": "본", "planned": 261, "planned_jasa": 237, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10347", "product_name": "새송이볶음밥", "label": "본", "planned": 261, "planned_jasa": 237, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10374", "product_name": "치킨리조또", "label": "본", "planned": 221, "planned_jasa": 197, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10430", "product_name": "한우버섯파프리카볶음밥", "label": "본", "planned": 79, "planned_jasa": 58, "planned_oibu": 21, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10412", "product_name": "닭살프렌치빈짜장밥", "label": "본", "planned": 79, "planned_jasa": 58, "planned_oibu": 21, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10370", "product_name": "찰보리취나물밥", "label": "본", "planned": 74, "planned_jasa": 53, "planned_oibu": 21, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10612", "product_name": "한우배추된장국", "label": "본", "planned": 231, "planned_jasa": 227, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10592", "product_name": "치킨커리", "label": "본", "planned": 231, "planned_jasa": 227, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10531", "product_name": "근대느타리국", "label": "본", "planned": 114, "planned_jasa": 110, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10629", "product_name": "아기육개장", "label": "본", "planned": 72, "planned_jasa": 68, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10563", "product_name": "새우살청경채탕", "label": "본", "planned": 72, "planned_jasa": 68, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10580", "product_name": "단호박두부전골", "label": "본", "planned": 51, "planned_jasa": 47, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10498", "product_name": "한우토마토조림", "label": "본", "planned": 441, "planned_jasa": 401, "planned_oibu": 40, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10473", "product_name": "치킨단호박찜", "label": "본", "planned": 441, "planned_jasa": 401, "planned_oibu": 40, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10461", "product_name": "새우고구마조림", "label": "본", "planned": 308, "planned_jasa": 268, "planned_oibu": 40, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10482", "product_name": "한우무조림", "label": "본", "planned": 113, "planned_jasa": 87, "planned_oibu": 26, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "12451", "product_name": "가자미계란찜", "label": "본", "planned": 113, "planned_jasa": 87, "planned_oibu": 26, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10455", "product_name": "버섯감자볶음", "label": "본", "planned": 89, "planned_jasa": 63, "planned_oibu": 26, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}, {"date": "2026-04-22", "dow": "수", "planned_total": 17839, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 38, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 156, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 562, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 2594, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 5564, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 5312, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 1051, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 887, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 1675, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 15942, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 1897, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 38, "planned_jasa": 38, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10013", "product_name": "청경채죽", "label": "본", "planned": 117, "planned_jasa": 110, "planned_oibu": 7, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10002", "product_name": "고구마죽", "label": "추가", "planned": 39, "planned_jasa": 32, "planned_oibu": 7, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10031", "product_name": "한우비트죽", "label": "본", "planned": 206, "planned_jasa": 197, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10689", "product_name": "단호박브로컬리죽", "label": "본", "planned": 206, "planned_jasa": 197, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10038", "product_name": "한우양송이죽", "label": "추가", "planned": 75, "planned_jasa": 67, "planned_oibu": 8, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10717", "product_name": "현미밤죽", "label": "추가", "planned": 75, "planned_jasa": 67, "planned_oibu": 8, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10095", "product_name": "한우배추죽", "label": "본", "planned": 909, "planned_jasa": 844, "planned_oibu": 65, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "12421", "product_name": "들깨가자미캐비지죽", "label": "본", "planned": 902, "planned_jasa": 837, "planned_oibu": 65, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10123", "product_name": "한우현미영양죽", "label": "추가", "planned": 389, "planned_jasa": 342, "planned_oibu": 47, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10066", "product_name": "새송이닭죽", "label": "추가", "planned": 385, "planned_jasa": 338, "planned_oibu": 47, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10091", "product_name": "한우무죽", "label": "케어", "planned": 9, "planned_jasa": 9, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10189", "product_name": "한우야채죽", "label": "본", "planned": 1619, "planned_jasa": 1485, "planned_oibu": 134, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10139", "product_name": "두부멸치야채죽", "label": "본", "planned": 1608, "planned_jasa": 1474, "planned_oibu": 134, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10159", "product_name": "청경채닭죽", "label": "본", "planned": 698, "planned_jasa": 630, "planned_oibu": 68, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10757", "product_name": "고구마현미밤죽", "label": "추가", "planned": 665, "planned_jasa": 559, "planned_oibu": 106, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10200", "product_name": "한우퀴노아약콩죽", "label": "추가", "planned": 663, "planned_jasa": 557, "planned_oibu": 106, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10143", "product_name": "삼색닭죽", "label": "추가", "planned": 294, "planned_jasa": 240, "planned_oibu": 54, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10174", "product_name": "한우무죽", "label": "케어", "planned": 17, "planned_jasa": 17, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12438", "product_name": "가자미쑥갓무른밥", "label": "본", "planned": 1689, "planned_jasa": 1539, "planned_oibu": 150, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10267", "product_name": "한우감자무른밥", "label": "본", "planned": 1109, "planned_jasa": 1025, "planned_oibu": 84, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10233", "product_name": "부추닭무른밥", "label": "본", "planned": 1108, "planned_jasa": 1024, "planned_oibu": 84, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10245", "product_name": "새우살시금치깨무른밥", "label": "추가", "planned": 610, "planned_jasa": 491, "planned_oibu": 119, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10280", "product_name": "한우배무른밥", "label": "추가", "planned": 395, "planned_jasa": 327, "planned_oibu": 68, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12154", "product_name": "순두부모듬버섯무른밥", "label": "추가", "planned": 392, "planned_jasa": 324, "planned_oibu": 68, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10277", "product_name": "한우무진밥", "label": "케어", "planned": 9, "planned_jasa": 9, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10431", "product_name": "한우병아리콩밥", "label": "본", "planned": 279, "planned_jasa": 260, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10323", "product_name": "단호박송이밥", "label": "본", "planned": 279, "planned_jasa": 260, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10324", "product_name": "닭가슴살근대밥", "label": "본", "planned": 237, "planned_jasa": 218, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10395", "product_name": "한우쑥갓밥", "label": "추가", "planned": 89, "planned_jasa": 70, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10373", "product_name": "치킨두부버섯밥", "label": "추가", "planned": 89, "planned_jasa": 70, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "12058", "product_name": "녹미멸치표고밥", "label": "추가", "planned": 78, "planned_jasa": 59, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10618", "product_name": "한우양배추국", "label": "본", "planned": 279, "planned_jasa": 257, "planned_oibu": 22, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10568", "product_name": "숙주나물무맑은국", "label": "본", "planned": 279, "planned_jasa": 257, "planned_oibu": 22, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "12450", "product_name": "가자미쑥갓탕", "label": "본", "planned": 148, "planned_jasa": 126, "planned_oibu": 22, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10620", "product_name": "한우청경채탕", "label": "추가", "planned": 70, "planned_jasa": 55, "planned_oibu": 15, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10536", "product_name": "닭살감자탕", "label": "추가", "planned": 70, "planned_jasa": 55, "planned_oibu": 15, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10559", "product_name": "새우배추탕", "label": "추가", "planned": 41, "planned_jasa": 26, "planned_oibu": 15, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10479", "product_name": "한우느타리볶음", "label": "본", "planned": 494, "planned_jasa": 450, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10454", "product_name": "무나물들깨볶음", "label": "본", "planned": 494, "planned_jasa": 450, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10450", "product_name": "두부새우찜", "label": "본", "planned": 346, "planned_jasa": 302, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10495", "product_name": "한우유부조림", "label": "추가", "planned": 125, "planned_jasa": 94, "planned_oibu": 31, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10783", "product_name": "닭가슴살청경채볶음", "label": "추가", "planned": 125, "planned_jasa": 94, "planned_oibu": 31, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10475", "product_name": "토마토스크램블", "label": "추가", "planned": 91, "planned_jasa": 60, "planned_oibu": 31, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}, {"date": "2026-04-23", "dow": "목", "planned_total": 15469, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 45, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 121, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 526, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 2350, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 4442, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 4793, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 923, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 871, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 1398, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 12729, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 2740, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 45, "planned_jasa": 39, "planned_oibu": 6, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10002", "product_name": "고구마죽", "label": "본", "planned": 89, "planned_jasa": 87, "planned_oibu": 2, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10013", "product_name": "청경채죽", "label": "추가", "planned": 32, "planned_jasa": 31, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10038", "product_name": "한우양송이죽", "label": "본", "planned": 183, "planned_jasa": 171, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10717", "product_name": "현미밤죽", "label": "본", "planned": 182, "planned_jasa": 170, "planned_oibu": 12, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10689", "product_name": "단호박브로컬리죽", "label": "추가", "planned": 81, "planned_jasa": 72, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10031", "product_name": "한우비트죽", "label": "추가", "planned": 80, "planned_jasa": 71, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10123", "product_name": "한우현미영양죽", "label": "본", "planned": 857, "planned_jasa": 771, "planned_oibu": 86, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10066", "product_name": "새송이닭죽", "label": "본", "planned": 853, "planned_jasa": 767, "planned_oibu": 86, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "12421", "product_name": "들깨가자미캐비지죽", "label": "추가", "planned": 318, "planned_jasa": 244, "planned_oibu": 74, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10095", "product_name": "한우배추죽", "label": "추가", "planned": 315, "planned_jasa": 241, "planned_oibu": 74, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10091", "product_name": "한우무죽", "label": "케어", "planned": 7, "planned_jasa": 7, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10200", "product_name": "한우퀴노아약콩죽", "label": "본", "planned": 1343, "planned_jasa": 1190, "planned_oibu": 153, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10757", "product_name": "고구마현미밤죽", "label": "본", "planned": 1343, "planned_jasa": 1190, "planned_oibu": 153, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10143", "product_name": "삼색닭죽", "label": "본", "planned": 610, "planned_jasa": 523, "planned_oibu": 87, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10189", "product_name": "한우야채죽", "label": "추가", "planned": 467, "planned_jasa": 335, "planned_oibu": 132, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10139", "product_name": "두부멸치야채죽", "label": "추가", "planned": 461, "planned_jasa": 329, "planned_oibu": 132, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10159", "product_name": "청경채닭죽", "label": "추가", "planned": 205, "planned_jasa": 129, "planned_oibu": 76, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10174", "product_name": "한우무죽", "label": "케어", "planned": 13, "planned_jasa": 13, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10245", "product_name": "새우살시금치깨무른밥", "label": "본", "planned": 1491, "planned_jasa": 1273, "planned_oibu": 218, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10280", "product_name": "한우배무른밥", "label": "본", "planned": 994, "planned_jasa": 843, "planned_oibu": 151, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12154", "product_name": "순두부모듬버섯무른밥", "label": "본", "planned": 989, "planned_jasa": 837, "planned_oibu": 152, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12438", "product_name": "가자미쑥갓무른밥", "label": "추가", "planned": 564, "planned_jasa": 376, "planned_oibu": 188, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10267", "product_name": "한우감자무른밥", "label": "추가", "planned": 371, "planned_jasa": 239, "planned_oibu": 132, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10233", "product_name": "부추닭무른밥", "label": "추가", "planned": 366, "planned_jasa": 234, "planned_oibu": 132, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10277", "product_name": "한우무진밥", "label": "케어", "planned": 18, "planned_jasa": 18, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10395", "product_name": "한우쑥갓밥", "label": "본", "planned": 244, "planned_jasa": 208, "planned_oibu": 36, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10373", "product_name": "치킨두부버섯밥", "label": "본", "planned": 244, "planned_jasa": 208, "planned_oibu": 36, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "12058", "product_name": "녹미멸치표고밥", "label": "본", "planned": 211, "planned_jasa": 176, "planned_oibu": 35, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10431", "product_name": "한우병아리콩밥", "label": "추가", "planned": 77, "planned_jasa": 45, "planned_oibu": 32, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10323", "product_name": "단호박송이밥", "label": "추가", "planned": 77, "planned_jasa": 45, "planned_oibu": 32, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10324", "product_name": "닭가슴살근대밥", "label": "추가", "planned": 70, "planned_jasa": 39, "planned_oibu": 31, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10620", "product_name": "한우청경채탕", "label": "본", "planned": 257, "planned_jasa": 227, "planned_oibu": 30, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10536", "product_name": "닭살감자탕", "label": "본", "planned": 251, "planned_jasa": 221, "planned_oibu": 30, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10559", "product_name": "새우배추탕", "label": "본", "planned": 160, "planned_jasa": 133, "planned_oibu": 27, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10618", "product_name": "한우양배추국", "label": "추가", "planned": 80, "planned_jasa": 51, "planned_oibu": 29, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10568", "product_name": "숙주나물무맑은국", "label": "추가", "planned": 80, "planned_jasa": 51, "planned_oibu": 29, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "12450", "product_name": "가자미쑥갓탕", "label": "추가", "planned": 43, "planned_jasa": 17, "planned_oibu": 26, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10495", "product_name": "한우유부조림", "label": "본", "planned": 396, "planned_jasa": 341, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10783", "product_name": "닭가슴살청경채볶음", "label": "본", "planned": 393, "planned_jasa": 338, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10475", "product_name": "토마토스크램블", "label": "본", "planned": 283, "planned_jasa": 231, "planned_oibu": 52, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10479", "product_name": "한우느타리볶음", "label": "추가", "planned": 122, "planned_jasa": 79, "planned_oibu": 43, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10454", "product_name": "무나물들깨볶음", "label": "추가", "planned": 119, "planned_jasa": 76, "planned_oibu": 43, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10450", "product_name": "두부새우찜", "label": "추가", "planned": 85, "planned_jasa": 43, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}, {"date": "2026-04-24", "dow": "금", "planned_total": 26086, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 60, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 181, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 770, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 3918, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 7736, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 7986, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 1787, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 1253, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 2395, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 22675, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 3411, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 60, "planned_jasa": 44, "planned_oibu": 16, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "12031", "product_name": "녹미죽", "label": "본", "planned": 130, "planned_jasa": 124, "planned_oibu": 6, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10004", "product_name": "뉴그린죽", "label": "추가", "planned": 51, "planned_jasa": 48, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10046", "product_name": "한우현미죽", "label": "본", "planned": 265, "planned_jasa": 246, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10714", "product_name": "순두부무죽", "label": "본", "planned": 265, "planned_jasa": 246, "planned_oibu": 19, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10037", "product_name": "한우양배추죽", "label": "추가", "planned": 120, "planned_jasa": 107, "planned_oibu": 13, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10752", "product_name": "수수배죽", "label": "추가", "planned": 120, "planned_jasa": 107, "planned_oibu": 13, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10094", "product_name": "한우배죽", "label": "본", "planned": 1353, "planned_jasa": 1217, "planned_oibu": 136, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10065", "product_name": "삼색닭죽", "label": "본", "planned": 1343, "planned_jasa": 1208, "planned_oibu": 135, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10908", "product_name": "오트밀순두부죽", "label": "추가", "planned": 606, "planned_jasa": 518, "planned_oibu": 88, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10119", "product_name": "한우치즈죽", "label": "추가", "planned": 604, "planned_jasa": 516, "planned_oibu": 88, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10108", "product_name": "한우애호박죽", "label": "케어", "planned": 12, "planned_jasa": 11, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10735", "product_name": "한우배죽", "label": "본", "planned": 2207, "planned_jasa": 1972, "planned_oibu": 235, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10131", "product_name": "감자닭죽", "label": "본", "planned": 2193, "planned_jasa": 1958, "planned_oibu": 235, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10160", "product_name": "치아씨드가지죽", "label": "본", "planned": 969, "planned_jasa": 858, "planned_oibu": 111, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10171", "product_name": "한우단호박죽", "label": "추가", "planned": 961, "planned_jasa": 806, "planned_oibu": 155, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10739", "product_name": "새우살미역죽", "label": "추가", "planned": 955, "planned_jasa": 800, "planned_oibu": 155, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10734", "product_name": "부추닭죽", "label": "추가", "planned": 418, "planned_jasa": 343, "planned_oibu": 75, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10188", "product_name": "한우애호박죽", "label": "케어", "planned": 33, "planned_jasa": 33, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10232", "product_name": "병아리콩호두무른밥", "label": "본", "planned": 2393, "planned_jasa": 2092, "planned_oibu": 301, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10271", "product_name": "한우느타리무른밥", "label": "본", "planned": 1613, "planned_jasa": 1437, "planned_oibu": 176, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10254", "product_name": "애호박닭무른밥", "label": "본", "planned": 1610, "planned_jasa": 1434, "planned_oibu": 176, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10260", "product_name": "치아씨드닭무른밥", "label": "추가", "planned": 1017, "planned_jasa": 817, "planned_oibu": 200, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12057", "product_name": "한우청경채녹미무른밥", "label": "추가", "planned": 662, "planned_jasa": 541, "planned_oibu": 121, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10235", "product_name": "브로컬리새우무른밥", "label": "추가", "planned": 658, "planned_jasa": 537, "planned_oibu": 121, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10292", "product_name": "한우애호박무른밥", "label": "케어", "planned": 33, "planned_jasa": 33, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10392", "product_name": "한우새송이밥", "label": "본", "planned": 444, "planned_jasa": 394, "planned_oibu": 50, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10346", "product_name": "삼색나물밥", "label": "본", "planned": 444, "planned_jasa": 394, "planned_oibu": 50, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10319", "product_name": "고구마컬리밥", "label": "본", "planned": 392, "planned_jasa": 342, "planned_oibu": 50, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10383", "product_name": "한우근대감자밥", "label": "추가", "planned": 175, "planned_jasa": 133, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10321", "product_name": "느타리청경채밥", "label": "추가", "planned": 175, "planned_jasa": 133, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10409", "product_name": "해물애호박밥", "label": "추가", "planned": 157, "planned_jasa": 115, "planned_oibu": 42, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10607", "product_name": "한우두부찌개", "label": "본", "planned": 371, "planned_jasa": 347, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10540", "product_name": "닭살송이전골", "label": "본", "planned": 371, "planned_jasa": 347, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10534", "product_name": "느타리토장국", "label": "본", "planned": 193, "planned_jasa": 169, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10641", "product_name": "한우시금치된장국", "label": "추가", "planned": 129, "planned_jasa": 113, "planned_oibu": 16, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10535", "product_name": "닭곰탕", "label": "추가", "planned": 129, "planned_jasa": 113, "planned_oibu": 16, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10598", "product_name": "토마토계란스튜", "label": "추가", "planned": 60, "planned_jasa": 44, "planned_oibu": 16, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10520", "product_name": "한우비타민그라탕", "label": "본", "planned": 637, "planned_jasa": 560, "planned_oibu": 77, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "12452", "product_name": "가자미비트조림", "label": "본", "planned": 637, "planned_jasa": 560, "planned_oibu": 77, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10510", "product_name": "병아리콩감자조림", "label": "본", "planned": 440, "planned_jasa": 363, "planned_oibu": 77, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10477", "product_name": "한우가지나물", "label": "추가", "planned": 252, "planned_jasa": 190, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10459", "product_name": "삼색두부볶음", "label": "추가", "planned": 252, "planned_jasa": 190, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10784", "product_name": "아기찜닭", "label": "추가", "planned": 177, "planned_jasa": 115, "planned_oibu": 62, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}, {"date": "2026-04-25", "dow": "토", "planned_total": 14000, "actual_total": 0, "total_hit_rate": 0.0, "stage_hits": [{"stage_code": "1110", "stage": "준비기", "planned": 8, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "planned": 99, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "planned": 396, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "planned": 2021, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "planned": 4203, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "planned": 4375, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "planned": 900, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "planned": 659, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "planned": 1339, "actual": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}], "channel_hits": [{"channel": "자사몰", "planned": 13292, "actual": 0, "hit_rate": 0.0}, {"channel": "외부몰", "planned": 708, "actual": 0, "hit_rate": 0.0}], "menu_hits": [{"stage_code": "1110", "stage": "준비기", "product_code": "10000", "product_name": "쌀죽", "label": "본", "planned": 8, "planned_jasa": 8, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10004", "product_name": "뉴그린죽", "label": "본", "planned": 61, "planned_jasa": 61, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1210", "stage": "초기1", "product_code": "10009", "product_name": "사과죽", "label": "추가", "planned": 38, "planned_jasa": 38, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10037", "product_name": "한우양배추죽", "label": "본", "planned": 128, "planned_jasa": 124, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10752", "product_name": "수수배죽", "label": "본", "planned": 128, "planned_jasa": 124, "planned_oibu": 4, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10032", "product_name": "한우사과죽", "label": "추가", "planned": 70, "planned_jasa": 69, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1220", "stage": "초기2", "product_code": "10718", "product_name": "로메인고구마죽", "label": "추가", "planned": 70, "planned_jasa": 69, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10119", "product_name": "한우치즈죽", "label": "본", "planned": 598, "planned_jasa": 553, "planned_oibu": 45, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10908", "product_name": "오트밀순두부죽", "label": "본", "planned": 590, "planned_jasa": 546, "planned_oibu": 44, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10080", "product_name": "한우감자죽", "label": "추가", "planned": 413, "planned_jasa": 389, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10128", "product_name": "닭가슴살시금치죽", "label": "추가", "planned": 409, "planned_jasa": 385, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1230", "stage": "중기", "product_code": "10108", "product_name": "한우애호박죽", "label": "케어", "planned": 11, "planned_jasa": 11, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10171", "product_name": "한우단호박죽", "label": "본", "planned": 1007, "planned_jasa": 952, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10739", "product_name": "새우살미역죽", "label": "본", "planned": 1002, "planned_jasa": 947, "planned_oibu": 55, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10743", "product_name": "한우두부죽", "label": "추가", "planned": 702, "planned_jasa": 674, "planned_oibu": 28, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "12428", "product_name": "가자미브로컬리죽", "label": "추가", "planned": 701, "planned_jasa": 673, "planned_oibu": 28, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10734", "product_name": "부추닭죽", "label": "본", "planned": 461, "planned_jasa": 431, "planned_oibu": 30, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10163", "product_name": "퀴노아흑미닭죽", "label": "추가", "planned": 316, "planned_jasa": 299, "planned_oibu": 17, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1240", "stage": "후기", "product_code": "10188", "product_name": "한우애호박죽", "label": "케어", "planned": 14, "planned_jasa": 14, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10260", "product_name": "치아씨드닭무른밥", "label": "본", "planned": 1098, "planned_jasa": 1026, "planned_oibu": 72, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "12057", "product_name": "한우청경채녹미무른밥", "label": "본", "planned": 763, "planned_jasa": 716, "planned_oibu": 47, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10235", "product_name": "브로컬리새우무른밥", "label": "본", "planned": 760, "planned_jasa": 713, "planned_oibu": 47, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10207", "product_name": "가지나물치즈무른밥", "label": "추가", "planned": 733, "planned_jasa": 698, "planned_oibu": 35, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10286", "product_name": "한우송이무른밥", "label": "추가", "planned": 505, "planned_jasa": 481, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10314", "product_name": "닭가슴살시금치무른밥", "label": "추가", "planned": 503, "planned_jasa": 479, "planned_oibu": 24, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1250", "stage": "후기무른밥", "product_code": "10292", "product_name": "한우애호박무른밥", "label": "케어", "planned": 13, "planned_jasa": 13, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10383", "product_name": "한우근대감자밥", "label": "본", "planned": 227, "planned_jasa": 218, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10321", "product_name": "느타리청경채밥", "label": "본", "planned": 227, "planned_jasa": 218, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10409", "product_name": "해물애호박밥", "label": "본", "planned": 179, "planned_jasa": 170, "planned_oibu": 9, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10371", "product_name": "찹스테이크밥", "label": "추가", "planned": 95, "planned_jasa": 92, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10327", "product_name": "닭가슴살애호박밥", "label": "추가", "planned": 95, "planned_jasa": 92, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1310", "stage": "영양밥", "product_code": "10350", "product_name": "새우살볶음밥", "label": "추가", "planned": 77, "planned_jasa": 74, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10641", "product_name": "한우시금치된장국", "label": "본", "planned": 201, "planned_jasa": 198, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10535", "product_name": "닭곰탕", "label": "본", "planned": 201, "planned_jasa": 198, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10598", "product_name": "토마토계란스튜", "label": "본", "planned": 96, "planned_jasa": 93, "planned_oibu": 3, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10614", "product_name": "한우부추국", "label": "추가", "planned": 66, "planned_jasa": 66, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10624", "product_name": "해물배추탕", "label": "추가", "planned": 66, "planned_jasa": 66, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1320", "stage": "영양국", "product_code": "10555", "product_name": "새송이감자국", "label": "추가", "planned": 29, "planned_jasa": 29, "planned_oibu": 0, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10477", "product_name": "한우가지나물", "label": "본", "planned": 385, "planned_jasa": 368, "planned_oibu": 17, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10459", "product_name": "삼색두부볶음", "label": "본", "planned": 385, "planned_jasa": 368, "planned_oibu": 17, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10784", "product_name": "아기찜닭", "label": "본", "planned": 263, "planned_jasa": 246, "planned_oibu": 17, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10782", "product_name": "한우연근찜", "label": "추가", "planned": 117, "planned_jasa": 116, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10445", "product_name": "닭가슴살양배추볶음", "label": "추가", "planned": 117, "planned_jasa": 116, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}, {"stage_code": "1330", "stage": "영양찬", "product_code": "10529", "product_name": "시금치양송이그라탕", "label": "추가", "planned": 72, "planned_jasa": 71, "planned_oibu": 1, "actual": 0, "actual_jasa": 0, "actual_oibu": 0, "hit_rate": 0.0, "ratio": 0.0, "status": "normal"}]}];
+const weeklySummary = null;
+
+function showTab(id) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// 탭 드래그 정렬
+(function() {
+  let dragEl = null;
+  const bar = document.getElementById('navBar');
+  bar.addEventListener('dragstart', e => {
+    if (!e.target.classList.contains('nav-btn')) return;
+    dragEl = e.target;
+    dragEl.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+  });
+  bar.addEventListener('dragend', e => {
+    if (dragEl) dragEl.classList.remove('dragging');
+    bar.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('drag-over'));
+    dragEl = null;
+  });
+  bar.addEventListener('dragover', e => {
+    e.preventDefault();
+    const target = e.target.closest('.nav-btn');
+    if (!target || target === dragEl) return;
+    bar.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('drag-over'));
+    target.classList.add('drag-over');
+  });
+  bar.addEventListener('drop', e => {
+    e.preventDefault();
+    const target = e.target.closest('.nav-btn');
+    if (!target || target === dragEl) return;
+    const btns = [...bar.querySelectorAll('.nav-btn')];
+    const fromIdx = btns.indexOf(dragEl);
+    const toIdx = btns.indexOf(target);
+    if (fromIdx < toIdx) {
+      target.after(dragEl);
+    } else {
+      target.before(dragEl);
+    }
+    bar.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('drag-over'));
+  });
+})();
+
+// 식단시작일 조절 체크박스 — localStorage 저장/복원
+function fmtNow() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return d.getFullYear()+'.'+pad(d.getMonth()+1)+'.'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes());
+}
+function saveCB(el) {
+  const store = JSON.parse(localStorage.getItem('diet_cb') || '{}');
+  const tsSpan = el.parentElement.querySelector('.cb-ts');
+  if (el.checked) {
+    const ts = fmtNow();
+    store[el.id] = ts;
+    tsSpan.textContent = ts;
+  } else {
+    delete store[el.id];
+    tsSpan.textContent = '';
+  }
+  localStorage.setItem('diet_cb', JSON.stringify(store));
+}
+function restoreCB() {
+  const store = JSON.parse(localStorage.getItem('diet_cb') || '{}');
+  document.querySelectorAll('.diet-cb').forEach(cb => {
+    if (store[cb.id]) {
+      cb.checked = true;
+      const tsSpan = cb.parentElement.querySelector('.cb-ts');
+      if (tsSpan) tsSpan.textContent = store[cb.id];
+    }
+  });
+}
+
+function syncMonitor() {
+  const btn = event.currentTarget;
+  btn.textContent = '동기화 중...';
+  btn.disabled = true;
+  fetch('/sync')
+    .then(r => r.json())
+    .then(d => {
+      btn.textContent = d.ok ? '완료!' : '실패';
+      setTimeout(() => { parent.location.reload(); }, 500);
+    })
+    .catch(() => {
+      alert('로컬 서버가 필요합니다.\npython serve_monitor.py 로 실행해주세요.');
+      btn.textContent = '\u21BB 동기화';
+      btn.disabled = false;
+    });
+}
+
+function openFolder() {
+  fetch('/open-folder').catch(() => {
+    alert('로컬 서버가 필요합니다.\npython serve_monitor.py 로 실행해주세요.');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  restoreCB();
+  const reported = dailyReports.filter(d => d.actual_total > 0);
+  if (reported.length === 0) return;
+
+  // 1) 일별 적중률 추이
+  new Chart(document.getElementById('chartDailyHR'), {
+    type: 'line',
+    data: {
+      labels: reported.map(d => d.date.replace('2026-','')),
+      datasets: [{
+        label: '적중률(%)',
+        data: reported.map(d => d.total_hit_rate),
+        borderColor: '#1a237e',
+        backgroundColor: 'rgba(26,35,126,0.1)',
+        fill: true, tension: 0.3, pointRadius: 5,
+      }, {
+        label: '90',
+        data: reported.map(() => 90),
+        borderColor: '#e53935', borderWidth: 1, borderDash: [4,4],
+        pointRadius: 0, fill: false,
+      }]
+    },
+    options: {
+      scales: { y: { min: 60, max: 100, ticks: { stepSize: 10 } } },
+      plugins: { legend: { display: false } }
+    }
+  });
+
+  // 2) 단계별 누적 적중률
+  if (weeklySummary && weeklySummary.stage_summary) {
+    const ss = weeklySummary.stage_summary;
+    new Chart(document.getElementById('chartStageHR'), {
+      type: 'bar',
+      data: {
+        labels: ss.map(s => s.stage),
+        datasets: [{
+          data: ss.map(s => s.hit_rate),
+          backgroundColor: ss.map(s => s.hit_rate >= 90 ? '#1a237e' : '#90caf9'),
+          borderRadius: 4,
+        }]
+      },
+      options: { scales: { y: { min: 0, max: 100 } }, plugins: { legend: { display:false } }, indexAxis: 'y' }
+    });
+  }
+
+  // 3) 계획 vs 실적 (전체 날짜)
+  new Chart(document.getElementById('chartPlanActual'), {
+    type: 'bar',
+    data: {
+      labels: dailyReports.map(d => d.date.replace('2026-','') + '(' + d.dow + ')'),
+      datasets: [
+        { label: '계획', data: dailyReports.map(d => d.planned_total), backgroundColor: '#90caf9' },
+        { label: '실적', data: dailyReports.map(d => d.actual_total || null), backgroundColor: '#1a237e' },
+      ]
+    },
+    options: { plugins: { legend: { position:'bottom' } } }
+  });
+
+  // (채널 차트 제거됨)
+});
+
+// ═══════════════════════════════════════════════════
+// XLS 실적 업로드 (upload.js 공통 모듈 사용)
+// ═══════════════════════════════════════════════════
+function doUpload(files) {
+  const name = document.getElementById('uploaderName').value || localStorage.getItem('snop_uploader') || '';
+  if (!name) {
+    alert('이름을 입력해 주세요.');
+    document.getElementById('uploaderName').focus();
+    return;
+  }
+  localStorage.setItem('snop_uploader', name);
+  previewAndConfirmUpload(files, name, function() {
+    rerenderOverview();
+    updateNavDots();
+  });
+}
+
+// handleXlsUpload, finalizeUpload → upload.js 공통 모듈로 이동
+
+function applyUploadedData(uploadedData) {
+  for (const [dateStr, menus] of Object.entries(uploadedData)) {
+    const dr = dailyReports.find(d => d.date === dateStr);
+    if (!dr) continue;
+
+    // 실적 집계
+    let totalActual = 0;
+    const stageActual = {};
+    const chActual = { jasa: 0, oibu: 0 };
+
+    menus.forEach(m => {
+      totalActual += m.qty;
+      stageActual[m.stage] = (stageActual[m.stage] || 0) + m.qty;
+      chActual.jasa += m.jasa;
+      chActual.oibu += m.oibu;
+    });
+
+    dr.actual_total = totalActual;
+
+    // 메뉴별 매칭 — 메뉴 불일치 시 실적 메뉴로 계획 교체
+    if (dr.menu_hits) {
+      // 단계별 계획수량 합산
+      const stagePlanned = {};
+      const stagePlannedJasa = {};
+      const stagePlannedOibu = {};
+      dr.menu_hits.forEach(mh => {
+        stagePlanned[mh.stage_code] = (stagePlanned[mh.stage_code] || 0) + mh.planned;
+        stagePlannedJasa[mh.stage_code] = (stagePlannedJasa[mh.stage_code] || 0) + mh.planned_jasa;
+        stagePlannedOibu[mh.stage_code] = (stagePlannedOibu[mh.stage_code] || 0) + mh.planned_oibu;
+      });
+
+      // 매칭률 확인
+      const planCodes = new Set(dr.menu_hits.map(mh => mh.product_code + '_' + mh.stage_code));
+      const actCodes = new Set(menus.map(m => m.product_code + '_' + m.stage_code));
+      let matchCount = 0;
+      planCodes.forEach(c => { if (actCodes.has(c)) matchCount++; });
+      const matchRate = planCodes.size > 0 ? matchCount / planCodes.size : 0;
+
+      if (matchRate < 0.5) {
+        // 메뉴가 크게 다름 → 실적 메뉴로 계획 교체
+        console.log('[동기화] ' + dateStr + ': 메뉴 매칭률 ' + Math.round(matchRate*100) + '% → 실적 메뉴로 계획 교체');
+        const stageActualQty = {};
+        menus.forEach(m => {
+          stageActualQty[m.stage_code] = (stageActualQty[m.stage_code] || 0) + m.qty;
+        });
+
+        dr.menu_hits = menus.map(m => {
+          const sc = m.stage_code;
+          const stageTotal = stageActualQty[sc] || 1;
+          const ratio = m.qty / stageTotal;
+          const planned = Math.round((stagePlanned[sc] || 0) * ratio);
+          const planned_jasa = Math.round((stagePlannedJasa[sc] || 0) * ratio);
+          const planned_oibu = planned - planned_jasa;
+          const hit_rate = planned > 0 ? Math.round(Math.min(m.qty / planned, planned / m.qty) * 1000) / 10 : 0;
+          return {
+            stage_code: sc, stage: m.stage,
+            product_code: m.product_code, product_name: m.product_name,
+            label: m.label || '본',
+            planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned_oibu),
+            actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
+            hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
+            status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+          };
+        });
+      } else {
+        // 메뉴 대부분 일치 → 기존 로직
+        const matched = new Set();
+        dr.menu_hits.forEach(mh => {
+          const match = menus.find(m => m.stage_code === mh.stage_code && m.product_code === mh.product_code);
+          if (match) {
+            mh.actual = match.qty;
+            mh.actual_jasa = match.jasa;
+            mh.actual_oibu = match.oibu;
+            matched.add(match.product_code + '_' + match.stage_code);
+          } else {
+            mh.actual = 0;
+            mh.actual_jasa = 0;
+            mh.actual_oibu = 0;
+          }
+          mh.hit_rate = mh.planned > 0 ? Math.round(Math.min(mh.actual / mh.planned, mh.planned / mh.actual) * 1000) / 10 : 0;
+          mh.status = mh.actual === 0 ? 'under' : (mh.hit_rate >= 90 ? 'normal' : (mh.actual > mh.planned ? 'over' : 'under'));
+        });
+        // 계획에 없는 실적 상품 추가
+        menus.forEach(m => {
+          if (!matched.has(m.product_code + '_' + m.stage_code)) {
+            const sc = m.stage_code;
+            const stageTotal = menus.filter(x => x.stage_code === sc).reduce((s,x) => s + x.qty, 0) || 1;
+            const ratio = m.qty / stageTotal;
+            const planned = Math.round((stagePlanned[sc] || 0) * ratio);
+            const planned_jasa = Math.round((stagePlannedJasa[sc] || 0) * ratio);
+            const hit_rate = planned > 0 ? Math.round(Math.min(m.qty / planned, planned / m.qty) * 1000) / 10 : 0;
+            dr.menu_hits.push({
+              stage_code: sc, stage: m.stage,
+              product_code: m.product_code, product_name: m.product_name,
+              label: m.label || '', planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned - planned_jasa),
+              actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
+              hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
+              status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+            });
+          }
+        });
+      }
+    }
+
+    // 단계별
+    if (dr.stage_hits) {
+      dr.stage_hits.forEach(sh => {
+        sh.actual = stageActual[sh.stage] || 0;
+        sh.hit_rate = sh.planned > 0 ? Math.round(Math.min(sh.actual / sh.planned, sh.planned / sh.actual) * 1000) / 10 : 0;
+        sh.status = sh.actual === 0 ? 'under' : (sh.hit_rate >= 90 ? 'normal' : (sh.actual > sh.planned ? 'over' : 'under'));
+      });
+    }
+
+    // 채널별
+    if (dr.channel_hits) {
+      dr.channel_hits.forEach(ch => {
+        if (ch.channel === '자사몰') { ch.actual = chActual.jasa; }
+        else if (ch.channel === '외부몰') { ch.actual = chActual.oibu; }
+        ch.hit_rate = ch.planned > 0 ? Math.round(Math.min(ch.actual / ch.planned, ch.planned / ch.actual) * 1000) / 10 : 0;
+      });
+    }
+
+    // 전체 적중률
+    dr.total_hit_rate = dr.planned_total > 0
+      ? Math.round(Math.min(totalActual / dr.planned_total, dr.planned_total / totalActual) * 1000) / 10
+      : 0;
+
+    // 정상/경고/위험
+    let normal = 0, warning = 0, critical = 0;
+    (dr.stage_hits || []).forEach(sh => {
+      if (sh.hit_rate >= 90) normal++;
+      else if (sh.hit_rate >= 70) warning++;
+      else critical++;
+    });
+    dr.summary = { normal, warning, critical };
+
+    rerenderDayTab(dr);
+  }
+
+  rerenderOverview();
+  updateNavDots();
+  var _cb = document.getElementById('clearUploadBtn'); if (_cb) _cb.style.display = '';
+}
+
+function rerenderDayTab(dr) {
+  const tab = document.getElementById('tab-day_' + dr.date);
+  if (!tab) return;
+
+  const hasAct = dr.actual_total > 0;
+  const hrClass = dr.total_hit_rate >= 90 ? 'kpi-green' : (dr.total_hit_rate >= 70 ? 'kpi-yellow' : 'kpi-red');
+  const gapTotal = dr.planned_total - dr.actual_total;
+
+  let html = '<h2 style="margin-bottom:12px; color:#1a237e;">' + dr.date + ' (' + dr.dow + ')</h2>';
+
+  if (!hasAct) {
+    html += '<div class="kpi-row"><div class="kpi-card"><div class="kpi-label">상태</div><div class="kpi-value kpi-yellow">실적 대기</div></div>';
+    html += '<div class="kpi-card"><div class="kpi-label">계획</div><div class="kpi-value kpi-blue">' + dr.planned_total.toLocaleString() + '</div><div class="kpi-sub">병</div></div></div>';
+
+    // 단계별 계획수량
+    html += '<h3 style="margin:12px 0 6px; color:#1a237e;">단계별 계획수량</h3>';
+    html += '<table><thead><tr><th>단계</th><th>계획(병)</th><th>상태</th></tr></thead><tbody>';
+    (dr.stage_hits || []).forEach(sh => {
+      html += '<tr><td>' + sh.stage + '</td><td class="num">' + sh.planned.toLocaleString() + '</td><td style="color:#757575;">대기</td></tr>';
+    });
+    html += '</tbody></table>';
+
+    // SKU별 계획수량
+    var planMenus = (dr.menu_hits || []).filter(function(m) { return m.planned > 0; });
+    if (planMenus.length > 0) {
+      var stageBgP = {};
+      var stageOrderP = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+      stageOrderP.forEach(function(sc, i) { stageBgP[STAGE_CODE_MAP[sc]] = i % 2 === 1 ? '#f5f5f5' : '#fff'; });
+
+      html += '<h3 style="margin:12px 0 6px; color:#1a237e;">메뉴(SKU)별 계획수량 <span style="font-size:11px; color:#666; font-weight:400;">(' + planMenus.length + '개)</span></h3>';
+      html += '<div style="max-height:500px; overflow-y:auto; border:1px solid #c5cae9; border-radius:8px;"><table style="margin-bottom:0;">';
+      html += '<thead><tr><th>단계</th><th>상품코드</th><th>상품명</th><th>구분</th><th>계획(병)</th></tr></thead><tbody>';
+      planMenus.forEach(function(mh) {
+        var bg = stageBgP[mh.stage] || '#fff';
+        html += '<tr style="background:' + bg + ';"><td>' + mh.stage + '</td>';
+        html += '<td style="font-size:11px;">' + (mh.product_code||'') + '</td>';
+        html += '<td style="text-align:left;">' + (mh.product_name||'') + '</td>';
+        html += '<td style="font-size:11px;">' + (mh.label||'') + '</td>';
+        html += '<td class="num">' + mh.planned.toLocaleString() + '</td></tr>';
+      });
+      html += '</tbody></table></div>';
+    }
+
+    tab.innerHTML = html;
+    return;
+  }
+
+  // KPI
+  html += '<div class="kpi-row">';
+  html += '<div class="kpi-card"><div class="kpi-label">적중률</div><div class="kpi-value ' + hrClass + '">' + dr.total_hit_rate + '%</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">계획</div><div class="kpi-value kpi-blue">' + dr.planned_total.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">실적</div><div class="kpi-value kpi-blue">' + dr.actual_total.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">Gap</div><div class="kpi-value ' + (gapTotal > 0 ? 'kpi-red' : 'kpi-green') + '">' + (gapTotal > 0 ? '+' : '') + gapTotal.toLocaleString() + '</div><div class="kpi-sub">병</div></div>';
+  html += '<div class="kpi-card"><div class="kpi-label">정상 / 경고 / 위험</div><div class="kpi-value">';
+  html += '<span class="kpi-green">' + dr.summary.normal + '</span> / <span class="kpi-yellow">' + dr.summary.warning + '</span> / <span class="kpi-red">' + dr.summary.critical + '</span>';
+  html += '</div></div></div>';
+
+  // 단계별 + 채널별
+  html += '<div class="section-row"><div class="section-half">';
+  html += '<h3 style="margin:0 0 6px; color:#1a237e;">단계별 적중률</h3>';
+  html += '<table><thead><tr><th>단계</th><th>계획</th><th>실적</th><th>적중률</th><th>상태</th></tr></thead><tbody>';
+  let sumPlan = 0, sumActual = 0;
+  (dr.stage_hits || []).forEach(sh => {
+    const hrCls = sh.hit_rate >= 90 ? 'hr-excellent' : (sh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+    const stText = {normal:'정상',over:'과다',under:'과소'}[sh.status] || '';
+    const stColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828'}[sh.status] || '#333';
+    html += '<tr><td>' + sh.stage + '</td><td class="num">' + sh.planned.toLocaleString() + '</td><td class="num">' + sh.actual.toLocaleString() + '</td>';
+    html += '<td class="' + hrCls + '">' + sh.hit_rate + '%</td><td style="color:' + stColor + '; font-weight:600;">' + stText + '</td></tr>';
+    sumPlan += sh.planned; sumActual += sh.actual;
+  });
+  const sumHR = sumPlan > 0 ? Math.round(Math.min(sumActual/sumPlan, sumPlan/sumActual) * 1000) / 10 : 0;
+  html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + sumPlan.toLocaleString() + '</td><td class="num">' + sumActual.toLocaleString() + '</td>';
+  html += '<td style="color:#1a237e;">' + sumHR + '%</td><td></td></tr>';
+  html += '</tbody></table></div><div class="section-half">';
+
+  // 채널별
+  html += '<h3 style="margin:0 0 6px; color:#1a237e;">채널별 적중률</h3>';
+  html += '<table><thead><tr><th>채널</th><th>계획</th><th>실적</th><th>적중률</th></tr></thead><tbody>';
+  let chSumP = 0, chSumA = 0;
+  (dr.channel_hits || []).forEach(ch => {
+    const hrCls = ch.hit_rate >= 90 ? 'hr-excellent' : (ch.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+    html += '<tr><td>' + ch.channel + '</td><td class="num">' + ch.planned.toLocaleString() + '</td><td class="num">' + ch.actual.toLocaleString() + '</td>';
+    html += '<td class="' + hrCls + '">' + ch.hit_rate + '%</td></tr>';
+    chSumP += ch.planned; chSumA += ch.actual;
+  });
+  const chSumHR = chSumP > 0 ? Math.round(Math.min(chSumA/chSumP, chSumP/chSumA) * 1000) / 10 : 0;
+  html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + chSumP.toLocaleString() + '</td><td class="num">' + chSumA.toLocaleString() + '</td>';
+  html += '<td style="color:#1a237e;">' + chSumHR + '%</td></tr>';
+  html += '</tbody></table></div></div>';
+
+  // 메뉴(SKU)별
+  const menuHits = dr.menu_hits || [];
+  const shown = menuHits.filter(m => m.planned > 0);
+  if (shown.length > 0) {
+    const stageBg = {};
+    const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+    stageOrder.forEach((sc,i) => { stageBg[STAGE_CODE_MAP[sc]] = i % 2 === 1 ? '#f5f5f5' : '#fff'; });
+
+    html += '<h3 style="margin:12px 0 6px; color:#1a237e;">메뉴(SKU)별 적중률 <span style="font-size:11px; color:#666; font-weight:400;">(' + shown.length + '개)</span></h3>';
+    html += '<div style="max-height:500px; overflow-y:auto; border:1px solid #c5cae9; border-radius:8px;"><table style="margin-bottom:0;">';
+    html += '<thead><tr class="hdr1"><th rowspan="2">단계</th><th rowspan="2">상품코드</th><th rowspan="2">상품명</th><th rowspan="2" style="border-right:2px solid #90caf9;">구분</th>';
+    html += '<th colspan="3" style="border-right:2px solid #90caf9;">예측</th><th colspan="3" style="border-right:2px solid #90caf9;">실적</th>';
+    html += '<th rowspan="2">적중률</th><th rowspan="2">상태</th></tr>';
+    html += '<tr class="hdr2"><th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th>';
+    html += '<th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th></tr></thead><tbody>';
+
+    const statusMap = {normal:'정상',over:'과다',under:'과소',unplanned:'미예측'};
+    const statusColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828',unplanned:'#757575'};
+    shown.forEach(mh => {
+      const bg = stageBg[mh.stage] || '#fff';
+      const hrCls = mh.hit_rate >= 90 ? 'hr-excellent' : (mh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+      const st = mh.status || 'normal';
+      const pj = mh.planned_jasa || 0, po = mh.planned_oibu || 0;
+      const aj = mh.actual_jasa || 0, ao = mh.actual_oibu || 0;
+      html += '<tr style="background:' + bg + ';"><td>' + mh.stage + '</td><td style="font-size:11px;">' + mh.product_code + '</td>';
+      html += '<td style="text-align:left;">' + (mh.product_name||'') + '</td>';
+      html += '<td style="font-size:11px; border-right:2px solid #90caf9;">' + (mh.label||'') + '</td>';
+      html += '<td class="num" style="font-size:11px;">' + pj.toLocaleString() + '</td><td class="num" style="font-size:11px;">' + po.toLocaleString() + '</td>';
+      html += '<td class="num" style="border-right:2px solid #90caf9;">' + mh.planned.toLocaleString() + '</td>';
+      html += '<td class="num" style="font-size:11px;">' + aj.toLocaleString() + '</td><td class="num" style="font-size:11px;">' + ao.toLocaleString() + '</td>';
+      html += '<td class="num" style="border-right:2px solid #90caf9;">' + mh.actual.toLocaleString() + '</td>';
+      html += '<td class="' + hrCls + '">' + mh.hit_rate + '%</td>';
+      html += '<td style="color:' + (statusColor[st]||'#333') + '; font-weight:600; font-size:12px;">' + (statusMap[st]||'') + '</td></tr>';
+    });
+
+    // 합계
+    const mSumP = shown.reduce((s,m)=>s+m.planned,0), mSumA = shown.reduce((s,m)=>s+m.actual,0);
+    const mSumPJ = shown.reduce((s,m)=>s+(m.planned_jasa||0),0), mSumPO = shown.reduce((s,m)=>s+(m.planned_oibu||0),0);
+    const mSumAJ = shown.reduce((s,m)=>s+(m.actual_jasa||0),0), mSumAO = shown.reduce((s,m)=>s+(m.actual_oibu||0),0);
+    const mSumHR = mSumP > 0 ? Math.round(Math.min(mSumA/mSumP, mSumP/mSumA)*1000)/10 : 0;
+    html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td></td><td style="border-right:2px solid #90caf9;"></td>';
+    html += '<td class="num">' + mSumPJ.toLocaleString() + '</td><td class="num">' + mSumPO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumP.toLocaleString() + '</td>';
+    html += '<td class="num">' + mSumAJ.toLocaleString() + '</td><td class="num">' + mSumAO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumA.toLocaleString() + '</td>';
+    html += '<td style="color:#1a237e;">' + mSumHR + '%</td><td></td></tr>';
+    html += '</tbody></table></div>';
+  }
+
+  tab.innerHTML = html;
+}
+
+function rerenderOverview() {
+  const tab = document.getElementById('tab-overview');
+  if (!tab) return;
+
+  const reported = dailyReports.filter(d => d.actual_total > 0);
+  const stgPlan = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.planned,0), 0);
+  const stgAct = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.actual,0), 0);
+  const stgHR = stgPlan > 0 ? Math.round(Math.min(stgAct/stgPlan, stgPlan/stgAct)*1000)/10 : 0;
+
+  // 일별 요약 tbody 갱신
+  const tbody = tab.querySelector('table tbody');
+  if (tbody) {
+    let rows = '';
+    const today = new Date().toISOString().split('T')[0];
+    dailyReports.forEach(dr => {
+      if (dr.actual_total > 0) {
+        const gap = dr.planned_total - dr.actual_total;
+        const hrCls = dr.total_hit_rate >= 90 ? 'hr-excellent' : (dr.total_hit_rate >= 70 ? 'hr-good' : 'hr-poor');
+        const statusH = dr.date <= today ? '<span style="color:#2e7d32; font-weight:700;">확정</span>' : '<span style="color:#1565c0;">갱신 중</span>';
+        rows += '<tr><td>' + dr.date.substring(5) + '</td><td>' + dr.dow + '</td><td class="num">' + dr.planned_total.toLocaleString() + '</td>';
+        rows += '<td class="num">' + dr.actual_total.toLocaleString() + '</td><td class="num">' + (gap>0?'+':'') + gap.toLocaleString() + '</td>';
+        rows += '<td class="' + hrCls + '">' + dr.total_hit_rate + '%</td><td>' + statusH + '</td></tr>';
+      } else {
+        rows += '<tr><td>' + dr.date.substring(5) + '</td><td>' + dr.dow + '</td><td class="num">' + dr.planned_total.toLocaleString() + '</td>';
+        rows += '<td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>';
+      }
+    });
+    // 합계
+    const sumP = dailyReports.reduce((s,d)=>s+d.planned_total,0);
+    const sumA = dailyReports.reduce((s,d)=>s+d.actual_total,0);
+    const sumG = sumP - sumA;
+    const sumHR = reported.length > 0 ? Math.round(Math.min(sumA/sumP, sumP/sumA)*1000)/10 : 0;
+    rows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td class="num">' + sumP.toLocaleString() + '</td>';
+    rows += '<td class="num">' + sumA.toLocaleString() + '</td><td class="num">' + (sumG>0?'+':'') + sumG.toLocaleString() + '</td>';
+    rows += '<td style="color:#1a237e;">' + (reported.length>0?sumHR+'%':'-') + '</td><td></td></tr>';
+    tbody.innerHTML = rows;
+  }
+
+  // KPI 카드 갱신
+  const kpiCards = tab.querySelectorAll('.kpi-card');
+  if (kpiCards.length >= 6) {
+    const hrClass = stgHR >= 90 ? 'kpi-green' : (stgHR >= 70 ? 'kpi-yellow' : 'kpi-red');
+    kpiCards[0].querySelector('.kpi-value').className = 'kpi-value ' + hrClass;
+    kpiCards[0].querySelector('.kpi-value').textContent = stgHR + '%';
+kpiCards[1].querySelector('.kpi-value').textContent = stgPlan.toLocaleString();
+    kpiCards[2].querySelector('.kpi-value').textContent = stgAct.toLocaleString();
+    const gap = stgPlan - stgAct;
+    kpiCards[3].querySelector('.kpi-value').textContent = (gap>0?'+':'') + gap.toLocaleString();
+var _n=0,_w=0,_c=0; reported.forEach(function(d){(d.stage_hits||[]).forEach(function(sh){if(sh.hit_rate>=90)_n++;else if(sh.hit_rate>=70)_w++;else _c++;});}); kpiCards[4].querySelector('.kpi-value').innerHTML='<span class="kpi-green">'+_n+'</span> / <span class="kpi-yellow">'+_w+'</span> / <span class="kpi-red">'+_c+'</span>';
+    kpiCards[5].querySelector('.kpi-value').innerHTML = reported.length + '<span style="font-size:14px; color:#999;">/' + dailyReports.length + '</span>';
+  }
+
+  // 차트 재생성
+  ['chartDailyHR','chartPlanActual','chartStageHR'].forEach(id => {
+    const canvas = document.getElementById(id);
+    if (canvas) {
+      const existing = Chart.getChart(canvas);
+      if (existing) existing.destroy();
+    }
+  });
+
+  if (reported.length > 0) {
+    new Chart(document.getElementById('chartDailyHR'), {
+      type:'line',
+      data:{
+        labels:reported.map(d=>d.date.replace('2026-','')),
+        datasets:[{
+          label:'적중률(%)',data:reported.map(d=>d.total_hit_rate),
+          borderColor:'#1a237e',backgroundColor:'rgba(26,35,126,0.1)',fill:true,tension:0.3,pointRadius:5
+        },{label:'90',data:reported.map(()=>90),borderColor:'#e53935',borderWidth:1,borderDash:[4,4],pointRadius:0,fill:false}]
+      },
+      options:{scales:{y:{min:60,max:100,ticks:{stepSize:10}}},plugins:{legend:{display:false}}}
+    });
+
+    new Chart(document.getElementById('chartPlanActual'), {
+      type:'bar',
+      data:{
+        labels:dailyReports.map(d=>d.date.replace('2026-','')+'('+d.dow+')'),
+        datasets:[
+          {label:'계획',data:dailyReports.map(d=>d.planned_total),backgroundColor:'#90caf9'},
+          {label:'실적',data:dailyReports.map(d=>d.actual_total||null),backgroundColor:'#1a237e'}
+        ]
+      },
+      options:{plugins:{legend:{position:'bottom'}}}
+    });
+  }
+}
+
+function updateNavDots() {
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    const tab = btn.getAttribute('data-tab');
+    if (!tab || !tab.startsWith('day_')) return;
+    const dateStr = tab.replace('day_','');
+    const dr = dailyReports.find(d => d.date === dateStr);
+    if (!dr) return;
+    const dot = btn.querySelector('.status-dot');
+    if (!dot) return;
+    if (dr.actual_total > 0 && dr.date <= today) {
+      dot.className = 'status-dot dot-green';
+    } else if (dr.actual_total > 0) {
+      dot.className = 'status-dot dot-yellow';
+    } else {
+      dot.className = 'status-dot dot-gray';
+    }
+  });
+}
+
+// 초기 렌더링: dailyReports 데이터로 모든 탭 생성
+dailyReports.forEach(dr => rerenderDayTab(dr));
+rerenderOverview();
+updateNavDots();
+
+// 페이지 로드 시 GitHub에서 실적 데이터 불러오기
+loadActualData().then(() => {
+  dailyReports.forEach(dr => rerenderDayTab(dr));
+  rerenderOverview();
+  updateNavDots();
+});
+// 이름 복원
+(function() {
+  const name = localStorage.getItem('snop_uploader');
+  if (name) document.getElementById('uploaderName').value = name;
+})();
+</script>
+</div>
+</body>
+</html>
