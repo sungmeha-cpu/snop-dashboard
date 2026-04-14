@@ -2783,15 +2783,6 @@
       "qty": 129,
       "jasa": 90,
       "oibu": 39
-    },
-    {
-      "stage_code": "1330",
-      "stage": "영양찬",
-      "product_code": "",
-      "product_name": "",
-      "qty": 0,
-      "jasa": 0,
-      "oibu": 0
     }
   ],
   "2026-04-08": [
@@ -3190,15 +3181,6 @@
       "qty": 92,
       "jasa": 61,
       "oibu": 31
-    },
-    {
-      "stage_code": "1330",
-      "stage": "영양찬",
-      "product_code": "",
-      "product_name": "",
-      "qty": 0,
-      "jasa": 0,
-      "oibu": 0
     }
   ],
   "2026-04-09": [
@@ -3597,15 +3579,6 @@
       "qty": 86,
       "jasa": 44,
       "oibu": 42
-    },
-    {
-      "stage_code": "1330",
-      "stage": "영양찬",
-      "product_code": "",
-      "product_name": "",
-      "qty": 0,
-      "jasa": 0,
-      "oibu": 0
     }
   ],
   "2026-04-10": [
