@@ -434,36 +434,89 @@ function applyUploadedData(uploadedData) {
 
     dr.actual_total = totalActual;
 
-    // 메뉴별 매칭
+    // 메뉴별 매칭 — 메뉴 불일치 시 실적 메뉴로 계획 교체
     if (dr.menu_hits) {
-      const matched = new Set();
+      // 단계별 계획수량 합산
+      const stagePlanned = {};
+      const stagePlannedJasa = {};
+      const stagePlannedOibu = {};
       dr.menu_hits.forEach(mh => {
-        const match = menus.find(m => m.stage_code === mh.stage_code && m.product_code === mh.product_code);
-        if (match) {
-          mh.actual = match.qty;
-          mh.actual_jasa = match.jasa;
-          mh.actual_oibu = match.oibu;
-          matched.add(match.product_code + '_' + match.stage_code);
-        } else {
-          mh.actual = 0;
-          mh.actual_jasa = 0;
-          mh.actual_oibu = 0;
-        }
-        mh.hit_rate = mh.planned > 0 ? Math.round(Math.min(mh.actual / mh.planned, mh.planned / mh.actual) * 1000) / 10 : 0;
-        mh.status = mh.actual === 0 ? 'under' : (mh.hit_rate >= 90 ? 'normal' : (mh.actual > mh.planned ? 'over' : 'under'));
+        stagePlanned[mh.stage_code] = (stagePlanned[mh.stage_code] || 0) + mh.planned;
+        stagePlannedJasa[mh.stage_code] = (stagePlannedJasa[mh.stage_code] || 0) + mh.planned_jasa;
+        stagePlannedOibu[mh.stage_code] = (stagePlannedOibu[mh.stage_code] || 0) + mh.planned_oibu;
       });
-      // 계획에 없는 실적 상품 추가 (과다)
-      menus.forEach(m => {
-        if (!matched.has(m.product_code + '_' + m.stage_code)) {
-          dr.menu_hits.push({
-            stage_code: m.stage_code, stage: m.stage,
+
+      // 매칭률 확인
+      const planCodes = new Set(dr.menu_hits.map(mh => mh.product_code + '_' + mh.stage_code));
+      const actCodes = new Set(menus.map(m => m.product_code + '_' + m.stage_code));
+      let matchCount = 0;
+      planCodes.forEach(c => { if (actCodes.has(c)) matchCount++; });
+      const matchRate = planCodes.size > 0 ? matchCount / planCodes.size : 0;
+
+      if (matchRate < 0.5) {
+        // 메뉴가 크게 다름 → 실적 메뉴로 계획 교체 (단계별 계획수량 비례배분)
+        console.log('[동기화] ' + dateStr + ': 메뉴 매칭률 ' + Math.round(matchRate*100) + '% → 실적 메뉴로 계획 교체');
+        const stageActualQty = {};
+        menus.forEach(m => {
+          stageActualQty[m.stage_code] = (stageActualQty[m.stage_code] || 0) + m.qty;
+        });
+
+        dr.menu_hits = menus.map(m => {
+          const sc = m.stage_code;
+          const stageTotal = stageActualQty[sc] || 1;
+          const ratio = m.qty / stageTotal;
+          const planned = Math.round((stagePlanned[sc] || 0) * ratio);
+          const planned_jasa = Math.round((stagePlannedJasa[sc] || 0) * ratio);
+          const planned_oibu = planned - planned_jasa;
+          const hit_rate = planned > 0 ? Math.round(Math.min(m.qty / planned, planned / m.qty) * 1000) / 10 : 0;
+          return {
+            stage_code: sc, stage: m.stage,
             product_code: m.product_code, product_name: m.product_name,
-            label: '', planned: 0, planned_jasa: 0, planned_oibu: 0,
+            label: m.label || '본',
+            planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned_oibu),
             actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
-            hit_rate: 0, ratio: 999.9, status: 'over'
-          });
-        }
-      });
+            hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
+            status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+          };
+        });
+      } else {
+        // 메뉴 대부분 일치 → 기존 로직
+        const matched = new Set();
+        dr.menu_hits.forEach(mh => {
+          const match = menus.find(m => m.stage_code === mh.stage_code && m.product_code === mh.product_code);
+          if (match) {
+            mh.actual = match.qty;
+            mh.actual_jasa = match.jasa;
+            mh.actual_oibu = match.oibu;
+            matched.add(match.product_code + '_' + match.stage_code);
+          } else {
+            mh.actual = 0;
+            mh.actual_jasa = 0;
+            mh.actual_oibu = 0;
+          }
+          mh.hit_rate = mh.planned > 0 ? Math.round(Math.min(mh.actual / mh.planned, mh.planned / mh.actual) * 1000) / 10 : 0;
+          mh.status = mh.actual === 0 ? 'under' : (mh.hit_rate >= 90 ? 'normal' : (mh.actual > mh.planned ? 'over' : 'under'));
+        });
+        // 계획에 없는 실적 상품 추가
+        menus.forEach(m => {
+          if (!matched.has(m.product_code + '_' + m.stage_code)) {
+            const sc = m.stage_code;
+            const stageTotal = menus.filter(x => x.stage_code === sc).reduce((s,x) => s + x.qty, 0) || 1;
+            const ratio = m.qty / stageTotal;
+            const planned = Math.round((stagePlanned[sc] || 0) * ratio);
+            const planned_jasa = Math.round((stagePlannedJasa[sc] || 0) * ratio);
+            const hit_rate = planned > 0 ? Math.round(Math.min(m.qty / planned, planned / m.qty) * 1000) / 10 : 0;
+            dr.menu_hits.push({
+              stage_code: sc, stage: m.stage,
+              product_code: m.product_code, product_name: m.product_name,
+              label: m.label || '', planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned - planned_jasa),
+              actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
+              hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
+              status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+            });
+          }
+        });
+      }
     }
 
     // 단계별
