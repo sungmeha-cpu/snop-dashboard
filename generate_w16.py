@@ -99,6 +99,15 @@ for di, (dow, date) in enumerate(zip(dows, w16_dates)):
     total_weight = sum(weights)
     forecast_total = round(sum(e['total_actual'] * w for e, w in zip(entries, weights)) / total_weight)
 
+    # 성장률 반영 (최근 주 대비 성장률의 50% 적용)
+    if len(entries) >= 2:
+        last = entries[-1]['total_actual']
+        prev = entries[-2]['total_actual']
+        if prev > 0:
+            growth_rate = (last - prev) / prev
+            forecast_total = round(forecast_total * (1 + growth_rate * 0.5))
+            print(f'  성장률 반영: {prev:,} → {last:,} ({growth_rate:+.1%}), 50% 적용 후 예측: {forecast_total:,}')
+
     # W15 메뉴 구성을 사용 (가장 최근 해당 요일의 메뉴)
     w15_date = list(dow_map.keys())[list(dow_map.values()).index(dow)]
     menus_template = w15_parsed[w15_date]

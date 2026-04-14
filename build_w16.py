@@ -92,6 +92,17 @@ new_html = re.sub(r'생성: \d{4}-\d{2}-\d{2} \d{2}:\d{2}', f'생성: {now}', ne
 # Fix nav: restore W15 link (don't rename it to W16)
 new_html = new_html.replace("'W16': 'monitor_w14.html'", "'W15': 'monitor_w15.html'")
 
+# Fix dropdown: W15 option was renamed to W16 by blanket replace
+new_html = new_html.replace(
+    '<option value="w15" selected>W16 (04-13 ~ 04-18)</option>',
+    '<option value="w15" >W15 (04-06 ~ 04-11)</option>'
+)
+# Set W16 as selected
+new_html = new_html.replace(
+    '<option value="w16" >W16 (04-13 ~ 04-18)</option>',
+    '<option value="w16" selected>W16 (04-13 ~ 04-18)</option>'
+)
+
 with open('monitor_w16.html', 'w', encoding='utf-8') as f:
     f.write(new_html)
 
