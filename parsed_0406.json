@@ -4,6 +4,7 @@
     "stage": "준비기",
     "product_code": "10000",
     "product_name": "쌀죽",
+    "label": "본",
     "qty": 62,
     "jasa": 62,
     "oibu": 0
@@ -13,6 +14,7 @@
     "stage": "초기1",
     "product_code": "10011",
     "product_name": "양배추죽",
+    "label": "본",
     "qty": 123,
     "jasa": 116,
     "oibu": 7
@@ -22,6 +24,7 @@
     "stage": "초기1",
     "product_code": "10006",
     "product_name": "배죽",
+    "label": "추가",
     "qty": 47,
     "jasa": 40,
     "oibu": 7
@@ -31,6 +34,7 @@
     "stage": "초기2",
     "product_code": "12032",
     "product_name": "한우청경채녹미죽",
+    "label": "본",
     "qty": 236,
     "jasa": 230,
     "oibu": 6
@@ -40,6 +44,7 @@
     "stage": "초기2",
     "product_code": "10719",
     "product_name": "퀴노아약콩죽",
+    "label": "본",
     "qty": 236,
     "jasa": 230,
     "oibu": 6
@@ -49,6 +54,7 @@
     "stage": "초기2",
     "product_code": "10906",
     "product_name": "한우병아리콩죽",
+    "label": "추가",
     "qty": 78,
     "jasa": 73,
     "oibu": 5
@@ -58,6 +64,7 @@
     "stage": "초기2",
     "product_code": "10715",
     "product_name": "흑미감자죽",
+    "label": "추가",
     "qty": 78,
     "jasa": 73,
     "oibu": 5
@@ -67,6 +74,7 @@
     "stage": "중기",
     "product_code": "10120",
     "product_name": "한우컬리플라워죽",
+    "label": "본",
     "qty": 1036,
     "jasa": 964,
     "oibu": 72
@@ -76,6 +84,7 @@
     "stage": "중기",
     "product_code": "10050",
     "product_name": "고구마닭죽",
+    "label": "본",
     "qty": 1031,
     "jasa": 959,
     "oibu": 72
@@ -85,6 +94,7 @@
     "stage": "중기",
     "product_code": "10109",
     "product_name": "한우야채죽",
+    "label": "추가",
     "qty": 451,
     "jasa": 395,
     "oibu": 56
@@ -94,6 +104,7 @@
     "stage": "중기",
     "product_code": "10075",
     "product_name": "영양밤죽",
+    "label": "추가",
     "qty": 448,
     "jasa": 392,
     "oibu": 56
@@ -103,6 +114,7 @@
     "stage": "중기",
     "product_code": "10099",
     "product_name": "한우새송이죽",
+    "label": "케어",
     "qty": 6,
     "jasa": 6,
     "oibu": 0
@@ -112,6 +124,7 @@
     "stage": "후기",
     "product_code": "10165",
     "product_name": "한우감자죽",
+    "label": "본",
     "qty": 1768,
     "jasa": 1613,
     "oibu": 155
@@ -121,6 +134,7 @@
     "stage": "후기",
     "product_code": "10911",
     "product_name": "애호박순두부죽",
+    "label": "본",
     "qty": 1767,
     "jasa": 1612,
     "oibu": 155
@@ -130,6 +144,7 @@
     "stage": "후기",
     "product_code": "10206",
     "product_name": "새우살시금치깨죽",
+    "label": "본",
     "qty": 822,
     "jasa": 744,
     "oibu": 78
@@ -139,6 +154,7 @@
     "stage": "후기",
     "product_code": "10166",
     "product_name": "한우검은콩죽",
+    "label": "추가",
     "qty": 733,
     "jasa": 607,
     "oibu": 126
@@ -148,6 +164,7 @@
     "stage": "후기",
     "product_code": "10909",
     "product_name": "느타리닭죽",
+    "label": "추가",
     "qty": 731,
     "jasa": 605,
     "oibu": 126
@@ -157,6 +174,7 @@
     "stage": "후기",
     "product_code": "10158",
     "product_name": "영양밤죽",
+    "label": "추가",
     "qty": 334,
     "jasa": 271,
     "oibu": 63
@@ -166,6 +184,7 @@
     "stage": "후기",
     "product_code": "10181",
     "product_name": "한우새송이죽",
+    "label": "케어",
     "qty": 8,
     "jasa": 8,
     "oibu": 0
@@ -175,6 +194,7 @@
     "stage": "후기무른밥",
     "product_code": "10304",
     "product_name": "한우컬리플라워무른밥",
+    "label": "본",
     "qty": 1231,
     "jasa": 1139,
     "oibu": 92
@@ -184,6 +204,7 @@
     "stage": "후기무른밥",
     "product_code": "10241",
     "product_name": "새우살두부무른밥",
+    "label": "본",
     "qty": 1225,
     "jasa": 1133,
     "oibu": 92
@@ -193,6 +214,7 @@
     "stage": "후기무른밥",
     "product_code": "10264",
     "product_name": "팽이버섯닭무른밥",
+    "label": "본",
     "qty": 1836,
     "jasa": 1667,
     "oibu": 169
@@ -202,6 +224,7 @@
     "stage": "후기무른밥",
     "product_code": "10283",
     "product_name": "한우불고기무른밥",
+    "label": "추가",
     "qty": 502,
     "jasa": 428,
     "oibu": 74
@@ -211,6 +234,7 @@
     "stage": "후기무른밥",
     "product_code": "10912",
     "product_name": "고구마닭무른밥",
+    "label": "추가",
     "qty": 502,
     "jasa": 428,
     "oibu": 74
@@ -220,6 +244,7 @@
     "stage": "후기무른밥",
     "product_code": "10255",
     "product_name": "아기리조또",
+    "label": "추가",
     "qty": 761,
     "jasa": 624,
     "oibu": 137
@@ -229,6 +254,7 @@
     "stage": "후기무른밥",
     "product_code": "10917",
     "product_name": "한우새송이무른밥",
+    "label": "케어",
     "qty": 16,
     "jasa": 16,
     "oibu": 0
@@ -238,6 +264,7 @@
     "stage": "영양밥",
     "product_code": "10389",
     "product_name": "한우불고기밥",
+    "label": "본",
     "qty": 400,
     "jasa": 374,
     "oibu": 26
@@ -247,6 +274,7 @@
     "stage": "영양밥",
     "product_code": "10364",
     "product_name": "아기리조또",
+    "label": "본",
     "qty": 400,
     "jasa": 374,
     "oibu": 26
@@ -256,6 +284,7 @@
     "stage": "영양밥",
     "product_code": "10425",
     "product_name": "오징어치아씨드밥",
+    "label": "본",
     "qty": 332,
     "jasa": 306,
     "oibu": 26
@@ -265,6 +294,7 @@
     "stage": "영양밥",
     "product_code": "10402",
     "product_name": "한우적채밥",
+    "label": "추가",
     "qty": 116,
     "jasa": 94,
     "oibu": 22
@@ -274,6 +304,7 @@
     "stage": "영양밥",
     "product_code": "10351",
     "product_name": "새우살아욱밥",
+    "label": "추가",
     "qty": 116,
     "jasa": 94,
     "oibu": 22
@@ -283,6 +314,7 @@
     "stage": "영양밥",
     "product_code": "10378",
     "product_name": "토마토계란볶음밥",
+    "label": "추가",
     "qty": 98,
     "jasa": 76,
     "oibu": 22
@@ -292,6 +324,7 @@
     "stage": "영양국",
     "product_code": "10622",
     "product_name": "한우팽이탕",
+    "label": "본",
     "qty": 356,
     "jasa": 336,
     "oibu": 20
@@ -301,6 +334,7 @@
     "stage": "영양국",
     "product_code": "10587",
     "product_name": "유부감자국",
+    "label": "본",
     "qty": 356,
     "jasa": 336,
     "oibu": 20
@@ -310,6 +344,7 @@
     "stage": "영양국",
     "product_code": "10584",
     "product_name": "오징어무국",
+    "label": "본",
     "qty": 181,
     "jasa": 161,
     "oibu": 20
@@ -319,6 +354,7 @@
     "stage": "영양국",
     "product_code": "10636",
     "product_name": "한우순두부미역국",
+    "label": "추가",
     "qty": 103,
     "jasa": 86,
     "oibu": 17
@@ -328,6 +364,7 @@
     "stage": "영양국",
     "product_code": "12040",
     "product_name": "녹미고구마스프",
+    "label": "추가",
     "qty": 103,
     "jasa": 86,
     "oibu": 17
@@ -337,6 +374,7 @@
     "stage": "영양국",
     "product_code": "10550",
     "product_name": "버섯된장국",
+    "label": "추가",
     "qty": 58,
     "jasa": 41,
     "oibu": 17
@@ -346,6 +384,7 @@
     "stage": "영양찬",
     "product_code": "11086",
     "product_name": "한우시금치볶음",
+    "label": "본",
     "qty": 658,
     "jasa": 610,
     "oibu": 48
@@ -355,6 +394,7 @@
     "stage": "영양찬",
     "product_code": "10773",
     "product_name": "닭가슴살밤조림",
+    "label": "본",
     "qty": 658,
     "jasa": 610,
     "oibu": 48
@@ -364,6 +404,7 @@
     "stage": "영양찬",
     "product_code": "10437",
     "product_name": "단호박고구마찜",
+    "label": "본",
     "qty": 464,
     "jasa": 416,
     "oibu": 48
@@ -373,6 +414,7 @@
     "stage": "영양찬",
     "product_code": "10490",
     "product_name": "한우애플찜",
+    "label": "추가",
     "qty": 179,
     "jasa": 140,
     "oibu": 39
@@ -382,6 +424,7 @@
     "stage": "영양찬",
     "product_code": "10474",
     "product_name": "콩나물해물찜",
+    "label": "추가",
     "qty": 179,
     "jasa": 140,
     "oibu": 39
@@ -391,6 +434,7 @@
     "stage": "영양찬",
     "product_code": "10442",
     "product_name": "닭가슴살부추잡채",
+    "label": "추가",
     "qty": 129,
     "jasa": 90,
     "oibu": 39
