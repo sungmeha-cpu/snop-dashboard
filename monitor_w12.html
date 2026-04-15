@@ -1486,6 +1486,28 @@ function rerenderOverview() {
       },
       options:{plugins:{legend:{position:'bottom'}}}
     });
+
+    // 단계별 누적 적중률 차트
+    const stageAgg = {};
+    reported.forEach(d => {
+      (d.stage_hits||[]).forEach(sh => {
+        if (!stageAgg[sh.stage]) stageAgg[sh.stage] = {planned:0, actual:0};
+        stageAgg[sh.stage].planned += sh.planned;
+        stageAgg[sh.stage].actual += sh.actual;
+      });
+    });
+    const stageOrder = ['준비기','초기1','초기2','중기','후기','후기무른밥','영양밥','영양국','영양찬'];
+    const stageLabels = stageOrder.filter(s => stageAgg[s]);
+    const stageHRs = stageLabels.map(s => {
+      const a = stageAgg[s];
+      return a.planned > 0 && a.actual > 0 ? Math.round(Math.min(a.actual/a.planned, a.planned/a.actual)*1000)/10 : 0;
+    });
+    const stageColors = stageHRs.map(hr => hr >= 90 ? '#2e7d32' : (hr >= 70 ? '#f9a825' : '#c62828'));
+    new Chart(document.getElementById('chartStageHR'), {
+      type:'bar',
+      data:{labels:stageLabels, datasets:[{label:'적중률(%)', data:stageHRs, backgroundColor:stageColors}]},
+      options:{scales:{y:{min:0,max:110,ticks:{stepSize:20}}},plugins:{legend:{display:false}}}
+    });
   }
 }
 
