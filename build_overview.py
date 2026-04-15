@@ -141,12 +141,13 @@ def build_overview_html(week_label, week_range_label, dr, today_iso="2026-04-15"
 
     # 단계별 누적 행
     st_rows = []
+    tp_total = sum(stage_agg[sc]["plan"] for sc in STAGE_ORDER)
     for sc in STAGE_ORDER:
         sp = stage_agg[sc]["plan"]; sa = stage_agg[sc]["act"]
-        if sp == 0 and sa == 0:
-            st_rows.append(f'<tr><td>{STAGE_NAME[sc]}</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>')
-            continue
         if reported:
+            if sp == 0 and sa == 0:
+                st_rows.append(f'<tr><td>{STAGE_NAME[sc]}</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>')
+                continue
             gap = sp - sa
             gap_s = f"+{gap:,}" if gap > 0 else f"{gap:,}"
             hr = round(min(sa/sp, sp/sa)*100,1) if (sp>0 and sa>0) else 0.0
@@ -154,12 +155,12 @@ def build_overview_html(week_label, week_range_label, dr, today_iso="2026-04-15"
                            f'<td class="num">{sa:,}</td><td class="num">{gap_s}</td>'
                            f'<td class="{hr_class(hr)}">{hr}%</td></tr>')
         else:
-            # 계획 전용 (실적 대기)
+            # 실적 대기: 계획 + 비중(%)
+            share = round(sp / tp_total * 100, 1) if tp_total > 0 else 0.0
             st_rows.append(f'<tr><td>{STAGE_NAME[sc]}</td><td class="num">{sp:,}</td>'
-                           f'<td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td>'
-                           f'<td style="color:#bdbdbd;">-</td></tr>')
+                           f'<td class="num">{share}%</td></tr>')
     # 단계 합계
-    tp = sum(stage_agg[sc]["plan"] for sc in STAGE_ORDER)
+    tp = tp_total
     ta = sum(stage_agg[sc]["act"] for sc in STAGE_ORDER)
     tg = tp - ta
     tgs = f"+{tg:,}" if tg > 0 else f"{tg:,}"
@@ -170,8 +171,7 @@ def build_overview_html(week_label, week_range_label, dr, today_iso="2026-04-15"
                        f'<td style="color:#1a237e;">{thr}%</td></tr>')
     else:
         st_rows.append(f'<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td>'
-                       f'<td class="num">{tp:,}</td><td style="color:#bdbdbd;">-</td>'
-                       f'<td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>')
+                       f'<td class="num">{tp:,}</td><td style="color:#1a237e;">100.0%</td></tr>')
     stage_rows = "\n".join(st_rows)
 
     reported_days_label = f"{reported[0]['date'][5:]} ~ {reported[-1]['date'][5:]} ({len(reported)}일 확정)" if reported else f"계획 총 {sum(d['planned_total'] for d in dr):,}병 (실적 대기)"
@@ -243,9 +243,9 @@ def build_overview_html(week_label, week_range_label, dr, today_iso="2026-04-15"
 <tbody>
 {daily_rows}
 </tbody></table>
-<h3 style="margin:16px 0 8px; color:#1a237e;">단계별 누적 적중률 <span style="font-size:11px; color:#666; font-weight:400;">{reported_days_label}</span></h3>
+<h3 style="margin:16px 0 8px; color:#1a237e;">{("단계별 누적 적중률" if reported else "단계별 계획 수량")} <span style="font-size:11px; color:#666; font-weight:400;">{reported_days_label}</span></h3>
 <table>
-<thead><tr><th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th></tr></thead>
+<thead><tr>{("<th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th>" if reported else "<th>단계</th><th>계획(병)</th><th>비중</th>")}</tr></thead>
 <tbody>
 {stage_rows}
 </tbody></table>
@@ -291,45 +291,46 @@ RERENDER_FN = r'''function rerenderOverview() {
     tbody.innerHTML = rows;
   }
 
-  // 단계별 누적 tbody 갱신 (두 번째 table)
+  // 단계별 표 전체 재구성 (두 번째 table) - 실적 여부에 따라 구조 변경
   const tables = tab.querySelectorAll('table');
   if (tables.length >= 2) {
-    const stbody = tables[1].querySelector('tbody');
-    if (stbody) {
-      const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
-      const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
-      const agg = {};
-      stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
-      // 실적 있으면 reported, 없으면 전체 주의 계획 누적
-      const stageSrc = reported.length > 0 ? reported : dailyReports;
-      stageSrc.forEach(d => (d.stage_hits||[]).forEach(sh => {
-        if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
-      }));
-      let srows = '';
+    const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+    const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
+    const agg = {};
+    stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
+    const stageSrc = reported.length > 0 ? reported : dailyReports;
+    stageSrc.forEach(d => (d.stage_hits||[]).forEach(sh => {
+      if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
+    }));
+    const tp = stageOrder.reduce((s,sc)=>s+agg[sc].plan,0);
+    const ta = stageOrder.reduce((s,sc)=>s+agg[sc].act,0);
+    let theadHtml, srows = '';
+    if (reported.length > 0) {
+      theadHtml = '<tr><th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th></tr>';
       stageOrder.forEach(sc => {
         const p = agg[sc].plan, a = agg[sc].act;
         if (p === 0 && a === 0) {
           srows += '<tr><td>' + stageName[sc] + '</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>';
-        } else if (reported.length > 0) {
+        } else {
           const gap = p - a;
           const hr = (p>0 && a>0) ? Math.round(Math.min(a/p, p/a)*1000)/10 : 0;
           const cls = hr >= 90 ? 'hr-excellent' : (hr >= 70 ? 'hr-good' : 'hr-poor');
           srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td class="num">' + a.toLocaleString() + '</td><td class="num">' + (gap>0?'+':'') + gap.toLocaleString() + '</td><td class="' + cls + '">' + hr + '%</td></tr>';
-        } else {
-          srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>';
         }
       });
-      const tp = stageOrder.reduce((s,sc)=>s+agg[sc].plan,0);
-      const ta = stageOrder.reduce((s,sc)=>s+agg[sc].act,0);
       const tg = tp - ta;
       const thr = (tp>0 && ta>0) ? Math.round(Math.min(ta/tp, tp/ta)*1000)/10 : 0;
-      if (reported.length > 0) {
-        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td class="num">' + ta.toLocaleString() + '</td><td class="num">' + (tg>0?'+':'') + tg.toLocaleString() + '</td><td style="color:#1a237e;">' + thr + '%</td></tr>';
-      } else {
-        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>';
-      }
-      stbody.innerHTML = srows;
+      srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td class="num">' + ta.toLocaleString() + '</td><td class="num">' + (tg>0?'+':'') + tg.toLocaleString() + '</td><td style="color:#1a237e;">' + thr + '%</td></tr>';
+    } else {
+      theadHtml = '<tr><th>단계</th><th>계획(병)</th><th>비중</th></tr>';
+      stageOrder.forEach(sc => {
+        const p = agg[sc].plan;
+        const share = tp > 0 ? Math.round(p / tp * 1000) / 10 : 0;
+        srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td class="num">' + share + '%</td></tr>';
+      });
+      srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td style="color:#1a237e;">100.0%</td></tr>';
     }
+    tables[1].innerHTML = '<thead>' + theadHtml + '</thead><tbody>' + srows + '</tbody>';
   }
 
   // 이상 탐지 건수

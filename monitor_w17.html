@@ -293,20 +293,20 @@ tbody tr:hover td { background:#e8eaf6; }
 <tr><td>04-25</td><td>토</td><td class="num">14,000</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
 <tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td class="num">107,901</td><td class="num">0</td><td class="num">+107,901</td><td style="color:#1a237e;">-</td><td></td></tr>
 </tbody></table>
-<h3 style="margin:16px 0 8px; color:#1a237e;">단계별 누적 적중률 <span style="font-size:11px; color:#666; font-weight:400;">계획 총 107,901병 (실적 대기)</span></h3>
+<h3 style="margin:16px 0 8px; color:#1a237e;">단계별 계획 수량 <span style="font-size:11px; color:#666; font-weight:400;">계획 총 107,901병 (실적 대기)</span></h3>
 <table>
-<thead><tr><th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th></tr></thead>
+<thead><tr><th>단계</th><th>계획(병)</th><th>비중</th></tr></thead>
 <tbody>
-<tr><td>준비기</td><td class="num">244</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>초기1</td><td class="num">846</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>초기2</td><td class="num">3,316</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>중기</td><td class="num">15,790</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>후기</td><td class="num">32,324</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>후기무른밥</td><td class="num">32,350</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>영양밥</td><td class="num">7,054</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>영양국</td><td class="num">5,511</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr><td>영양찬</td><td class="num">10,466</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
-<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">107,901</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>
+<tr><td>준비기</td><td class="num">244</td><td class="num">0.2%</td></tr>
+<tr><td>초기1</td><td class="num">846</td><td class="num">0.8%</td></tr>
+<tr><td>초기2</td><td class="num">3,316</td><td class="num">3.1%</td></tr>
+<tr><td>중기</td><td class="num">15,790</td><td class="num">14.6%</td></tr>
+<tr><td>후기</td><td class="num">32,324</td><td class="num">30.0%</td></tr>
+<tr><td>후기무른밥</td><td class="num">32,350</td><td class="num">30.0%</td></tr>
+<tr><td>영양밥</td><td class="num">7,054</td><td class="num">6.5%</td></tr>
+<tr><td>영양국</td><td class="num">5,511</td><td class="num">5.1%</td></tr>
+<tr><td>영양찬</td><td class="num">10,466</td><td class="num">9.7%</td></tr>
+<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">107,901</td><td style="color:#1a237e;">100.0%</td></tr>
 </tbody></table>
 </div>
 <div id="tab-day_2026-04-20" class="tab-content"></div>
@@ -819,45 +819,46 @@ function rerenderOverview() {
     tbody.innerHTML = rows;
   }
 
-  // 단계별 누적 tbody 갱신 (두 번째 table)
+  // 단계별 표 전체 재구성 (두 번째 table) - 실적 여부에 따라 구조 변경
   const tables = tab.querySelectorAll('table');
   if (tables.length >= 2) {
-    const stbody = tables[1].querySelector('tbody');
-    if (stbody) {
-      const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
-      const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
-      const agg = {};
-      stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
-      // 실적 있으면 reported, 없으면 전체 주의 계획 누적
-      const stageSrc = reported.length > 0 ? reported : dailyReports;
-      stageSrc.forEach(d => (d.stage_hits||[]).forEach(sh => {
-        if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
-      }));
-      let srows = '';
+    const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+    const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
+    const agg = {};
+    stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
+    const stageSrc = reported.length > 0 ? reported : dailyReports;
+    stageSrc.forEach(d => (d.stage_hits||[]).forEach(sh => {
+      if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
+    }));
+    const tp = stageOrder.reduce((s,sc)=>s+agg[sc].plan,0);
+    const ta = stageOrder.reduce((s,sc)=>s+agg[sc].act,0);
+    let theadHtml, srows = '';
+    if (reported.length > 0) {
+      theadHtml = '<tr><th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th></tr>';
       stageOrder.forEach(sc => {
         const p = agg[sc].plan, a = agg[sc].act;
         if (p === 0 && a === 0) {
           srows += '<tr><td>' + stageName[sc] + '</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>';
-        } else if (reported.length > 0) {
+        } else {
           const gap = p - a;
           const hr = (p>0 && a>0) ? Math.round(Math.min(a/p, p/a)*1000)/10 : 0;
           const cls = hr >= 90 ? 'hr-excellent' : (hr >= 70 ? 'hr-good' : 'hr-poor');
           srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td class="num">' + a.toLocaleString() + '</td><td class="num">' + (gap>0?'+':'') + gap.toLocaleString() + '</td><td class="' + cls + '">' + hr + '%</td></tr>';
-        } else {
-          srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>';
         }
       });
-      const tp = stageOrder.reduce((s,sc)=>s+agg[sc].plan,0);
-      const ta = stageOrder.reduce((s,sc)=>s+agg[sc].act,0);
       const tg = tp - ta;
       const thr = (tp>0 && ta>0) ? Math.round(Math.min(ta/tp, tp/ta)*1000)/10 : 0;
-      if (reported.length > 0) {
-        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td class="num">' + ta.toLocaleString() + '</td><td class="num">' + (tg>0?'+':'') + tg.toLocaleString() + '</td><td style="color:#1a237e;">' + thr + '%</td></tr>';
-      } else {
-        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td></tr>';
-      }
-      stbody.innerHTML = srows;
+      srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td class="num">' + ta.toLocaleString() + '</td><td class="num">' + (tg>0?'+':'') + tg.toLocaleString() + '</td><td style="color:#1a237e;">' + thr + '%</td></tr>';
+    } else {
+      theadHtml = '<tr><th>단계</th><th>계획(병)</th><th>비중</th></tr>';
+      stageOrder.forEach(sc => {
+        const p = agg[sc].plan;
+        const share = tp > 0 ? Math.round(p / tp * 1000) / 10 : 0;
+        srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td class="num">' + share + '%</td></tr>';
+      });
+      srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td style="color:#1a237e;">100.0%</td></tr>';
     }
+    tables[1].innerHTML = '<thead>' + theadHtml + '</thead><tbody>' + srows + '</tbody>';
   }
 
   // 이상 탐지 건수
