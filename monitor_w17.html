@@ -226,7 +226,89 @@ tbody tr:hover td { background:#e8eaf6; }
 })();
 </script>
 </div>
-<div id="tab-overview" class="tab-content active"><h2 style="margin-bottom:14px; color:#1a237e;">W17 Overview (04-20 ~ 04-25)</h2><div class="kpi-row">  <div class="kpi-card"><div class="kpi-label">주간 적중률</div><div class="kpi-value kpi-green">-</div></div>  <div class="kpi-card"><div class="kpi-label">계획 합계</div><div class="kpi-value kpi-blue">-</div></div>  <div class="kpi-card"><div class="kpi-label">실적 합계</div><div class="kpi-value kpi-blue">-</div></div>  <div class="kpi-card"><div class="kpi-label">Gap</div><div class="kpi-value">-</div></div>  <div class="kpi-card"><div class="kpi-label">단계 정상률</div><div class="kpi-value">-</div></div>  <div class="kpi-card"><div class="kpi-label">보고 완료</div><div class="kpi-value">-</div></div></div><h3 style="margin:16px 0 8px; color:#1a237e;">일별 요약</h3><table><thead><tr><th>날짜</th><th>요일</th><th>계획</th><th>실적</th><th>Gap</th><th>적중률</th><th>상태</th></tr></thead><tbody></tbody></table><div class="section-row" style="margin-top:20px;">  <div class="section-half"><h3 style="margin:0 0 8px; color:#1a237e;">일별 적중률 추이</h3><canvas id="chartDailyHR" height="200"></canvas></div>  <div class="section-half"><h3 style="margin:0 0 8px; color:#1a237e;">계획 vs 실적</h3><canvas id="chartPlanActual" height="200"></canvas></div></div></div>
+<div id="tab-overview" class="tab-content active">
+<div class="exec">
+  <div class="exec-title">W17 Executive Summary</div>
+  <p>
+    W17 계획 총 107,901병 배포 완료. 실적 업로드 대기 중.
+  </p>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="kpi-label">누적 적중률</div>
+    <div class="kpi-value kpi-blue">-</div>
+    <div class="kpi-sub"></div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">계획 합계</div>
+    <div class="kpi-value kpi-blue">107,901</div>
+    <div class="kpi-sub">병</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">실적 합계</div>
+    <div class="kpi-value kpi-blue">-</div>
+    <div class="kpi-sub">병</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">Gap</div>
+    <div class="kpi-value ">-</div>
+    <div class="kpi-sub">계획 - 실적</div>
+  </div>
+  <div class="kpi-card has-tooltip">
+    <div class="kpi-tooltip">
+      <b>이상 탐지 기준</b><br>
+      <span style="color:#ef9a9a;">&#9632;</span> 과소판매: 적중률 90% 미만<br>
+      &nbsp;&nbsp;· high: 70% 미만 / medium: 70~90%<br>
+      <span style="color:#ffcc80;">&#9632;</span> 과다판매: 적중률 110% 초과<br>
+      &nbsp;&nbsp;· high: 130% 초과 / medium: 110~130%<br>
+      <span style="color:#90caf9;">&#8505;</span> 미래 날짜는 과소판매 제외
+    </div>
+    <div class="kpi-label">이상 탐지</div>
+    <div class="kpi-value kpi-green">-</div>
+    <div class="kpi-sub">건</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">실적 현황</div>
+    <div class="kpi-value kpi-blue">0<span style="font-size:14px; color:#999;">/6</span></div>
+    <div class="kpi-sub">일</div>
+  </div>
+</div>
+
+<div class="chart-row">
+  <div class="chart-box" style="flex:1;"><div class="chart-title">일별 적중률 추이 (%)</div><canvas id="chartDailyHR" style="max-height:180px;"></canvas></div>
+  <div class="chart-box" style="flex:1;"><div class="chart-title">일별 계획 vs 실적</div><canvas id="chartPlanActual" style="max-height:180px;"></canvas></div>
+  <div class="chart-box" style="flex:1;"><div class="chart-title">단계별 누적 적중률</div><canvas id="chartStageHR" style="max-height:180px;"></canvas></div>
+</div>
+
+<h3 style="margin:16px 0 8px; color:#1a237e;">일별 요약</h3>
+<table>
+<thead><tr><th>날짜</th><th>요일</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td>04-20</td><td>월</td><td class="num">20,878</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr><td>04-21</td><td>화</td><td class="num">13,629</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr><td>04-22</td><td>수</td><td class="num">17,839</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr><td>04-23</td><td>목</td><td class="num">15,469</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr><td>04-24</td><td>금</td><td class="num">26,086</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr><td>04-25</td><td>토</td><td class="num">14,000</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>
+<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td class="num">107,901</td><td class="num">0</td><td class="num">+107,901</td><td style="color:#1a237e;">-</td><td></td></tr>
+</tbody></table>
+<h3 style="margin:16px 0 8px; color:#1a237e;">단계별 누적 적중률 <span style="font-size:11px; color:#666; font-weight:400;">실적 대기</span></h3>
+<table>
+<thead><tr><th>단계</th><th>계획(병)</th><th>실적(병)</th><th>Gap</th><th>적중률</th></tr></thead>
+<tbody>
+<tr><td>준비기</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>초기1</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>초기2</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>중기</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>후기</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>후기무른밥</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>영양밥</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>영양국</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr><td>영양찬</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>
+<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td style="color:#1a237e;">-</td></tr>
+</tbody></table>
+</div>
 <div id="tab-day_2026-04-20" class="tab-content"></div>
 <div id="tab-day_2026-04-21" class="tab-content"></div>
 <div id="tab-day_2026-04-22" class="tab-content"></div>
@@ -706,10 +788,10 @@ function rerenderOverview() {
 
   const reported = dailyReports.filter(d => d.actual_total > 0);
   const stgPlan = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.planned,0), 0);
-  const stgAct = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.actual,0), 0);
-  const stgHR = stgPlan > 0 ? Math.round(Math.min(stgAct/stgPlan, stgPlan/stgAct)*1000)/10 : 0;
+  const stgAct  = reported.reduce((s,d) => s + (d.stage_hits||[]).reduce((ss,sh)=>ss+sh.actual,0), 0);
+  const stgHR = (stgPlan > 0 && stgAct > 0) ? Math.round(Math.min(stgAct/stgPlan, stgPlan/stgAct)*1000)/10 : 0;
 
-  // 일별 요약 tbody 갱신
+  // 일별 요약 tbody 갱신 (첫 번째 table)
   const tbody = tab.querySelector('table tbody');
   if (tbody) {
     let rows = '';
@@ -727,28 +809,82 @@ function rerenderOverview() {
         rows += '<td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#bdbdbd;">-</td><td style="color:#757575;">대기</td></tr>';
       }
     });
-    // 합계
     const sumP = dailyReports.reduce((s,d)=>s+d.planned_total,0);
     const sumA = dailyReports.reduce((s,d)=>s+d.actual_total,0);
     const sumG = sumP - sumA;
-    const sumHR = reported.length > 0 ? Math.round(Math.min(sumA/sumP, sumP/sumA)*1000)/10 : 0;
+    const sumHR = (reported.length > 0 && sumA > 0) ? Math.round(Math.min(sumA/sumP, sumP/sumA)*1000)/10 : 0;
     rows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td class="num">' + sumP.toLocaleString() + '</td>';
     rows += '<td class="num">' + sumA.toLocaleString() + '</td><td class="num">' + (sumG>0?'+':'') + sumG.toLocaleString() + '</td>';
     rows += '<td style="color:#1a237e;">' + (reported.length>0?sumHR+'%':'-') + '</td><td></td></tr>';
     tbody.innerHTML = rows;
   }
 
-  // KPI 카드 갱신
+  // 단계별 누적 tbody 갱신 (두 번째 table)
+  const tables = tab.querySelectorAll('table');
+  if (tables.length >= 2) {
+    const stbody = tables[1].querySelector('tbody');
+    if (stbody) {
+      const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+      const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
+      const agg = {};
+      stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
+      reported.forEach(d => (d.stage_hits||[]).forEach(sh => {
+        if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
+      }));
+      let srows = '';
+      stageOrder.forEach(sc => {
+        const p = agg[sc].plan, a = agg[sc].act;
+        if (p === 0 && a === 0) {
+          srows += '<tr><td>' + stageName[sc] + '</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">-</td></tr>';
+        } else {
+          const gap = p - a;
+          const hr = (p>0 && a>0) ? Math.round(Math.min(a/p, p/a)*1000)/10 : 0;
+          const cls = hr >= 90 ? 'hr-excellent' : (hr >= 70 ? 'hr-good' : 'hr-poor');
+          srows += '<tr><td>' + stageName[sc] + '</td><td class="num">' + p.toLocaleString() + '</td><td class="num">' + a.toLocaleString() + '</td><td class="num">' + (gap>0?'+':'') + gap.toLocaleString() + '</td><td class="' + cls + '">' + hr + '%</td></tr>';
+        }
+      });
+      const tp = stageOrder.reduce((s,sc)=>s+agg[sc].plan,0);
+      const ta = stageOrder.reduce((s,sc)=>s+agg[sc].act,0);
+      const tg = tp - ta;
+      const thr = (tp>0 && ta>0) ? Math.round(Math.min(ta/tp, tp/ta)*1000)/10 : 0;
+      if (reported.length > 0) {
+        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">' + tp.toLocaleString() + '</td><td class="num">' + ta.toLocaleString() + '</td><td class="num">' + (tg>0?'+':'') + tg.toLocaleString() + '</td><td style="color:#1a237e;">' + thr + '%</td></tr>';
+      } else {
+        srows += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td style="color:#1a237e;">-</td></tr>';
+      }
+      stbody.innerHTML = srows;
+    }
+  }
+
+  // 이상 탐지 건수
+  let anomaly = 0;
+  reported.forEach(d => (d.stage_hits||[]).forEach(sh => {
+    if (!sh.planned) return;
+    const ratio = sh.actual / sh.planned;
+    if (sh.actual === 0) { anomaly++; return; }
+    if (ratio < 0.9 || ratio > 1.1) anomaly++;
+  }));
+
+  // KPI 카드 갱신 (순서: 적중률, 계획, 실적, Gap, 이상 탐지, 실적 현황)
   const kpiCards = tab.querySelectorAll('.kpi-card');
   if (kpiCards.length >= 6) {
-    const hrClass = stgHR >= 90 ? 'kpi-green' : (stgHR >= 70 ? 'kpi-yellow' : 'kpi-red');
-    kpiCards[0].querySelector('.kpi-value').className = 'kpi-value ' + hrClass;
-    kpiCards[0].querySelector('.kpi-value').textContent = stgHR + '%';
-kpiCards[1].querySelector('.kpi-value').textContent = stgPlan.toLocaleString();
-    kpiCards[2].querySelector('.kpi-value').textContent = stgAct.toLocaleString();
-    const gap = stgPlan - stgAct;
-    kpiCards[3].querySelector('.kpi-value').textContent = (gap>0?'+':'') + gap.toLocaleString();
-var _n=0,_w=0,_c=0; reported.forEach(function(d){(d.stage_hits||[]).forEach(function(sh){if(sh.hit_rate>=90)_n++;else if(sh.hit_rate>=70)_w++;else _c++;});}); kpiCards[4].querySelector('.kpi-value').innerHTML='<span class="kpi-green">'+_n+'</span> / <span class="kpi-yellow">'+_w+'</span> / <span class="kpi-red">'+_c+'</span>';
+    const sumP = dailyReports.reduce((s,d)=>s+d.planned_total,0);
+    const hrCls = stgHR >= 90 ? 'kpi-green' : (stgHR >= 70 ? 'kpi-yellow' : 'kpi-red');
+    if (reported.length > 0) {
+      kpiCards[0].querySelector('.kpi-value').className = 'kpi-value ' + hrCls;
+      kpiCards[0].querySelector('.kpi-value').textContent = stgHR + '%';
+      kpiCards[1].querySelector('.kpi-value').textContent = stgPlan.toLocaleString();
+      kpiCards[2].querySelector('.kpi-value').textContent = stgAct.toLocaleString();
+      const gap = stgPlan - stgAct;
+      const gapCls = gap > 0 ? 'kpi-red' : (gap < 0 ? 'kpi-green' : '');
+      kpiCards[3].querySelector('.kpi-value').className = 'kpi-value ' + gapCls;
+      kpiCards[3].querySelector('.kpi-value').textContent = (gap>0?'+':'') + gap.toLocaleString();
+      const aCls = anomaly > 10 ? 'kpi-red' : (anomaly > 0 ? 'kpi-yellow' : 'kpi-green');
+      kpiCards[4].querySelector('.kpi-value').className = 'kpi-value ' + aCls;
+      kpiCards[4].querySelector('.kpi-value').textContent = anomaly;
+    } else {
+      kpiCards[1].querySelector('.kpi-value').textContent = sumP.toLocaleString();
+    }
     kpiCards[5].querySelector('.kpi-value').innerHTML = reported.length + '<span style="font-size:14px; color:#999;">/' + dailyReports.length + '</span>';
   }
 
@@ -784,6 +920,26 @@ var _n=0,_w=0,_c=0; reported.forEach(function(d){(d.stage_hits||[]).forEach(func
         ]
       },
       options:{plugins:{legend:{position:'bottom'}}}
+    });
+
+    // 단계별 누적 적중률 bar chart
+    const stageOrder = ['1110','1210','1220','1230','1240','1250','1310','1320','1330'];
+    const stageName = {'1110':'준비기','1210':'초기1','1220':'초기2','1230':'중기','1240':'후기','1250':'후기무른밥','1310':'영양밥','1320':'영양국','1330':'영양찬'};
+    const agg = {};
+    stageOrder.forEach(sc => agg[sc] = {plan:0, act:0});
+    reported.forEach(d => (d.stage_hits||[]).forEach(sh => {
+      if (agg[sh.stage_code]) { agg[sh.stage_code].plan += sh.planned; agg[sh.stage_code].act += sh.actual; }
+    }));
+    const labels = stageOrder.map(sc => stageName[sc]);
+    const hrs = stageOrder.map(sc => {
+      const p = agg[sc].plan, a = agg[sc].act;
+      return (p>0 && a>0) ? Math.round(Math.min(a/p, p/a)*1000)/10 : 0;
+    });
+    const colors = hrs.map(h => h>=90 ? '#43a047' : (h>=70 ? '#fdd835' : '#e53935'));
+    new Chart(document.getElementById('chartStageHR'), {
+      type:'bar',
+      data:{labels:labels, datasets:[{label:'적중률(%)', data:hrs, backgroundColor:colors}]},
+      options:{scales:{y:{min:0,max:110,ticks:{stepSize:20}}},plugins:{legend:{display:false}}}
     });
   }
 }
