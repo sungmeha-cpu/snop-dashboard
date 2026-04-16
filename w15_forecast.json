@@ -78,7 +78,7 @@
         "stage": "초기1",
         "product_code": "10005",
         "product_name": "단호박죽",
-        "label": "본",
+        "label": "추가",
         "planned": 117,
         "planned_jasa": 106,
         "planned_oibu": 11
@@ -88,7 +88,7 @@
         "stage": "초기1",
         "product_code": "10011",
         "product_name": "양배추죽",
-        "label": "본",
+        "label": "추가",
         "planned": 55,
         "planned_jasa": 51,
         "planned_oibu": 4
@@ -118,7 +118,7 @@
         "stage": "초기2",
         "product_code": "12201",
         "product_name": "한우비타민녹미죽",
-        "label": "본",
+        "label": "추가",
         "planned": 106,
         "planned_jasa": 98,
         "planned_oibu": 8
@@ -128,7 +128,7 @@
         "stage": "초기2",
         "product_code": "12203",
         "product_name": "새송이감자죽",
-        "label": "본",
+        "label": "추가",
         "planned": 106,
         "planned_jasa": 98,
         "planned_oibu": 8
@@ -156,22 +156,22 @@
       {
         "stage_code": "1230",
         "stage": "중기",
-        "product_code": "10107",
-        "product_name": "한우애호박감자죽",
-        "label": "본",
+        "product_code": "10727",
+        "product_name": "대구시금치깨죽",
+        "label": "추가",
         "planned": 441,
-        "planned_jasa": 406,
-        "planned_oibu": 35
+        "planned_jasa": 405,
+        "planned_oibu": 36
       },
       {
         "stage_code": "1230",
         "stage": "중기",
-        "product_code": "10727",
-        "product_name": "대구시금치깨죽",
-        "label": "본",
+        "product_code": "10107",
+        "product_name": "한우애호박감자죽",
+        "label": "추가",
         "planned": 441,
-        "planned_jasa": 405,
-        "planned_oibu": 36
+        "planned_jasa": 406,
+        "planned_oibu": 35
       },
       {
         "stage_code": "1230",
@@ -208,7 +208,7 @@
         "stage": "후기",
         "product_code": "10187",
         "product_name": "한우애호박감자죽",
-        "label": "본",
+        "label": "추가",
         "planned": 762,
         "planned_jasa": 683,
         "planned_oibu": 79
@@ -218,7 +218,7 @@
         "stage": "후기",
         "product_code": "10142",
         "product_name": "브로컬리야채닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 757,
         "planned_jasa": 679,
         "planned_oibu": 78
@@ -288,7 +288,7 @@
         "stage": "후기무른밥",
         "product_code": "10248",
         "product_name": "시금치느타리무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 855,
         "planned_jasa": 762,
         "planned_oibu": 93
@@ -298,7 +298,7 @@
         "stage": "후기무른밥",
         "product_code": "10294",
         "product_name": "한우양배추무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 585,
         "planned_jasa": 524,
         "planned_oibu": 61
@@ -308,7 +308,7 @@
         "stage": "후기무른밥",
         "product_code": "10228",
         "product_name": "대구살유부무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 580,
         "planned_jasa": 507,
         "planned_oibu": 73
@@ -326,8 +326,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10391",
-        "product_name": "한우비트밥",
+        "product_code": "10410",
+        "product_name": "흑미닭살밥",
         "label": "본",
         "planned": 299,
         "planned_jasa": 268,
@@ -336,8 +336,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10410",
-        "product_name": "흑미닭살밥",
+        "product_code": "10391",
+        "product_name": "한우비트밥",
         "label": "본",
         "planned": 299,
         "planned_jasa": 268,
@@ -358,7 +358,7 @@
         "stage": "영양밥",
         "product_code": "10413",
         "product_name": "대구살퀴노아밥",
-        "label": "본",
+        "label": "추가",
         "planned": 173,
         "planned_jasa": 150,
         "planned_oibu": 23
@@ -368,7 +368,7 @@
         "stage": "영양밥",
         "product_code": "10432",
         "product_name": "한우오트밀밥",
-        "label": "본",
+        "label": "추가",
         "planned": 173,
         "planned_jasa": 150,
         "planned_oibu": 23
@@ -378,20 +378,10 @@
         "stage": "영양밥",
         "product_code": "10339",
         "product_name": "모듬버섯밥",
-        "label": "본",
+        "label": "추가",
         "planned": 146,
         "planned_jasa": 124,
         "planned_oibu": 22
-      },
-      {
-        "stage_code": "1320",
-        "stage": "영양국",
-        "product_code": "10575",
-        "product_name": "아욱닭살탕",
-        "label": "본",
-        "planned": 257,
-        "planned_jasa": 237,
-        "planned_oibu": 20
       },
       {
         "stage_code": "1320",
@@ -406,9 +396,19 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
+        "product_code": "10575",
+        "product_name": "아욱닭살탕",
+        "label": "본",
+        "planned": 257,
+        "planned_jasa": 237,
+        "planned_oibu": 20
+      },
+      {
+        "stage_code": "1320",
+        "stage": "영양국",
         "product_code": "10608",
         "product_name": "한우들깨감자탕",
-        "label": "본",
+        "label": "추가",
         "planned": 150,
         "planned_jasa": 138,
         "planned_oibu": 12
@@ -418,7 +418,7 @@
         "stage": "영양국",
         "product_code": "10533",
         "product_name": "느타리멸치국",
-        "label": "본",
+        "label": "추가",
         "planned": 150,
         "planned_jasa": 138,
         "planned_oibu": 12
@@ -436,9 +436,9 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "10590",
-        "product_name": "청경채닭살탕",
-        "label": "본",
+        "product_code": "10613",
+        "product_name": "한우버섯전골",
+        "label": "추가",
         "planned": 89,
         "planned_jasa": 81,
         "planned_oibu": 8
@@ -498,7 +498,7 @@
         "stage": "영양찬",
         "product_code": "10491",
         "product_name": "한우애호박볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 129,
         "planned_jasa": 113,
         "planned_oibu": 16
@@ -584,7 +584,7 @@
         "stage": "초기1",
         "product_code": "10007",
         "product_name": "브로컬리죽",
-        "label": "본",
+        "label": "추가",
         "planned": 78,
         "planned_jasa": 73,
         "planned_oibu": 5
@@ -594,7 +594,7 @@
         "stage": "초기1",
         "product_code": "10006",
         "product_name": "배죽",
-        "label": "본",
+        "label": "추가",
         "planned": 29,
         "planned_jasa": 28,
         "planned_oibu": 1
@@ -624,7 +624,7 @@
         "stage": "초기2",
         "product_code": "10039",
         "product_name": "한우오트밀죽",
-        "label": "본",
+        "label": "추가",
         "planned": 76,
         "planned_jasa": 68,
         "planned_oibu": 8
@@ -634,7 +634,7 @@
         "stage": "초기2",
         "product_code": "12200",
         "product_name": "양배추당근죽",
-        "label": "본",
+        "label": "추가",
         "planned": 76,
         "planned_jasa": 68,
         "planned_oibu": 8
@@ -664,7 +664,7 @@
         "stage": "중기",
         "product_code": "10086",
         "product_name": "한우단호박팥죽",
-        "label": "본",
+        "label": "추가",
         "planned": 306,
         "planned_jasa": 269,
         "planned_oibu": 37
@@ -674,7 +674,7 @@
         "stage": "중기",
         "product_code": "10067",
         "product_name": "수수병아리콩닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 304,
         "planned_jasa": 267,
         "planned_oibu": 37
@@ -684,7 +684,7 @@
         "stage": "중기",
         "product_code": "10069",
         "product_name": "아기백숙",
-        "label": "본",
+        "label": "추가",
         "planned": 165,
         "planned_jasa": 146,
         "planned_oibu": 19
@@ -712,22 +712,22 @@
       {
         "stage_code": "1240",
         "stage": "후기",
-        "product_code": "10196",
-        "product_name": "한우청경채단호박죽",
-        "label": "본",
+        "product_code": "10148",
+        "product_name": "새우살야채죽",
+        "label": "추가",
         "planned": 546,
-        "planned_jasa": 481,
-        "planned_oibu": 65
+        "planned_jasa": 479,
+        "planned_oibu": 67
       },
       {
         "stage_code": "1240",
         "stage": "후기",
-        "product_code": "10148",
-        "product_name": "새우살야채죽",
-        "label": "본",
+        "product_code": "10196",
+        "product_name": "한우청경채단호박죽",
+        "label": "추가",
         "planned": 546,
-        "planned_jasa": 479,
-        "planned_oibu": 67
+        "planned_jasa": 481,
+        "planned_oibu": 65
       },
       {
         "stage_code": "1240",
@@ -744,7 +744,7 @@
         "stage": "후기",
         "product_code": "10168",
         "product_name": "한우깻잎죽",
-        "label": "본",
+        "label": "추가",
         "planned": 283,
         "planned_jasa": 246,
         "planned_oibu": 37
@@ -754,7 +754,7 @@
         "stage": "후기",
         "product_code": "10157",
         "product_name": "양송이콩소메",
-        "label": "본",
+        "label": "추가",
         "planned": 283,
         "planned_jasa": 246,
         "planned_oibu": 37
@@ -794,7 +794,7 @@
         "stage": "후기무른밥",
         "product_code": "10263",
         "product_name": "퀴노아머쉬룸닭무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 560,
         "planned_jasa": 476,
         "planned_oibu": 84
@@ -804,7 +804,7 @@
         "stage": "후기무른밥",
         "product_code": "10268",
         "product_name": "한우검은콩무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 365,
         "planned_jasa": 312,
         "planned_oibu": 53
@@ -814,7 +814,7 @@
         "stage": "후기무른밥",
         "product_code": "10914",
         "product_name": "비트치즈무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 362,
         "planned_jasa": 310,
         "planned_oibu": 52
@@ -824,7 +824,7 @@
         "stage": "후기무른밥",
         "product_code": "10216",
         "product_name": "닭가슴살배추버섯무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 322,
         "planned_jasa": 274,
         "planned_oibu": 48
@@ -832,8 +832,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10423",
-        "product_name": "수수고구마밥",
+        "product_code": "10394",
+        "product_name": "한우숙주나물볶음밥",
         "label": "본",
         "planned": 206,
         "planned_jasa": 187,
@@ -842,8 +842,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10394",
-        "product_name": "한우숙주나물볶음밥",
+        "product_code": "10423",
+        "product_name": "수수고구마밥",
         "label": "본",
         "planned": 206,
         "planned_jasa": 187,
@@ -864,7 +864,7 @@
         "stage": "영양밥",
         "product_code": "10399",
         "product_name": "한우양송이밥",
-        "label": "본",
+        "label": "추가",
         "planned": 115,
         "planned_jasa": 101,
         "planned_oibu": 14
@@ -874,7 +874,7 @@
         "stage": "영양밥",
         "product_code": "10318",
         "product_name": "고구마닭살밥",
-        "label": "본",
+        "label": "추가",
         "planned": 115,
         "planned_jasa": 101,
         "planned_oibu": 14
@@ -884,20 +884,10 @@
         "stage": "영양밥",
         "product_code": "10341",
         "product_name": "무나물들깨밥",
-        "label": "본",
+        "label": "추가",
         "planned": 102,
         "planned_jasa": 87,
         "planned_oibu": 15
-      },
-      {
-        "stage_code": "1320",
-        "stage": "영양국",
-        "product_code": "10599",
-        "product_name": "통통새우스프",
-        "label": "본",
-        "planned": 185,
-        "planned_jasa": 168,
-        "planned_oibu": 17
       },
       {
         "stage_code": "1320",
@@ -912,9 +902,19 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
+        "product_code": "10599",
+        "product_name": "통통새우스프",
+        "label": "본",
+        "planned": 185,
+        "planned_jasa": 168,
+        "planned_oibu": 17
+      },
+      {
+        "stage_code": "1320",
+        "stage": "영양국",
         "product_code": "10637",
         "product_name": "한우콩나물다시마탕",
-        "label": "본",
+        "label": "추가",
         "planned": 109,
         "planned_jasa": 97,
         "planned_oibu": 12
@@ -924,7 +924,7 @@
         "stage": "영양국",
         "product_code": "10565",
         "product_name": "새우살토마토스튜",
-        "label": "본",
+        "label": "추가",
         "planned": 98,
         "planned_jasa": 88,
         "planned_oibu": 10
@@ -942,9 +942,9 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "10592",
-        "product_name": "치킨커리",
-        "label": "본",
+        "product_code": "10612",
+        "product_name": "한우배추된장국",
+        "label": "추가",
         "planned": 62,
         "planned_jasa": 56,
         "planned_oibu": 6
@@ -984,7 +984,7 @@
         "stage": "영양찬",
         "product_code": "10521",
         "product_name": "한우비타민채볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 152,
         "planned_jasa": 127,
         "planned_oibu": 25
@@ -994,7 +994,7 @@
         "stage": "영양찬",
         "product_code": "10440",
         "product_name": "닭가슴살데리야끼",
-        "label": "본",
+        "label": "추가",
         "planned": 141,
         "planned_jasa": 116,
         "planned_oibu": 25
@@ -1004,7 +1004,7 @@
         "stage": "영양찬",
         "product_code": "12060",
         "product_name": "두부조림",
-        "label": "본",
+        "label": "추가",
         "planned": 123,
         "planned_jasa": 106,
         "planned_oibu": 17
@@ -1014,9 +1014,9 @@
   {
     "date": "2026-04-08",
     "dow": "수",
-    "planned_total": 17051,
+    "planned_total": 17050,
     "planned_jasa": 15292,
-    "planned_oibu": 1759,
+    "planned_oibu": 1758,
     "stages": [
       {
         "stage_code": "1110",
@@ -1051,7 +1051,7 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "planned": 1044
+        "planned": 1043
       },
       {
         "stage_code": "1320",
@@ -1071,7 +1071,7 @@
       },
       {
         "channel": "외부몰",
-        "planned": 1759
+        "planned": 1758
       }
     ],
     "menus": [
@@ -1090,7 +1090,7 @@
         "stage": "초기1",
         "product_code": "10015",
         "product_name": "흑미죽",
-        "label": "본",
+        "label": "추가",
         "planned": 96,
         "planned_jasa": 89,
         "planned_oibu": 7
@@ -1100,7 +1100,7 @@
         "stage": "초기1",
         "product_code": "10010",
         "product_name": "애호박죽",
-        "label": "본",
+        "label": "추가",
         "planned": 40,
         "planned_jasa": 33,
         "planned_oibu": 7
@@ -1128,9 +1128,9 @@
       {
         "stage_code": "1220",
         "stage": "초기2",
-        "product_code": "10042",
-        "product_name": "한우청경채죽",
-        "label": "본",
+        "product_code": "10687",
+        "product_name": "양송이무죽",
+        "label": "추가",
         "planned": 82,
         "planned_jasa": 75,
         "planned_oibu": 7
@@ -1138,9 +1138,9 @@
       {
         "stage_code": "1220",
         "stage": "초기2",
-        "product_code": "10687",
-        "product_name": "양송이무죽",
-        "label": "본",
+        "product_code": "10042",
+        "product_name": "한우청경채죽",
+        "label": "추가",
         "planned": 82,
         "planned_jasa": 75,
         "planned_oibu": 7
@@ -1170,7 +1170,7 @@
         "stage": "중기",
         "product_code": "10124",
         "product_name": "한우흑미죽",
-        "label": "본",
+        "label": "추가",
         "planned": 395,
         "planned_jasa": 355,
         "planned_oibu": 40
@@ -1180,7 +1180,7 @@
         "stage": "중기",
         "product_code": "12209",
         "product_name": "연두부닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 392,
         "planned_jasa": 351,
         "planned_oibu": 41
@@ -1220,7 +1220,7 @@
         "stage": "후기",
         "product_code": "10179",
         "product_name": "한우비타민죽",
-        "label": "본",
+        "label": "추가",
         "planned": 659,
         "planned_jasa": 593,
         "planned_oibu": 66
@@ -1230,7 +1230,7 @@
         "stage": "후기",
         "product_code": "10130",
         "product_name": "가지나물들깨죽",
-        "label": "본",
+        "label": "추가",
         "planned": 655,
         "planned_jasa": 588,
         "planned_oibu": 67
@@ -1300,7 +1300,7 @@
         "stage": "후기무른밥",
         "product_code": "10234",
         "product_name": "브로컬리닭무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 717,
         "planned_jasa": 638,
         "planned_oibu": 79
@@ -1320,7 +1320,7 @@
         "stage": "후기무른밥",
         "product_code": "10274",
         "product_name": "한우모듬버섯무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 487,
         "planned_jasa": 437,
         "planned_oibu": 50
@@ -1330,7 +1330,7 @@
         "stage": "후기무른밥",
         "product_code": "10212",
         "product_name": "단호박오트밀무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 482,
         "planned_jasa": 432,
         "planned_oibu": 50
@@ -1361,16 +1361,16 @@
         "product_code": "11085",
         "product_name": "토마토시금치치킨파에야",
         "label": "본",
-        "planned": 189,
+        "planned": 188,
         "planned_jasa": 171,
-        "planned_oibu": 18
+        "planned_oibu": 17
       },
       {
         "stage_code": "1310",
         "stage": "영양밥",
         "product_code": "10388",
         "product_name": "한우버섯리조또",
-        "label": "본",
+        "label": "추가",
         "planned": 139,
         "planned_jasa": 123,
         "planned_oibu": 16
@@ -1380,7 +1380,7 @@
         "stage": "영양밥",
         "product_code": "10366",
         "product_name": "영양닭살밥",
-        "label": "본",
+        "label": "추가",
         "planned": 139,
         "planned_jasa": 123,
         "planned_oibu": 16
@@ -1390,19 +1390,9 @@
         "stage": "영양밥",
         "product_code": "10372",
         "product_name": "청경채양배추밥",
-        "label": "본",
+        "label": "추가",
         "planned": 113,
         "planned_jasa": 99,
-        "planned_oibu": 14
-      },
-      {
-        "stage_code": "1320",
-        "stage": "영양국",
-        "product_code": "10604",
-        "product_name": "한우근대국",
-        "label": "본",
-        "planned": 217,
-        "planned_jasa": 203,
         "planned_oibu": 14
       },
       {
@@ -1418,9 +1408,19 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
+        "product_code": "10604",
+        "product_name": "한우근대국",
+        "label": "본",
+        "planned": 217,
+        "planned_jasa": 203,
+        "planned_oibu": 14
+      },
+      {
+        "stage_code": "1320",
+        "stage": "영양국",
         "product_code": "10546",
         "product_name": "대추닭살탕",
-        "label": "본",
+        "label": "추가",
         "planned": 118,
         "planned_jasa": 110,
         "planned_oibu": 8
@@ -1430,7 +1430,7 @@
         "stage": "영양국",
         "product_code": "10623",
         "product_name": "한우표고탕",
-        "label": "본",
+        "label": "추가",
         "planned": 118,
         "planned_jasa": 110,
         "planned_oibu": 8
@@ -1448,9 +1448,9 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "10629",
-        "product_name": "아기육개장",
-        "label": "본",
+        "product_code": "10585",
+        "product_name": "오징어배추국",
+        "label": "추가",
         "planned": 66,
         "planned_jasa": 61,
         "planned_oibu": 5
@@ -1490,7 +1490,7 @@
         "stage": "영양찬",
         "product_code": "10505",
         "product_name": "닭살오트밀영양찜",
-        "label": "본",
+        "label": "추가",
         "planned": 140,
         "planned_jasa": 121,
         "planned_oibu": 19
@@ -1500,7 +1500,7 @@
         "stage": "영양찬",
         "product_code": "10484",
         "product_name": "한우버섯볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 140,
         "planned_jasa": 121,
         "planned_oibu": 19
@@ -1510,7 +1510,7 @@
         "stage": "영양찬",
         "product_code": "10776",
         "product_name": "배추들깨볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 102,
         "planned_jasa": 84,
         "planned_oibu": 18
@@ -1596,7 +1596,7 @@
         "stage": "초기1",
         "product_code": "10010",
         "product_name": "애호박죽",
-        "label": "본",
+        "label": "추가",
         "planned": 88,
         "planned_jasa": 80,
         "planned_oibu": 8
@@ -1636,7 +1636,7 @@
         "stage": "초기2",
         "product_code": "10023",
         "product_name": "한우단호박죽",
-        "label": "본",
+        "label": "추가",
         "planned": 93,
         "planned_jasa": 88,
         "planned_oibu": 5
@@ -1646,7 +1646,7 @@
         "stage": "초기2",
         "product_code": "10750",
         "product_name": "애호박감자죽",
-        "label": "본",
+        "label": "추가",
         "planned": 93,
         "planned_jasa": 88,
         "planned_oibu": 5
@@ -1676,7 +1676,7 @@
         "stage": "중기",
         "product_code": "10049",
         "product_name": "감자닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 375,
         "planned_jasa": 327,
         "planned_oibu": 48
@@ -1686,7 +1686,7 @@
         "stage": "중기",
         "product_code": "10118",
         "product_name": "한우치아씨드죽",
-        "label": "본",
+        "label": "추가",
         "planned": 375,
         "planned_jasa": 327,
         "planned_oibu": 48
@@ -1726,7 +1726,7 @@
         "stage": "후기",
         "product_code": "10183",
         "product_name": "한우시금치죽",
-        "label": "본",
+        "label": "추가",
         "planned": 634,
         "planned_jasa": 539,
         "planned_oibu": 95
@@ -1736,7 +1736,7 @@
         "stage": "후기",
         "product_code": "10910",
         "product_name": "애호박닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 633,
         "planned_jasa": 536,
         "planned_oibu": 97
@@ -1745,7 +1745,7 @@
         "stage_code": "1240",
         "stage": "후기",
         "product_code": "12149",
-        "product_name": "연두부모듬버섯죽",
+        "product_name": "순두부모듬버섯죽",
         "label": "본",
         "planned": 411,
         "planned_jasa": 334,
@@ -1756,7 +1756,7 @@
         "stage": "후기",
         "product_code": "10186",
         "product_name": "한우알배추죽",
-        "label": "본",
+        "label": "추가",
         "planned": 333,
         "planned_jasa": 279,
         "planned_oibu": 54
@@ -1766,7 +1766,7 @@
         "stage": "후기",
         "product_code": "10152",
         "product_name": "아기백숙",
-        "label": "본",
+        "label": "추가",
         "planned": 321,
         "planned_jasa": 267,
         "planned_oibu": 54
@@ -1786,7 +1786,7 @@
         "stage": "후기무른밥",
         "product_code": "10246",
         "product_name": "새우살청경채무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 687,
         "planned_jasa": 567,
         "planned_oibu": 120
@@ -1816,7 +1816,7 @@
         "stage": "후기무른밥",
         "product_code": "12216",
         "product_name": "닭가슴살들깨무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 455,
         "planned_jasa": 377,
         "planned_oibu": 78
@@ -1826,7 +1826,7 @@
         "stage": "후기무른밥",
         "product_code": "10302",
         "product_name": "한우치아씨드무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 455,
         "planned_jasa": 377,
         "planned_oibu": 78
@@ -1836,7 +1836,7 @@
         "stage": "후기무른밥",
         "product_code": "10242",
         "product_name": "새우살무나물무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 368,
         "planned_jasa": 294,
         "planned_oibu": 74
@@ -1844,8 +1844,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10353",
-        "product_name": "새우살컬리볶음밥",
+        "product_code": "10408",
+        "product_name": "한우흰콩밥",
         "label": "본",
         "planned": 208,
         "planned_jasa": 170,
@@ -1854,8 +1854,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10408",
-        "product_name": "한우흰콩밥",
+        "product_code": "10353",
+        "product_name": "새우살컬리볶음밥",
         "label": "본",
         "planned": 208,
         "planned_jasa": 170,
@@ -1874,9 +1874,9 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10343",
-        "product_name": "불고기검은콩밥",
-        "label": "본",
+        "product_code": "11082",
+        "product_name": "한우시금치볶음밥",
+        "label": "추가",
         "planned": 134,
         "planned_jasa": 109,
         "planned_oibu": 25
@@ -1884,9 +1884,9 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "11082",
-        "product_name": "한우시금치볶음밥",
-        "label": "본",
+        "product_code": "10343",
+        "product_name": "불고기검은콩밥",
+        "label": "추가",
         "planned": 134,
         "planned_jasa": 109,
         "planned_oibu": 25
@@ -1896,20 +1896,10 @@
         "stage": "영양밥",
         "product_code": "10330",
         "product_name": "대구살애호박밥",
-        "label": "본",
+        "label": "추가",
         "planned": 116,
         "planned_jasa": 93,
         "planned_oibu": 23
-      },
-      {
-        "stage_code": "1320",
-        "stage": "영양국",
-        "product_code": "10605",
-        "product_name": "한우느타리국",
-        "label": "본",
-        "planned": 173,
-        "planned_jasa": 151,
-        "planned_oibu": 22
       },
       {
         "stage_code": "1320",
@@ -1924,9 +1914,19 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
+        "product_code": "10605",
+        "product_name": "한우느타리국",
+        "label": "본",
+        "planned": 173,
+        "planned_jasa": 151,
+        "planned_oibu": 22
+      },
+      {
+        "stage_code": "1320",
+        "stage": "영양국",
         "product_code": "10586",
         "product_name": "오징어전골",
-        "label": "본",
+        "label": "추가",
         "planned": 129,
         "planned_jasa": 113,
         "planned_oibu": 16
@@ -1936,7 +1936,7 @@
         "stage": "영양국",
         "product_code": "10617",
         "product_name": "한우양배추아욱탕",
-        "label": "본",
+        "label": "추가",
         "planned": 129,
         "planned_jasa": 113,
         "planned_oibu": 16
@@ -1956,7 +1956,7 @@
         "stage": "영양국",
         "product_code": "10541",
         "product_name": "닭살팽이국",
-        "label": "본",
+        "label": "추가",
         "planned": 66,
         "planned_jasa": 56,
         "planned_oibu": 10
@@ -1996,7 +1996,7 @@
         "stage": "영양찬",
         "product_code": "10465",
         "product_name": "숙주나물불고기",
-        "label": "본",
+        "label": "추가",
         "planned": 136,
         "planned_jasa": 98,
         "planned_oibu": 38
@@ -2006,7 +2006,7 @@
         "stage": "영양찬",
         "product_code": "10502",
         "product_name": "해물짜장",
-        "label": "본",
+        "label": "추가",
         "planned": 135,
         "planned_jasa": 97,
         "planned_oibu": 38
@@ -2016,7 +2016,7 @@
         "stage": "영양찬",
         "product_code": "10460",
         "product_name": "새송이두부볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 107,
         "planned_jasa": 74,
         "planned_oibu": 33
@@ -2112,7 +2112,7 @@
         "stage": "초기1",
         "product_code": "12031",
         "product_name": "녹미죽",
-        "label": "본",
+        "label": "추가",
         "planned": 67,
         "planned_jasa": 61,
         "planned_oibu": 6
@@ -2142,7 +2142,7 @@
         "stage": "초기2",
         "product_code": "10027",
         "product_name": "한우배죽",
-        "label": "본",
+        "label": "추가",
         "planned": 149,
         "planned_jasa": 136,
         "planned_oibu": 13
@@ -2152,7 +2152,7 @@
         "stage": "초기2",
         "product_code": "10722",
         "product_name": "컬리플라워고구마죽",
-        "label": "본",
+        "label": "추가",
         "planned": 149,
         "planned_jasa": 136,
         "planned_oibu": 13
@@ -2182,7 +2182,7 @@
         "stage": "중기",
         "product_code": "12205",
         "product_name": "대구살야채죽",
-        "label": "본",
+        "label": "추가",
         "planned": 602,
         "planned_jasa": 540,
         "planned_oibu": 62
@@ -2192,7 +2192,7 @@
         "stage": "중기",
         "product_code": "10122",
         "product_name": "한우표고죽",
-        "label": "본",
+        "label": "추가",
         "planned": 602,
         "planned_jasa": 540,
         "planned_oibu": 62
@@ -2202,7 +2202,7 @@
         "stage": "중기",
         "product_code": "10088",
         "product_name": "한우모듬버섯죽",
-        "label": "본",
+        "label": "케어",
         "planned": 441,
         "planned_jasa": 386,
         "planned_oibu": 55
@@ -2242,7 +2242,7 @@
         "stage": "후기",
         "product_code": "10156",
         "product_name": "약콩닭죽",
-        "label": "본",
+        "label": "추가",
         "planned": 980,
         "planned_jasa": 878,
         "planned_oibu": 102
@@ -2252,7 +2252,7 @@
         "stage": "후기",
         "product_code": "10736",
         "product_name": "단호박흑미영양죽",
-        "label": "본",
+        "label": "추가",
         "planned": 721,
         "planned_jasa": 632,
         "planned_oibu": 89
@@ -2262,7 +2262,7 @@
         "stage": "후기",
         "product_code": "10191",
         "product_name": "한우양송이죽",
-        "label": "본",
+        "label": "추가",
         "planned": 707,
         "planned_jasa": 607,
         "planned_oibu": 100
@@ -2272,7 +2272,7 @@
         "stage": "후기",
         "product_code": "10161",
         "product_name": "치아씨드영양닭죽",
-        "label": "본",
+        "label": "케어",
         "planned": 701,
         "planned_jasa": 601,
         "planned_oibu": 100
@@ -2312,7 +2312,7 @@
         "stage": "후기무른밥",
         "product_code": "12153",
         "product_name": "연두부근대무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 1082,
         "planned_jasa": 954,
         "planned_oibu": 128
@@ -2322,7 +2322,7 @@
         "stage": "후기무른밥",
         "product_code": "10244",
         "product_name": "새우살부추무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 756,
         "planned_jasa": 634,
         "planned_oibu": 122
@@ -2332,7 +2332,7 @@
         "stage": "후기무른밥",
         "product_code": "10281",
         "product_name": "한우배추무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 726,
         "planned_jasa": 642,
         "planned_oibu": 84
@@ -2342,7 +2342,7 @@
         "stage": "후기무른밥",
         "product_code": "10249",
         "product_name": "아기백숙",
-        "label": "본",
+        "label": "케어",
         "planned": 720,
         "planned_jasa": 638,
         "planned_oibu": 82
@@ -2350,8 +2350,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10325",
-        "product_name": "닭가슴살느타리밥",
+        "product_code": "10387",
+        "product_name": "한우미역밥",
         "label": "본",
         "planned": 367,
         "planned_jasa": 326,
@@ -2360,8 +2360,8 @@
       {
         "stage_code": "1310",
         "stage": "영양밥",
-        "product_code": "10387",
-        "product_name": "한우미역밥",
+        "product_code": "10325",
+        "product_name": "닭가슴살느타리밥",
         "label": "본",
         "planned": 367,
         "planned_jasa": 326,
@@ -2382,7 +2382,7 @@
         "stage": "영양밥",
         "product_code": "10355",
         "product_name": "쉬림프치즈밥",
-        "label": "본",
+        "label": "추가",
         "planned": 217,
         "planned_jasa": 194,
         "planned_oibu": 23
@@ -2392,7 +2392,7 @@
         "stage": "영양밥",
         "product_code": "10386",
         "product_name": "한우무나물밥",
-        "label": "본",
+        "label": "추가",
         "planned": 217,
         "planned_jasa": 194,
         "planned_oibu": 23
@@ -2402,7 +2402,7 @@
         "stage": "영양밥",
         "product_code": "10336",
         "product_name": "들깨유부조림밥",
-        "label": "본",
+        "label": "추가",
         "planned": 187,
         "planned_jasa": 166,
         "planned_oibu": 21
@@ -2440,9 +2440,9 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "10634",
-        "product_name": "한우송이탕",
-        "label": "본",
+        "product_code": "12059",
+        "product_name": "녹미단호박스프",
+        "label": "추가",
         "planned": 150,
         "planned_jasa": 140,
         "planned_oibu": 10
@@ -2450,9 +2450,9 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "12059",
-        "product_name": "녹미단호박스프",
-        "label": "본",
+        "product_code": "10634",
+        "product_name": "한우송이탕",
+        "label": "추가",
         "planned": 150,
         "planned_jasa": 140,
         "planned_oibu": 10
@@ -2462,7 +2462,7 @@
         "stage": "영양국",
         "product_code": "10621",
         "product_name": "한우탕국",
-        "label": "본",
+        "label": "추가",
         "planned": 120,
         "planned_jasa": 107,
         "planned_oibu": 13
@@ -2502,7 +2502,7 @@
         "stage": "영양찬",
         "product_code": "10478",
         "product_name": "한우감자찜",
-        "label": "본",
+        "label": "추가",
         "planned": 262,
         "planned_jasa": 225,
         "planned_oibu": 37
@@ -2512,7 +2512,7 @@
         "stage": "영양찬",
         "product_code": "10516",
         "product_name": "청경채새송이볶음",
-        "label": "본",
+        "label": "추가",
         "planned": 261,
         "planned_jasa": 225,
         "planned_oibu": 36
@@ -2521,8 +2521,8 @@
         "stage_code": "1330",
         "stage": "영양찬",
         "product_code": "10443",
-        "product_name": "닭가슴살비트유부조림",
-        "label": "본",
+        "product_name": "청경채두부볶음",
+        "label": "추가",
         "planned": 243,
         "planned_jasa": 214,
         "planned_oibu": 29
@@ -2608,7 +2608,7 @@
         "stage": "초기1",
         "product_code": "10001",
         "product_name": "감자죽",
-        "label": "본",
+        "label": "추가",
         "planned": 50,
         "planned_jasa": 47,
         "planned_oibu": 3
@@ -2618,20 +2618,10 @@
         "stage": "초기1",
         "product_code": "10003",
         "product_name": "기장죽",
-        "label": "본",
+        "label": "추가",
         "planned": 28,
         "planned_jasa": 26,
         "planned_oibu": 2
-      },
-      {
-        "stage_code": "1220",
-        "stage": "초기2",
-        "product_code": "12054",
-        "product_name": "녹미검은콩죽",
-        "label": "본",
-        "planned": 91,
-        "planned_jasa": 87,
-        "planned_oibu": 4
       },
       {
         "stage_code": "1220",
@@ -2646,9 +2636,19 @@
       {
         "stage_code": "1220",
         "stage": "초기2",
-        "product_code": "10044",
-        "product_name": "한우퀴노아죽",
+        "product_code": "12054",
+        "product_name": "녹미검은콩죽",
         "label": "본",
+        "planned": 91,
+        "planned_jasa": 87,
+        "planned_oibu": 4
+      },
+      {
+        "stage_code": "1220",
+        "stage": "초기2",
+        "product_code": "10720",
+        "product_name": "비타민병아리콩죽",
+        "label": "추가",
         "planned": 64,
         "planned_jasa": 62,
         "planned_oibu": 2
@@ -2656,9 +2656,9 @@
       {
         "stage_code": "1220",
         "stage": "초기2",
-        "product_code": "10720",
-        "product_name": "비타민병아리콩죽",
-        "label": "본",
+        "product_code": "10044",
+        "product_name": "한우퀴노아죽",
+        "label": "추가",
         "planned": 64,
         "planned_jasa": 62,
         "planned_oibu": 2
@@ -2708,7 +2708,7 @@
         "stage": "중기",
         "product_code": "10056",
         "product_name": "닭가슴살치즈죽",
-        "label": "본",
+        "label": "추가",
         "planned": 254,
         "planned_jasa": 236,
         "planned_oibu": 18
@@ -2758,7 +2758,7 @@
         "stage": "후기",
         "product_code": "12215",
         "product_name": "한우녹미야채죽",
-        "label": "본",
+        "label": "추가",
         "planned": 463,
         "planned_jasa": 437,
         "planned_oibu": 26
@@ -2768,7 +2768,7 @@
         "stage": "후기",
         "product_code": "10162",
         "product_name": "치킨캐비지",
-        "label": "본",
+        "label": "추가",
         "planned": 455,
         "planned_jasa": 429,
         "planned_oibu": 26
@@ -2828,7 +2828,7 @@
         "stage": "후기무른밥",
         "product_code": "10231",
         "product_name": "병아리콩영양무른밥",
-        "label": "본",
+        "label": "추가",
         "planned": 535,
         "planned_jasa": 500,
         "planned_oibu": 35
@@ -2888,7 +2888,7 @@
         "stage": "영양밥",
         "product_code": "10415",
         "product_name": "두부표고볶음밥",
-        "label": "본",
+        "label": "추가",
         "planned": 105,
         "planned_jasa": 101,
         "planned_oibu": 4
@@ -2898,7 +2898,7 @@
         "stage": "영양밥",
         "product_code": "10406",
         "product_name": "한우컬리밥",
-        "label": "본",
+        "label": "추가",
         "planned": 105,
         "planned_jasa": 101,
         "planned_oibu": 4
@@ -2908,7 +2908,7 @@
         "stage": "영양밥",
         "product_code": "10376",
         "product_name": "콩나물우엉조림밥",
-        "label": "본",
+        "label": "추가",
         "planned": 88,
         "planned_jasa": 83,
         "planned_oibu": 5
@@ -2938,7 +2938,7 @@
         "stage": "영양국",
         "product_code": "10640",
         "product_name": "시금치닭살탕",
-        "label": "본",
+        "label": "추가",
         "planned": 89,
         "planned_jasa": 86,
         "planned_oibu": 3
@@ -2948,7 +2948,7 @@
         "stage": "영양국",
         "product_code": "10635",
         "product_name": "한우숙주전골",
-        "label": "본",
+        "label": "추가",
         "planned": 89,
         "planned_jasa": 86,
         "planned_oibu": 3
@@ -2966,8 +2966,8 @@
       {
         "stage_code": "1320",
         "stage": "영양국",
-        "product_code": "10603",
-        "product_name": "한우감자탕",
+        "product_code": "10549",
+        "product_name": "배추속댓국",
         "label": "본",
         "planned": 57,
         "planned_jasa": 55,
@@ -3028,7 +3028,7 @@
         "stage": "영양찬",
         "product_code": "10500",
         "product_name": "해물류산슬",
-        "label": "본",
+        "label": "추가",
         "planned": 77,
         "planned_jasa": 75,
         "planned_oibu": 2

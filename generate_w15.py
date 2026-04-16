@@ -6,6 +6,19 @@ STAGE_MENU_COUNTS = {
     '1240': 7, '1250': 7, '1310': 6, '1320': 6, '1330': 6
 }
 
+# W12 기준 단계별 구분 배분 (본/추가/케어)
+STAGE_LABEL_SPLIT = {
+    '1110': (1, 0, 0),   # 본1
+    '1210': (1, 1, 0),   # 본1 + 추가1
+    '1220': (2, 2, 0),   # 본2 + 추가2
+    '1230': (2, 2, 1),   # 본2 + 추가2 + 케어1
+    '1240': (3, 3, 1),   # 본3 + 추가3 + 케어1
+    '1250': (3, 3, 1),   # 본3 + 추가3 + 케어1
+    '1310': (3, 3, 0),   # 본3 + 추가3
+    '1320': (3, 3, 0),   # 본3 + 추가3
+    '1330': (3, 3, 0),   # 본3 + 추가3
+}
+
 def extract_reports(file):
     with open(file, 'r', encoding='utf-8') as f:
         html = f.read()
@@ -17,6 +30,18 @@ def extract_reports(file):
 w12 = extract_reports('monitor_w12.html')
 w13 = extract_reports('monitor_w13.html')
 w14 = extract_reports('monitor_w14.html')
+
+# W12/W13에서 원본 label 매핑 구축 (W14는 label이 모두 '본'으로 잘못됨)
+label_ref = {}
+for week in [w12, w13]:
+    for day in week:
+        for m in day.get('menu_hits', []):
+            key = (m['product_code'], m['stage_code'])
+            lbl = m.get('label', '')
+            if lbl and lbl != '본':
+                label_ref[key] = lbl
+            elif key not in label_ref:
+                label_ref[key] = lbl or '본'
 
 # Build per-DOW, per-menu actual data across weeks
 weekly_by_dow = {}
@@ -101,12 +126,15 @@ for di, dow in enumerate(dows):
                 forecast_oibu = 0
                 forecast_jasa = forecast
 
+        # W12/W13 원본 label 참조 (W14는 label이 모두 '본'으로 잘못되어 있음)
+        original_label = label_ref.get((info['product_code'], info['stage_code']), info.get('label', '본'))
+
         menu_forecasts.append({
             'stage_code': info['stage_code'],
             'stage': info['stage'],
             'product_code': info['product_code'],
             'product_name': info['product_name'],
-            'label': info['label'],
+            'label': original_label,
             'planned': forecast,
             'planned_jasa': forecast_jasa,
             'planned_oibu': forecast_oibu,
@@ -145,9 +173,18 @@ for di, dow in enumerate(dows):
                             k['planned_oibu'] = 0
                             k['planned_jasa'] = k['planned']
 
-        # 모든 유지 메뉴의 label을 '본'으로 통일
-        for k in kept:
-            k['label'] = '본'
+        # W12/W13 원본 label이 없는 경우 단계별 규칙으로 label 배분
+        has_non_bon = any(k['label'] not in ('본', '') for k in kept)
+        if not has_non_bon:
+            bon_cnt, chuga_cnt, care_cnt = STAGE_LABEL_SPLIT.get(sc, (len(kept), 0, 0))
+            for idx, k in enumerate(kept):  # already sorted by -planned
+                if idx < bon_cnt:
+                    k['label'] = '본'
+                elif idx < bon_cnt + chuga_cnt:
+                    k['label'] = '추가'
+                else:
+                    k['label'] = '케어'
+
         trimmed.extend(kept)
 
     menu_forecasts = trimmed
