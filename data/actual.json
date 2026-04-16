@@ -793,6 +793,15 @@
       "qty": 104,
       "jasa": 81,
       "oibu": 23
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "UNKNOWN",
+      "product_name": "영양찬_UNKNOWN",
+      "qty": 0,
+      "jasa": 0,
+      "oibu": 0
     }
   ],
   "2026-04-02": [
