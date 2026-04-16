@@ -475,7 +475,7 @@ function applyUploadedData(uploadedData) {
             planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned_oibu),
             actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
             hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
-            status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+            status: m.qty === 0 ? 'fail' : (m.qty > planned ? 'over' : (hit_rate >= 90 ? 'normal' : (hit_rate >= 70 ? 'under' : 'fail')))
           };
         });
       } else {
@@ -494,7 +494,7 @@ function applyUploadedData(uploadedData) {
             mh.actual_oibu = 0;
           }
           mh.hit_rate = mh.planned > 0 ? Math.round(Math.min(mh.actual / mh.planned, mh.planned / mh.actual) * 1000) / 10 : 0;
-          mh.status = mh.actual === 0 ? 'under' : (mh.hit_rate >= 90 ? 'normal' : (mh.actual > mh.planned ? 'over' : 'under'));
+          mh.status = mh.actual === 0 ? 'fail' : (mh.actual > mh.planned ? 'over' : (mh.hit_rate >= 90 ? 'normal' : (mh.hit_rate >= 70 ? 'under' : 'fail')));
         });
         // 계획에 없는 실적 상품 추가
         menus.forEach(m => {
@@ -511,7 +511,7 @@ function applyUploadedData(uploadedData) {
               label: m.label || '', planned: planned, planned_jasa: Math.max(0, planned_jasa), planned_oibu: Math.max(0, planned - planned_jasa),
               actual: m.qty, actual_jasa: m.jasa, actual_oibu: m.oibu,
               hit_rate: hit_rate, ratio: planned > 0 ? Math.round(m.qty / planned * 1000) / 10 : 999.9,
-              status: m.qty === 0 ? 'under' : (hit_rate >= 90 ? 'normal' : (m.qty > planned ? 'over' : 'under'))
+              status: m.qty === 0 ? 'fail' : (m.qty > planned ? 'over' : (hit_rate >= 90 ? 'normal' : (hit_rate >= 70 ? 'under' : 'fail')))
             });
           }
         });
@@ -523,7 +523,7 @@ function applyUploadedData(uploadedData) {
       dr.stage_hits.forEach(sh => {
         sh.actual = stageActual[sh.stage] || 0;
         sh.hit_rate = sh.planned > 0 ? Math.round(Math.min(sh.actual / sh.planned, sh.planned / sh.actual) * 1000) / 10 : 0;
-        sh.status = sh.actual === 0 ? 'under' : (sh.hit_rate >= 90 ? 'normal' : (sh.actual > sh.planned ? 'over' : 'under'));
+        sh.status = sh.actual === 0 ? 'fail' : (sh.actual > sh.planned ? 'over' : (sh.hit_rate >= 90 ? 'normal' : (sh.hit_rate >= 70 ? 'under' : 'fail')));
       });
     }
 
@@ -622,8 +622,8 @@ function rerenderDayTab(dr) {
   let sumPlan = 0, sumActual = 0;
   (dr.stage_hits || []).forEach(sh => {
     const hrCls = sh.hit_rate >= 90 ? 'hr-excellent' : (sh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');
-    const stText = {normal:'정상',over:'과다',under:'과소'}[sh.status] || '';
-    const stColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828'}[sh.status] || '#333';
+    const stText = {normal:'정상',over:'과다',under:'과소',fail:'실패'}[sh.status] || '';
+    const stColor = {normal:'#2e7d32',over:'#1565c0',under:'#e65100',fail:'#c62828'}[sh.status] || '#333';
     html += '<tr><td>' + sh.stage + '</td><td class="num">' + sh.planned.toLocaleString() + '</td><td class="num">' + sh.actual.toLocaleString() + '</td>';
     html += '<td class="' + hrCls + '">' + sh.hit_rate + '%</td><td style="color:' + stColor + '; font-weight:600;">' + stText + '</td></tr>';
     sumPlan += sh.planned; sumActual += sh.actual;
@@ -664,8 +664,8 @@ function rerenderDayTab(dr) {
     html += '<tr class="hdr2"><th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th>';
     html += '<th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th></tr></thead><tbody>';
 
-    const statusMap = {normal:'정상',over:'과다',under:'과소',unplanned:'미예측'};
-    const statusColor = {normal:'#2e7d32',over:'#1565c0',under:'#c62828',unplanned:'#757575'};
+    const statusMap = {normal:'정상',over:'과다',under:'과소',fail:'실패',unplanned:'미예측'};
+    const statusColor = {normal:'#2e7d32',over:'#1565c0',under:'#e65100',fail:'#c62828',unplanned:'#757575'};
     shown.forEach(mh => {
       const bg = stageBg[mh.stage] || '#fff';
       const hrCls = mh.hit_rate >= 90 ? 'hr-excellent' : (mh.hit_rate >= 70 ? 'hr-good' : 'hr-poor');

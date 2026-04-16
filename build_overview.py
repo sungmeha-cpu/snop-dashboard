@@ -95,7 +95,14 @@ def merge_actual(dr):
             if planned > 0 and qty > 0:
                 hr = round(min(qty / planned, planned / qty) * 100, 1)
                 ratio = round(qty / planned * 100, 1)
-                status = "normal" if hr >= 70 else ("over" if qty > planned else "under")
+                if qty > planned:
+                    status = "over"
+                elif hr >= 90:
+                    status = "normal"
+                elif hr >= 70:
+                    status = "under"
+                else:
+                    status = "fail"
             else:
                 hr = 0.0
                 ratio = 0.0
