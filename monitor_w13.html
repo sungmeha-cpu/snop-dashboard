@@ -1302,7 +1302,7 @@ function rerenderDayTab(dr) {
     html += '<div style="max-height:500px; overflow-y:auto; border:1px solid #c5cae9; border-radius:8px;"><table style="margin-bottom:0;">';
     html += '<thead><tr class="hdr1"><th rowspan="2">단계</th><th rowspan="2">상품코드</th><th rowspan="2">상품명</th><th rowspan="2" style="border-right:2px solid #90caf9;">구분</th>';
     html += '<th colspan="3" style="border-right:2px solid #90caf9;">예측</th><th colspan="3" style="border-right:2px solid #90caf9;">실적</th>';
-    html += '<th rowspan="2">적중률</th><th rowspan="2">상태</th></tr>';
+    html += '<th rowspan="2">적중률</th><th rowspan="2">상태</th><th rowspan="2" style="min-width:130px;">식단시작일 조절</th></tr>';
     html += '<tr class="hdr2"><th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th>';
     html += '<th style="font-size:11px;">자사몰</th><th style="font-size:11px;">외부몰</th><th style="font-size:11px; border-right:2px solid #90caf9;">합계</th></tr></thead><tbody>';
 
@@ -1322,7 +1322,8 @@ function rerenderDayTab(dr) {
       html += '<td class="num" style="font-size:11px;">' + aj.toLocaleString() + '</td><td class="num" style="font-size:11px;">' + ao.toLocaleString() + '</td>';
       html += '<td class="num" style="border-right:2px solid #90caf9;">' + mh.actual.toLocaleString() + '</td>';
       html += '<td class="' + hrCls + '">' + mh.hit_rate + '%</td>';
-      html += '<td style="color:' + (statusColor[st]||'#333') + '; font-weight:600; font-size:12px;">' + (statusMap[st]||'') + '</td></tr>';
+      html += '<td style="color:' + (statusColor[st]||'#333') + '; font-weight:600; font-size:12px;">' + (statusMap[st]||'') + '</td>';
+      html += '<td style="min-width:130px; padding:0; position:relative;"><div style="display:flex; align-items:center; justify-content:center; height:100%; padding:7px 6px;"><input type="checkbox" id="cb_' + dr.date + '_' + mh.product_code + '" class="diet-cb" onchange="saveCB(this)" style="position:absolute; left:50%; transform:translateX(-50%);"><span class="cb-ts" style="font-size:10px; color:#666; margin-left:calc(50% + 12px); white-space:nowrap;"></span></div></td></tr>';
     });
 
     // 합계
@@ -1333,7 +1334,7 @@ function rerenderDayTab(dr) {
     html += '<tr style="background:#e8eaf6; font-weight:700;"><td>합계</td><td></td><td></td><td style="border-right:2px solid #90caf9;"></td>';
     html += '<td class="num">' + mSumPJ.toLocaleString() + '</td><td class="num">' + mSumPO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumP.toLocaleString() + '</td>';
     html += '<td class="num">' + mSumAJ.toLocaleString() + '</td><td class="num">' + mSumAO.toLocaleString() + '</td><td class="num" style="border-right:2px solid #90caf9;">' + mSumA.toLocaleString() + '</td>';
-    html += '<td style="color:#1a237e;">' + mSumHR + '%</td><td></td></tr>';
+    html += '<td style="color:#1a237e;">' + mSumHR + '%</td><td></td><td></td></tr>';
     html += '</tbody></table></div>';
   }
 
@@ -1480,6 +1481,7 @@ loadActualData().then(() => {
   rerenderOverview();
   updateNavDots();
   try { renderActionBoard(); } catch(e) {}
+  try { restoreCB(); } catch(e) {}
 });
 // 이름 복원
 (function() {
