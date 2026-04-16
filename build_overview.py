@@ -53,50 +53,66 @@ def merge_actual(dr):
                 ch["actual"] = total_oibu
             p, a = ch.get("planned",0), ch.get("actual",0)
             ch["hit_rate"] = round(min(a/p, p/a)*100, 1) if (p>0 and a>0) else 0.0
-        # 메뉴별 실적 병합
-        actual_by_code = {}
-        for r in recs:
-            actual_by_code[r["product_code"]] = r
-        # 기존 예측 메뉴에 실적 매칭
-        matched_codes = set()
+        # 메뉴별 실적 병합: 실적 기준으로 메뉴 재구성
+        # 단계별 계획 합계 (예측에서)
+        stage_plan = {}
+        stage_plan_jasa = {}
+        stage_plan_oibu = {}
+        for sh in d.get("stage_hits", []):
+            stage_plan[sh["stage_code"]] = sh.get("planned", 0)
+        # 예측 메뉴에서 단계별 자사몰/외부몰 비율 계산
         for mh in d.get("menu_hits", []):
-            pc = mh["product_code"]
-            if pc in actual_by_code:
-                ar = actual_by_code[pc]
-                mh["actual"] = ar["qty"]
-                mh["actual_jasa"] = ar["jasa"]
-                mh["actual_oibu"] = ar["oibu"]
-                matched_codes.add(pc)
+            sc = mh["stage_code"]
+            stage_plan_jasa[sc] = stage_plan_jasa.get(sc, 0) + mh.get("planned_jasa", 0)
+            stage_plan_oibu[sc] = stage_plan_oibu.get(sc, 0) + mh.get("planned_oibu", 0)
+        # 실적 기준 메뉴 리스트 구성
+        new_menu_hits = []
+        # 단계별 실적 합계 (비례배분용)
+        stage_actual_sum = {}
+        for r in recs:
+            sc = r.get("stage_code", "")
+            stage_actual_sum[sc] = stage_actual_sum.get(sc, 0) + r.get("qty", 0)
+        for r in recs:
+            sc = r.get("stage_code", "")
+            qty = r.get("qty", 0)
+            jasa = r.get("jasa", 0)
+            oibu = r.get("oibu", 0)
+            # 단계 계획을 실적 비율로 비례배분
+            s_plan = stage_plan.get(sc, 0)
+            s_actual = stage_actual_sum.get(sc, 1)
+            planned = round(s_plan * qty / s_actual) if s_actual > 0 else 0
+            # 자사몰/외부몰 비례배분
+            s_pj = stage_plan_jasa.get(sc, 0)
+            s_po = stage_plan_oibu.get(sc, 0)
+            s_pt = s_pj + s_po
+            if s_pt > 0:
+                planned_jasa = round(planned * s_pj / s_pt)
+                planned_oibu = planned - planned_jasa
             else:
-                mh["actual"] = 0
-                mh["actual_jasa"] = 0
-                mh["actual_oibu"] = 0
-            p, a = mh.get("planned",0), mh.get("actual",0)
-            if p > 0 and a > 0:
-                mh["hit_rate"] = round(min(a/p, p/a)*100, 1)
-                mh["ratio"] = round(a/p*100, 1)
-                mh["status"] = "normal" if mh["hit_rate"] >= 70 else ("over" if a > p else "under")
-            elif p == 0 and a > 0:
-                mh["hit_rate"] = 0.0
-                mh["ratio"] = 0.0
-                mh["status"] = "unplanned"
+                planned_jasa = planned
+                planned_oibu = 0
+            # 적중률 계산
+            if planned > 0 and qty > 0:
+                hr = round(min(qty / planned, planned / qty) * 100, 1)
+                ratio = round(qty / planned * 100, 1)
+                status = "normal" if hr >= 70 else ("over" if qty > planned else "under")
             else:
-                mh["hit_rate"] = 0.0
-                mh["ratio"] = 0.0
-                mh["status"] = "normal"
-        # 미예측 메뉴 추가 (실적은 있지만 예측에 없는 상품)
-        for pc, ar in actual_by_code.items():
-            if pc not in matched_codes:
-                d["menu_hits"].append({
-                    "stage_code": ar["stage_code"],
-                    "stage": ar.get("stage",""),
-                    "product_code": pc,
-                    "product_name": ar.get("product_name",""),
-                    "label": "",
-                    "planned": 0, "planned_jasa": 0, "planned_oibu": 0,
-                    "actual": ar["qty"], "actual_jasa": ar["jasa"], "actual_oibu": ar["oibu"],
-                    "hit_rate": 0.0, "ratio": 0.0, "status": "unplanned"
-                })
+                hr = 0.0
+                ratio = 0.0
+                status = "normal"
+            new_menu_hits.append({
+                "stage_code": sc,
+                "stage": r.get("stage", ""),
+                "product_code": r["product_code"],
+                "product_name": r.get("product_name", ""),
+                "label": "본",
+                "planned": planned, "planned_jasa": planned_jasa, "planned_oibu": planned_oibu,
+                "actual": qty, "actual_jasa": jasa, "actual_oibu": oibu,
+                "hit_rate": hr, "ratio": ratio, "status": status
+            })
+        # 단계코드 → 계획 내림차순 정렬
+        new_menu_hits.sort(key=lambda x: (x["stage_code"], -x["actual"]))
+        d["menu_hits"] = new_menu_hits
         # 전체 적중률
         p_total = d.get("planned_total",0)
         if p_total > 0 and total > 0:
