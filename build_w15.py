@@ -4,6 +4,10 @@ import json, re
 with open('w15_forecast.json', 'r', encoding='utf-8') as f:
     forecast = json.load(f)
 
+# Load actual data
+with open('data/actual.json', 'r', encoding='utf-8') as f:
+    actual_data = json.load(f)
+
 # Read W14 template
 with open('monitor_w14.html', 'r', encoding='utf-8') as f:
     template = f.read()
@@ -60,6 +64,101 @@ for day in forecast:
         'channel_hits': channel_hits,
         'menu_hits': menu_hits
     })
+
+# Merge actual data from actual.json
+for dr in daily_reports:
+    date_str = dr['date']
+    if date_str not in actual_data:
+        continue
+    menus = actual_data[date_str]
+
+    # 실적 집계
+    total_actual = 0
+    stage_actual = {}
+    ch_jasa = 0
+    ch_oibu = 0
+    for m in menus:
+        total_actual += m['qty']
+        stage_actual[m['stage']] = stage_actual.get(m['stage'], 0) + m['qty']
+        ch_jasa += m.get('jasa', 0)
+        ch_oibu += m.get('oibu', 0)
+
+    dr['actual_total'] = total_actual
+
+    # 메뉴별 매칭
+    matched = set()
+    for mh in dr['menu_hits']:
+        match = next((m for m in menus if m['stage_code'] == mh['stage_code'] and m['product_code'] == mh['product_code']), None)
+        if match:
+            mh['actual'] = match['qty']
+            mh['actual_jasa'] = match.get('jasa', 0)
+            mh['actual_oibu'] = match.get('oibu', 0)
+            matched.add(match['product_code'] + '_' + match['stage_code'])
+        else:
+            mh['actual'] = 0
+            mh['actual_jasa'] = 0
+            mh['actual_oibu'] = 0
+        if mh['planned'] > 0:
+            mh['hit_rate'] = round(min(mh['actual'] / mh['planned'], mh['planned'] / max(mh['actual'], 1)) * 1000) / 10
+        else:
+            mh['hit_rate'] = 0.0
+        if mh['actual'] == 0:
+            mh['status'] = 'fail'
+        elif mh['actual'] > mh['planned']:
+            mh['status'] = 'over'
+        elif mh['hit_rate'] >= 90:
+            mh['status'] = 'normal'
+        elif mh['hit_rate'] >= 70:
+            mh['status'] = 'under'
+        else:
+            mh['status'] = 'fail'
+
+    # 계획에 없는 실적 상품 추가
+    for m in menus:
+        key = m['product_code'] + '_' + m['stage_code']
+        if key not in matched:
+            dr['menu_hits'].append({
+                'stage_code': m['stage_code'], 'stage': m['stage'],
+                'product_code': m['product_code'], 'product_name': m['product_name'],
+                'label': m.get('label', ''), 'planned': 0, 'planned_jasa': 0, 'planned_oibu': 0,
+                'actual': m['qty'], 'actual_jasa': m.get('jasa', 0), 'actual_oibu': m.get('oibu', 0),
+                'hit_rate': 0.0, 'ratio': 999.9, 'status': 'over'
+            })
+
+    # 단계별
+    for sh in dr['stage_hits']:
+        sh['actual'] = stage_actual.get(sh['stage'], 0)
+        if sh['planned'] > 0:
+            sh['hit_rate'] = round(min(sh['actual'] / sh['planned'], sh['planned'] / max(sh['actual'], 1)) * 1000) / 10
+        else:
+            sh['hit_rate'] = 0.0
+        if sh['actual'] == 0:
+            sh['status'] = 'fail'
+        elif sh['actual'] > sh['planned']:
+            sh['status'] = 'over'
+        elif sh['hit_rate'] >= 90:
+            sh['status'] = 'normal'
+        elif sh['hit_rate'] >= 70:
+            sh['status'] = 'under'
+        else:
+            sh['status'] = 'fail'
+
+    # 채널별
+    for ch in dr['channel_hits']:
+        if ch['channel'] == '자사몰':
+            ch['actual'] = ch_jasa
+        elif ch['channel'] == '외부몰':
+            ch['actual'] = ch_oibu
+        if ch['planned'] > 0:
+            ch['hit_rate'] = round(min(ch['actual'] / ch['planned'], ch['planned'] / max(ch['actual'], 1)) * 1000) / 10
+        else:
+            ch['hit_rate'] = 0.0
+
+    # 전체 적중률
+    if dr['planned_total'] > 0:
+        dr['total_hit_rate'] = round(min(total_actual / dr['planned_total'], dr['planned_total'] / max(total_actual, 1)) * 1000) / 10
+    else:
+        dr['total_hit_rate'] = 0.0
 
 # Convert to JSON string
 reports_json = json.dumps(daily_reports, ensure_ascii=False)
