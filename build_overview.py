@@ -17,21 +17,24 @@ STAGE_NAME  = {"1110":"준비기","1210":"초기1","1220":"초기2","1230":"중�
                "1240":"후기","1250":"후기무른밥","1310":"영양밥","1320":"영양국","1330":"영양찬"}
 
 def merge_actual(dr):
-    """dailyReports 각 일자에 actual.json 데이터를 병합"""
+    """dailyReports 각 일자에 actual.json 데이터를 병합 (일/단계/채널/메뉴)"""
     for d in dr:
         date = d["date"]
         recs = ACT.get(date, [])
         if not recs:
-            # 실적 없음 유지
             continue
         # 일 합계
         total = sum(r.get("qty",0) for r in recs)
         d["actual_total"] = total
         # 단계별 합계
         stage_act = {}
+        stage_jasa = {}
+        stage_oibu = {}
         for r in recs:
             sc = r.get("stage_code","")
             stage_act[sc] = stage_act.get(sc,0) + r.get("qty",0)
+            stage_jasa[sc] = stage_jasa.get(sc,0) + r.get("jasa",0)
+            stage_oibu[sc] = stage_oibu.get(sc,0) + r.get("oibu",0)
         for sh in d.get("stage_hits", []):
             a = stage_act.get(sh["stage_code"], 0)
             p = sh.get("planned",0)
@@ -40,6 +43,60 @@ def merge_actual(dr):
                 sh["hit_rate"] = round(min(a/p, p/a)*100, 1)
             else:
                 sh["hit_rate"] = 0.0
+        # 채널별 합계
+        total_jasa = sum(r.get("jasa",0) for r in recs)
+        total_oibu = sum(r.get("oibu",0) for r in recs)
+        for ch in d.get("channel_hits", []):
+            if ch["channel"] == "자사몰":
+                ch["actual"] = total_jasa
+            elif ch["channel"] == "외부몰":
+                ch["actual"] = total_oibu
+            p, a = ch.get("planned",0), ch.get("actual",0)
+            ch["hit_rate"] = round(min(a/p, p/a)*100, 1) if (p>0 and a>0) else 0.0
+        # 메뉴별 실적 병합
+        actual_by_code = {}
+        for r in recs:
+            actual_by_code[r["product_code"]] = r
+        # 기존 예측 메뉴에 실적 매칭
+        matched_codes = set()
+        for mh in d.get("menu_hits", []):
+            pc = mh["product_code"]
+            if pc in actual_by_code:
+                ar = actual_by_code[pc]
+                mh["actual"] = ar["qty"]
+                mh["actual_jasa"] = ar["jasa"]
+                mh["actual_oibu"] = ar["oibu"]
+                matched_codes.add(pc)
+            else:
+                mh["actual"] = 0
+                mh["actual_jasa"] = 0
+                mh["actual_oibu"] = 0
+            p, a = mh.get("planned",0), mh.get("actual",0)
+            if p > 0 and a > 0:
+                mh["hit_rate"] = round(min(a/p, p/a)*100, 1)
+                mh["ratio"] = round(a/p*100, 1)
+                mh["status"] = "normal" if mh["hit_rate"] >= 70 else ("over" if a > p else "under")
+            elif p == 0 and a > 0:
+                mh["hit_rate"] = 0.0
+                mh["ratio"] = 0.0
+                mh["status"] = "unplanned"
+            else:
+                mh["hit_rate"] = 0.0
+                mh["ratio"] = 0.0
+                mh["status"] = "normal"
+        # 미예측 메뉴 추가 (실적은 있지만 예측에 없는 상품)
+        for pc, ar in actual_by_code.items():
+            if pc not in matched_codes:
+                d["menu_hits"].append({
+                    "stage_code": ar["stage_code"],
+                    "stage": ar.get("stage",""),
+                    "product_code": pc,
+                    "product_name": ar.get("product_name",""),
+                    "label": "",
+                    "planned": 0, "planned_jasa": 0, "planned_oibu": 0,
+                    "actual": ar["qty"], "actual_jasa": ar["jasa"], "actual_oibu": ar["oibu"],
+                    "hit_rate": 0.0, "ratio": 0.0, "status": "unplanned"
+                })
         # 전체 적중률
         p_total = d.get("planned_total",0)
         if p_total > 0 and total > 0:
