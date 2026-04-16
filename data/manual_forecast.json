@@ -153,6 +153,62 @@
       "manual_total": 28
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1250,
+      "manual_oibu": 135,
+      "manual_total": 1385
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1250,
+      "manual_oibu": 135,
+      "manual_total": 1385
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1875,
+      "manual_oibu": 181,
+      "manual_total": 2056
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 490,
+      "manual_oibu": 109,
+      "manual_total": 599
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 490,
+      "manual_oibu": 109,
+      "manual_total": 599
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 680,
+      "manual_oibu": 143,
+      "manual_total": 823
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -449,6 +505,62 @@
       "manual_jasa": 25,
       "manual_oibu": 0,
       "manual_total": 25
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 900,
+      "manual_oibu": 123,
+      "manual_total": 1023
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 890,
+      "manual_oibu": 123,
+      "manual_total": 1013
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1275,
+      "manual_oibu": 161,
+      "manual_total": 1436
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 210,
+      "manual_oibu": 109,
+      "manual_total": 319
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 200,
+      "manual_oibu": 109,
+      "manual_total": 309
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 285,
+      "manual_oibu": 138,
+      "manual_total": 423
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
     },
     {
       "stage_code": "1310",
@@ -749,6 +861,62 @@
       "manual_total": 25
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1130,
+      "manual_oibu": 124,
+      "manual_total": 1254
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1125,
+      "manual_oibu": 124,
+      "manual_total": 1249
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1620,
+      "manual_oibu": 165,
+      "manual_total": 1785
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 410,
+      "manual_oibu": 103,
+      "manual_total": 513
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 410,
+      "manual_oibu": 103,
+      "manual_total": 513
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 135,
+      "manual_total": 735
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -1045,6 +1213,62 @@
       "manual_jasa": 25,
       "manual_oibu": 0,
       "manual_total": 25
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1070,
+      "manual_oibu": 126,
+      "manual_total": 1196
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1070,
+      "manual_oibu": 126,
+      "manual_total": 1196
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1400,
+      "manual_oibu": 171,
+      "manual_total": 1571
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 217,
+      "manual_oibu": 108,
+      "manual_total": 325
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 207,
+      "manual_oibu": 108,
+      "manual_total": 315
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 340,
+      "manual_oibu": 146,
+      "manual_total": 486
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
     },
     {
       "stage_code": "1310",
@@ -1345,6 +1569,62 @@
       "manual_total": 40
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1610,
+      "manual_oibu": 151,
+      "manual_total": 1761
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1590,
+      "manual_oibu": 151,
+      "manual_total": 1741
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 2230,
+      "manual_oibu": 214,
+      "manual_total": 2444
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 750,
+      "manual_oibu": 122,
+      "manual_total": 872
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 750,
+      "manual_oibu": 122,
+      "manual_total": 872
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 980,
+      "manual_oibu": 164,
+      "manual_total": 1144
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -1641,6 +1921,62 @@
       "manual_jasa": 33,
       "manual_oibu": 0,
       "manual_total": 33
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 820,
+      "manual_oibu": 40,
+      "manual_total": 860
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 810,
+      "manual_oibu": 40,
+      "manual_total": 850
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1010,
+      "manual_oibu": 64,
+      "manual_total": 1074
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 560,
+      "manual_oibu": 29,
+      "manual_total": 589
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 560,
+      "manual_oibu": 29,
+      "manual_total": 589
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 750,
+      "manual_oibu": 40,
+      "manual_total": 790
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
     },
     {
       "stage_code": "1310",
@@ -1941,6 +2277,62 @@
       "manual_total": 38
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1220,
+      "manual_oibu": 136,
+      "manual_total": 1356
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1202,
+      "manual_oibu": 136,
+      "manual_total": 1338
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1749,
+      "manual_oibu": 206,
+      "manual_total": 1955
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 470,
+      "manual_oibu": 93,
+      "manual_total": 563
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 470,
+      "manual_oibu": 93,
+      "manual_total": 563
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 690,
+      "manual_oibu": 149,
+      "manual_total": 839
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 26,
+      "manual_oibu": 0,
+      "manual_total": 26
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -2237,6 +2629,62 @@
       "manual_jasa": 33,
       "manual_oibu": 0,
       "manual_total": 33
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 862,
+      "manual_oibu": 84,
+      "manual_total": 946
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 853,
+      "manual_oibu": 84,
+      "manual_total": 937
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1228,
+      "manual_oibu": 142,
+      "manual_total": 1370
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 215,
+      "manual_oibu": 94,
+      "manual_total": 309
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 204,
+      "manual_oibu": 103,
+      "manual_total": 307
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 384,
+      "manual_oibu": 114,
+      "manual_total": 498
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
     },
     {
       "stage_code": "1310",
@@ -2537,6 +2985,62 @@
       "manual_total": 35
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1131,
+      "manual_oibu": 91,
+      "manual_total": 1222
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1125,
+      "manual_oibu": 91,
+      "manual_total": 1216
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1570,
+      "manual_oibu": 134,
+      "manual_total": 1704
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 458,
+      "manual_oibu": 75,
+      "manual_total": 533
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 455,
+      "manual_oibu": 75,
+      "manual_total": 530
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 627,
+      "manual_oibu": 112,
+      "manual_total": 739
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 36,
+      "manual_oibu": 0,
+      "manual_total": 36
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -2833,6 +3337,62 @@
       "manual_jasa": 34,
       "manual_oibu": 0,
       "manual_total": 34
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 990,
+      "manual_oibu": 221,
+      "manual_total": 1211
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 984,
+      "manual_oibu": 218,
+      "manual_total": 1202
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1367,
+      "manual_oibu": 295,
+      "manual_total": 1662
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 272,
+      "manual_oibu": 199,
+      "manual_total": 471
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 268,
+      "manual_oibu": 217,
+      "manual_total": 485
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 399,
+      "manual_oibu": 258,
+      "manual_total": 657
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 53,
+      "manual_oibu": 0,
+      "manual_total": 53
     },
     {
       "stage_code": "1310",
@@ -3133,6 +3693,62 @@
       "manual_total": 35
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1369,
+      "manual_oibu": 155,
+      "manual_total": 1524
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1351,
+      "manual_oibu": 155,
+      "manual_total": 1506
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1988,
+      "manual_oibu": 259,
+      "manual_total": 2247
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 588,
+      "manual_oibu": 106,
+      "manual_total": 694
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 585,
+      "manual_oibu": 106,
+      "manual_total": 691
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 908,
+      "manual_oibu": 154,
+      "manual_total": 1062
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 42,
+      "manual_oibu": 0,
+      "manual_total": 42
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -3429,6 +4045,62 @@
       "manual_jasa": 20,
       "manual_oibu": 0,
       "manual_total": 20
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 796,
+      "manual_oibu": 49,
+      "manual_total": 845
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 792,
+      "manual_oibu": 39,
+      "manual_total": 831
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1187,
+      "manual_oibu": 110,
+      "manual_total": 1297
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 484,
+      "manual_oibu": 29,
+      "manual_total": 513
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 482,
+      "manual_oibu": 29,
+      "manual_total": 511
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 718,
+      "manual_oibu": 63,
+      "manual_total": 781
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 34,
+      "manual_oibu": 0,
+      "manual_total": 34
     },
     {
       "stage_code": "1310",
@@ -3729,6 +4401,62 @@
       "manual_total": 30
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1170,
+      "manual_oibu": 127,
+      "manual_total": 1297
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1165,
+      "manual_oibu": 127,
+      "manual_total": 1292
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1700,
+      "manual_oibu": 192,
+      "manual_total": 1892
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 435,
+      "manual_oibu": 101,
+      "manual_total": 536
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 435,
+      "manual_oibu": 101,
+      "manual_total": 536
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 640,
+      "manual_oibu": 154,
+      "manual_total": 794
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 27,
+      "manual_oibu": 0,
+      "manual_total": 27
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -4001,6 +4729,62 @@
       "manual_jasa": 20,
       "manual_oibu": 0,
       "manual_total": 20
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 750,
+      "manual_oibu": 87,
+      "manual_total": 837
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 750,
+      "manual_oibu": 87,
+      "manual_total": 837
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1130,
+      "manual_oibu": 140,
+      "manual_total": 1270
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 190,
+      "manual_oibu": 71,
+      "manual_total": 261
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 185,
+      "manual_oibu": 71,
+      "manual_total": 256
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 290,
+      "manual_oibu": 110,
+      "manual_total": 400
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
     },
     {
       "stage_code": "1310",
@@ -4295,6 +5079,62 @@
     {
       "stage_code": "1240",
       "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1030,
+      "manual_oibu": 91,
+      "manual_total": 1121
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1030,
+      "manual_oibu": 91,
+      "manual_total": 1121
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1480,
+      "manual_oibu": 149,
+      "manual_total": 1629
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 385,
+      "manual_oibu": 70,
+      "manual_total": 455
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 380,
+      "manual_oibu": 70,
+      "manual_total": 450
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 566,
+      "manual_oibu": 110,
+      "manual_total": 676
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
       "label": "케어",
       "manual_jasa": 30,
       "manual_oibu": 0,
@@ -4599,6 +5439,62 @@
       "manual_total": 27
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 820,
+      "manual_oibu": 151,
+      "manual_total": 971
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 810,
+      "manual_oibu": 151,
+      "manual_total": 961
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1210,
+      "manual_oibu": 232,
+      "manual_total": 1442
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 190,
+      "manual_oibu": 133,
+      "manual_total": 323
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 190,
+      "manual_oibu": 133,
+      "manual_total": 323
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 305,
+      "manual_oibu": 197,
+      "manual_total": 502
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -4895,6 +5791,62 @@
       "manual_jasa": 40,
       "manual_oibu": 0,
       "manual_total": 40
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1425,
+      "manual_oibu": 186,
+      "manual_total": 1611
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1420,
+      "manual_oibu": 186,
+      "manual_total": 1606
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 2155,
+      "manual_oibu": 258,
+      "manual_total": 2413
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 580,
+      "manual_oibu": 121,
+      "manual_total": 701
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 580,
+      "manual_oibu": 121,
+      "manual_total": 701
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 860,
+      "manual_oibu": 173,
+      "manual_total": 1033
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 53,
+      "manual_oibu": 0,
+      "manual_total": 53
     },
     {
       "stage_code": "1310",
@@ -5195,6 +6147,62 @@
       "manual_total": 25
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 730,
+      "manual_oibu": 53,
+      "manual_total": 783
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 725,
+      "manual_oibu": 53,
+      "manual_total": 778
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1010,
+      "manual_oibu": 91,
+      "manual_total": 1101
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 500,
+      "manual_oibu": 31,
+      "manual_total": 531
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 490,
+      "manual_oibu": 31,
+      "manual_total": 521
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 710,
+      "manual_oibu": 52,
+      "manual_total": 762
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 31,
+      "manual_oibu": 0,
+      "manual_total": 31
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -5491,6 +6499,62 @@
       "manual_jasa": 30,
       "manual_oibu": 0,
       "manual_total": 30
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1170,
+      "manual_oibu": 110,
+      "manual_total": 1280
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1150,
+      "manual_oibu": 110,
+      "manual_total": 1260
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1690,
+      "manual_oibu": 178,
+      "manual_total": 1868
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 440,
+      "manual_oibu": 85,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 440,
+      "manual_oibu": 85,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 650,
+      "manual_oibu": 140,
+      "manual_total": 790
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
     },
     {
       "stage_code": "1310",
@@ -5791,6 +6855,62 @@
       "manual_total": 25
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 790,
+      "manual_oibu": 86,
+      "manual_total": 876
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 790,
+      "manual_oibu": 86,
+      "manual_total": 876
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1180,
+      "manual_oibu": 142,
+      "manual_total": 1322
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 225,
+      "manual_oibu": 76,
+      "manual_total": 301
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 225,
+      "manual_oibu": 76,
+      "manual_total": 301
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 330,
+      "manual_oibu": 120,
+      "manual_total": 450
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -6087,6 +7207,62 @@
       "manual_jasa": 30,
       "manual_oibu": 0,
       "manual_total": 30
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1040,
+      "manual_oibu": 90,
+      "manual_total": 1130
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1040,
+      "manual_oibu": 90,
+      "manual_total": 1130
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1530,
+      "manual_oibu": 147,
+      "manual_total": 1677
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 410,
+      "manual_oibu": 78,
+      "manual_total": 488
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 410,
+      "manual_oibu": 78,
+      "manual_total": 488
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 590,
+      "manual_oibu": 122,
+      "manual_total": 712
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
     },
     {
       "stage_code": "1310",
@@ -6387,6 +7563,62 @@
       "manual_total": 38
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 887,
+      "manual_oibu": 164,
+      "manual_total": 1051
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 870,
+      "manual_oibu": 164,
+      "manual_total": 1034
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1305,
+      "manual_oibu": 244,
+      "manual_total": 1549
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 268,
+      "manual_oibu": 139,
+      "manual_total": 407
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 268,
+      "manual_oibu": 139,
+      "manual_total": 407
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 390,
+      "manual_oibu": 200,
+      "manual_total": 590
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -6683,6 +7915,62 @@
       "manual_jasa": 43,
       "manual_oibu": 0,
       "manual_total": 43
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1410,
+      "manual_oibu": 217,
+      "manual_total": 1627
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1400,
+      "manual_oibu": 217,
+      "manual_total": 1617
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 2100,
+      "manual_oibu": 299,
+      "manual_total": 2399
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 575,
+      "manual_oibu": 164,
+      "manual_total": 739
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 575,
+      "manual_oibu": 164,
+      "manual_total": 739
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 850,
+      "manual_oibu": 221,
+      "manual_total": 1071
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
     },
     {
       "stage_code": "1310",
@@ -6983,6 +8271,62 @@
       "manual_total": 35
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 725,
+      "manual_oibu": 49,
+      "manual_total": 774
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 725,
+      "manual_oibu": 49,
+      "manual_total": 774
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1050,
+      "manual_oibu": 81,
+      "manual_total": 1131
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 510,
+      "manual_oibu": 30,
+      "manual_total": 540
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 500,
+      "manual_oibu": 30,
+      "manual_total": 530
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 745,
+      "manual_oibu": 38,
+      "manual_total": 783
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 39,
+      "manual_oibu": 0,
+      "manual_total": 39
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -7279,6 +8623,62 @@
       "manual_jasa": 30,
       "manual_oibu": 0,
       "manual_total": 30
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1150,
+      "manual_oibu": 171,
+      "manual_total": 1321
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1135,
+      "manual_oibu": 171,
+      "manual_total": 1306
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1675,
+      "manual_oibu": 257,
+      "manual_total": 1932
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 443,
+      "manual_oibu": 158,
+      "manual_total": 601
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 430,
+      "manual_oibu": 158,
+      "manual_total": 588
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 640,
+      "manual_oibu": 232,
+      "manual_total": 872
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
     },
     {
       "stage_code": "1310",
@@ -7579,6 +8979,62 @@
       "manual_total": 21
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 840,
+      "manual_oibu": 134,
+      "manual_total": 974
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 840,
+      "manual_oibu": 134,
+      "manual_total": 974
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1280,
+      "manual_oibu": 199,
+      "manual_total": 1479
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 205,
+      "manual_oibu": 124,
+      "manual_total": 329
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 205,
+      "manual_oibu": 124,
+      "manual_total": 329
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 330,
+      "manual_oibu": 178,
+      "manual_total": 508
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -7877,6 +9333,62 @@
       "manual_total": 28
     },
     {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1036,
+      "manual_oibu": 130,
+      "manual_total": 1166
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1031,
+      "manual_oibu": 130,
+      "manual_total": 1161
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1517,
+      "manual_oibu": 209,
+      "manual_total": 1726
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 372,
+      "manual_oibu": 119,
+      "manual_total": 491
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 372,
+      "manual_oibu": 119,
+      "manual_total": 491
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 572,
+      "manual_oibu": 188,
+      "manual_total": 760
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
       "stage_code": "1310",
       "stage": "영양밥",
       "label": "본",
@@ -8173,6 +9685,62 @@
       "manual_jasa": 28,
       "manual_oibu": 0,
       "manual_total": 28
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 815,
+      "manual_oibu": 156,
+      "manual_total": 971
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 810,
+      "manual_oibu": 156,
+      "manual_total": 966
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "본",
+      "manual_jasa": 1280,
+      "manual_oibu": 233,
+      "manual_total": 1513
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 270,
+      "manual_oibu": 143,
+      "manual_total": 413
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 270,
+      "manual_oibu": 143,
+      "manual_total": 413
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "추",
+      "manual_jasa": 425,
+      "manual_oibu": 208,
+      "manual_total": 633
+    },
+    {
+      "stage_code": "1250",
+      "stage": "무른밥",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
     },
     {
       "stage_code": "1310",

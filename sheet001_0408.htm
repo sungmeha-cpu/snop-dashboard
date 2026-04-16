@@ -1,0 +1,919 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 15">
+<link id=Main-File rel=Main-File href="../4-8%20출고수량.xls">
+<link rel=File-List href=filelist.xml>
+<link rel=Stylesheet href=stylesheet.css>
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:1.0in .75in 1.0in .75in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;}
+ruby
+	{ruby-align:left;}
+rt
+	{color:windowtext;
+	font-size:8.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:"맑은 고딕", monospace;
+	mso-font-charset:129;
+	mso-char-type:none;
+	display:none;}
+-->
+</style>
+<![if !supportTabStrip]><script language="JavaScript">
+<!--
+function fnUpdateTabs()
+ {
+  if (parent.window.g_iIEVer>=4) {
+   if (parent.document.readyState=="complete"
+    && parent.frames['frTabs'].document.readyState=="complete")
+   parent.fnSetActiveSheet(0);
+  else
+   window.setTimeout("fnUpdateTabs();",150);
+ }
+}
+
+if (window.name!="frSheet")
+ window.location.replace("../4-8%20출고수량.xls");
+else
+ fnUpdateTabs();
+//-->
+</script>
+<![endif]>
+</head>
+
+<body link="#467886" vlink="#96607D">
+
+<table border=0 cellpadding=0 cellspacing=0 width=1343 style='border-collapse:
+ collapse;table-layout:fixed;width:1008pt'>
+ <col width=115 style='mso-width-source:userset;mso-width-alt:3680;width:86pt'>
+ <col width=60 span=2 style='mso-width-source:userset;mso-width-alt:1920;
+ width:45pt'>
+ <col width=90 style='mso-width-source:userset;mso-width-alt:2880;width:68pt'>
+ <col width=190 style='mso-width-source:userset;mso-width-alt:6080;width:143pt'>
+ <col width=288 style='mso-width-source:userset;mso-width-alt:9216;width:216pt'>
+ <col width=60 span=9 style='mso-width-source:userset;mso-width-alt:1920;
+ width:45pt'>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl65 colspan=4 width=325 style='height:16.5pt;mso-ignore:
+  colspan;width:244pt'>2026-04-09 20:29:25 기준 / 2026-04-08 생산완료</td>
+  <td width=190 style='width:143pt'></td>
+  <td width=288 style='width:216pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 colspan=15 style='height:16.5pt;mso-ignore:colspan'></td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td rowspan=2 height=44 class=xl66 width=115 style='border-bottom:.5pt solid black;
+  height:33.0pt;width:86pt'>단계명</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>단계코드</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>요일구분</td>
+  <td rowspan=2 class=xl66 width=90 style='border-bottom:.5pt solid black;
+  width:68pt'>상품코드</td>
+  <td rowspan=2 class=xl66 width=190 style='border-bottom:.5pt solid black;
+  width:143pt'>상품명</td>
+  <td rowspan=2 class=xl66 width=288 style='border-bottom:.5pt solid black;
+  width:216pt'>재료명</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>총 수량(병)</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>판수</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>낱개</td>
+  <td class=xl66 width=60 style='border-left:none;width:45pt'>클레배송</td>
+  <td class=xl66 width=60 style='border-left:none;width:45pt'>택배송</td>
+  <td class=xl66 width=60 style='border-left:none;width:45pt'>클레배송</td>
+  <td class=xl66 width=60 style='border-left:none;width:45pt'>택배송</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>백화점</td>
+  <td rowspan=2 class=xl66 width=60 style='border-bottom:.5pt solid black;
+  width:45pt'>기타</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl67 width=60 style='height:16.5pt;border-left:none;
+  width:45pt'>(자사몰)</td>
+  <td class=xl67 width=60 style='border-left:none;width:45pt'>(자사몰)</td>
+  <td class=xl67 width=60 style='border-left:none;width:45pt'>(외부몰)</td>
+  <td class=xl67 width=60 style='border-left:none;width:45pt'>(외부몰)</td>
+ </tr>
+ <tr height=22 style='height:16.5pt' data-key=준비기>
+  <td height=22 class=xl68 width=115 style='height:16.5pt;border-top:none;
+  width:86pt'>준비기</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1110</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10000</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>쌀죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>38</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>22</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt' data-key=초기1>
+  <td rowspan=2 height=44 class=xl72 width=115 style='border-bottom:.5pt solid black;
+  height:33.0pt;border-top:none;width:86pt'>초기1</td>
+  <td rowspan=2 class=xl72 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1210</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10013</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>청경채죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 청경채</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>119</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>52</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>5</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl70 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10002</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>고구마죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 고구마</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>40</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>33</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>5</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt' data-key=초기2>
+  <td rowspan=4 height=88 class=xl74 width=115 style='border-bottom:.5pt solid black;
+  height:66.0pt;border-top:none;width:86pt'>초기2</td>
+  <td rowspan=4 class=xl74 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1220</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10031</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우비트죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 쇠고기, 비트</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>209</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>107</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>93</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl68 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10689</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>단호박브로컬리죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 단호박, 브로컬리</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>209</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>107</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>93</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl68 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10038</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우양송이죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 쇠고기, 양송이버섯</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>76</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl68 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10717</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>현미밤죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 밤, 현미</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>76</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt' data-key=중기>
+  <td rowspan=5 height=198 class=xl72 width=115 style='border-bottom:.5pt solid black;
+  height:148.5pt;border-top:none;width:86pt'>중기</td>
+  <td rowspan=5 class=xl72 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1230</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10095</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우배추죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 무, 쇠고기, 배추, 당근</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>921</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>30</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>21</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>513</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>342</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>25</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>12421</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>들깨가자미캐비지죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  무, 가자미, 양배추, 쌀, 당근, 들깨, 들기름</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>914</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>30</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>14</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>510</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>338</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>25</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10123</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우현미영양죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  무, 쌀, 쇠고기, 찹쌀, 현미, 수수</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>394</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>4</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>286</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>23</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>25</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10066</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>새송이닭죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채닭육수(정제수,닭,무,양파,대파,마늘,다시마,대추,황기뿌리),
+  쌀, 감자, 닭가슴살, 새송이버섯, 당근, 우유</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>390</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>282</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>23</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>25</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>케어</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10091</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우무죽</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  무, 쌀, 쇠고기, 양배추</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt' data-key=후기>
+  <td rowspan=7 height=292 class=xl74 width=115 style='border-bottom:.5pt solid black;
+  height:219.0pt;border-top:none;width:86pt'>후기</td>
+  <td rowspan=7 class=xl74 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1240</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10189</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우야채죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 애호박, 쇠고기, 당근, 브로컬리</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1640</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>54</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>20</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>981</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>523</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>68</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>68</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10139</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>두부멸치야채죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  쌀, 감자, 두부(대두100%), 아욱, 당근, 멸치</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>1629</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>54</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>976</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>517</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>68</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>68</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl68 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10159</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>청경채닭죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채닭육수(정제수,닭,무,양파,대파,마늘,다시마,대추,황기뿌리),
+  쌀, 감자, 닭가슴살, 청경채, 당근, 우유</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>707</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>23</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>17</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>423</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>215</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>33</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>36</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl68 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10200</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우퀴노아약콩죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 무, 애호박, 두부(대두100%), 쇠고기, 약콩, 퀴노아</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>672</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>22</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>111</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>454</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>42</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>65</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl68 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10757</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>고구마현미밤죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>정제수,
+  쌀, 고구마, 밤, 현미</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>674</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>22</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>14</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>111</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>456</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>42</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>65</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl68 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10143</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>삼색닭죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채닭육수(정제수,닭,무,양파,대파,마늘,다시마,대추,황기뿌리),
+  쌀, 감자, 닭가슴살, 표고버섯, 당근, 근대, 우유</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>298</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>28</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>49</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>194</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>22</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>33</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>케어</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10174</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우무죽</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 무, 양배추, 쇠고기</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>17</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>17</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>4</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt' data-key="후기 무른밥">
+  <td rowspan=7 height=270 class=xl72 width=115 style='border-bottom:.5pt solid black;
+  height:202.5pt;border-top:none;width:86pt'>후기 무른밥</td>
+  <td rowspan=7 class=xl72 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1250</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10267</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우감자무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  감자, 쌀, 쇠고기, 당근</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1123</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>37</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>721</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>317</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>44</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10233</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>부추닭무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채닭육수(정제수,닭,무,양파,대파,마늘,다시마,대추,황기뿌리),
+  감자, 쌀, 닭가슴살, 당근, 부추, 찹쌀, 우유</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1122</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>37</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>722</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>315</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>44</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>12438</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>가자미쑥갓무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  무, 쌀, 가자미, 당근, 쑥갓, 참기름</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1711</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>57</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1060</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>499</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>79</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>73</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10280</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우배무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 무, 배, 쇠고기, 당근</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>400</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>68</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>263</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>28</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>12154</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>순두부모듬버섯무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  쌀, 두부, 감자, 느타리버섯, 애호박, 팽이버섯</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>397</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>69</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>259</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>28</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>41</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10245</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>새우살시금치깨무른밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  쌀, 새우살, 무, 시금치, 들깨</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>618</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>20</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>18</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>93</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>404</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>48</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>73</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl70 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>케어</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10277</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우무진밥</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쌀, 무, 쇠고기, 양배추</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt' data-key=영양밥>
+  <td rowspan=6 height=234 class=xl74 width=115 style='border-bottom:.5pt solid black;
+  height:175.5pt;border-top:none;width:86pt'>영양밥</td>
+  <td rowspan=6 class=xl74 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1310</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10431</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우병아리콩밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  쇠고기, 병아리콩, 약콩, 대파, 마늘, 양파, 현미유, 천일염, 양조간장</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>283</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>195</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>69</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10323</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>단호박송이밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  단호박, 새송이버섯, 감자, 당근, 천일염, 현미유</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>283</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>195</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>69</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10324</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>닭가슴살근대밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  무, 닭가슴살, 근대, 당근, 양파, 우유, 대파, 마늘, 현미유, 천일염</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>240</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>161</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>60</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10395</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우쑥갓밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  무, 애호박, 쇠고기, 당근, 쑥갓, 양파, 대파, 마늘, 천일염, 현미유, 양조간장</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>90</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>58</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl68 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10373</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>치킨두부버섯밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  애호박, 느타리버섯, 당근, 닭가슴살, 두부(대두100%), 팽이버섯, 양파, 참기름, 대파, 마늘, 천일염</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>90</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>58</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>12058</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>녹미멸치표고밥</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쌀,
+  감자, 브로컬리, 표고버섯, 녹미(녹색쌀), 멸치, 양파, 대파, 마늘, 참기름, 천일염</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>79</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>19</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>49</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>8</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt' data-key=영양국>
+  <td rowspan=6 height=324 class=xl72 width=115 style='border-bottom:.5pt solid black;
+  height:243.0pt;border-top:none;width:86pt'>영양국</td>
+  <td rowspan=6 class=xl72 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1320</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10618</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우양배추국</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  무, 쇠고기, 양배추, 팽이버섯, 대파, 마늘, 양조간장, 양파, 천일염</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>283</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>199</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>62</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10568</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>숙주나물무맑은국</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  무, 숙주나물, 당근, 표고버섯, 마늘, 양파, 대파, 양조간장, 천일염</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>283</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>13</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>199</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>62</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>12450</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>가자미쑥갓탕</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  무, 가자미, 계란, 쑥갓, 양파, 대파, 마늘, 간장, 천일염, 참기름</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>150</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>5</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>95</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>33</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10620</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>한우청경채탕</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채쇠고기육수(정제수,쇠고기,무,양파,대파,마늘,다시마),
+  쇠고기, 무, 새송이버섯, 청경채, 당근, 마늘, 대파, 양파, 천일염, 양조간장</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>71</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>47</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10536</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>닭살감자탕</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채닭육수(정제수,닭,무,양파,대파,마늘,다시마,대추,황기뿌리),
+  감자, 닭, 배추, 당근, 양파, 대파, 마늘, 천일염</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>71</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>47</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl70 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl70 width=90 style='border-top:none;border-left:none;width:68pt'>10559</td>
+  <td class=xl70 width=190 style='border-top:none;border-left:none;width:143pt'>새우배추탕</td>
+  <td class=xl71 width=288 style='border-top:none;border-left:none;width:216pt'>다채육수(정제수,다시마,무,양파,대파,마늘),
+  새우살, 무, 배추, 당근, 대파, 양파, 마늘, 양조간장, 천일염</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>42</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>1</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>12</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>21</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>6</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>9</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl70 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt' data-key=영양찬>
+  <td rowspan=6 height=220 class=xl74 width=115 style='border-bottom:.5pt solid black;
+  height:165.0pt;border-top:none;width:86pt'>영양찬</td>
+  <td rowspan=6 class=xl74 width=60 style='border-bottom:.5pt solid black;
+  border-top:none;width:45pt'>1330</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10479</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우느타리볶음</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쇠고기,
+  양배추, 느타리버섯, 당근, 양파, 올리고당, 양조간장, 대파, 마늘</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>500</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>20</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>346</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>109</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10454</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>무나물들깨볶음</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>무,
+  들기름, 들깨, 양파, 천일염, 대파, 마늘, 현미유</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>500</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>20</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>346</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>109</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=22 style='height:16.5pt'>
+  <td height=22 class=xl68 width=60 style='height:16.5pt;border-top:none;
+  border-left:none;width:45pt'>본</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10450</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>두부새우찜</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>두부,
+  새우살, 무, 당근, 양파, 대파, 마늘, 천일염</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>350</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>11</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>20</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>231</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>74</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>29</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10495</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>한우유부조림</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>쇠고기,
+  무, 당근, 유부, 대파, 올리고당, 양파, 마늘, 천일염, 양조간장</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>127</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>4</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>86</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>15</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=36 style='height:27.0pt'>
+  <td height=36 class=xl68 width=60 style='height:27.0pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10783</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>닭가슴살청경채볶음</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>닭가슴살,
+  청경채, 숙주나물, 유부, 양파, 우유, 대파, 마늘, 양조간장, 올리고당, 천일염</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>127</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>4</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>10</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>86</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>15</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <tr height=54 style='height:40.5pt'>
+  <td height=54 class=xl68 width=60 style='height:40.5pt;border-top:none;
+  border-left:none;width:45pt'>추가</td>
+  <td class=xl68 width=90 style='border-top:none;border-left:none;width:68pt'>10475</td>
+  <td class=xl68 width=190 style='border-top:none;border-left:none;width:143pt'>토마토스크램블</td>
+  <td class=xl69 width=288 style='border-top:none;border-left:none;width:216pt'>토마토,
+  정제수, 계란, 컬리플라워, 양파, 우유, 토마토소스(다이스드토마토,토마토페이스트,정제수,양파,올리브,바질), 현미유, 천일염, 대파,
+  마늘</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>92</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>3</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>2</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>7</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>54</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>16</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>15</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+  <td class=xl68 width=60 style='border-top:none;border-left:none;width:45pt'>0</td>
+ </tr>
+ <![if supportMisalignedColumns]>
+ <tr height=0 style='display:none' data-key=영양찬>
+  <td width=115 style='width:86pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=90 style='width:68pt'></td>
+  <td width=190 style='width:143pt'></td>
+  <td width=288 style='width:216pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+  <td width=60 style='width:45pt'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>
