@@ -1,0 +1,8322 @@
+{
+  "2026-03-16": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 40,
+      "manual_oibu": 4,
+      "manual_total": 44
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 10,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 6,
+      "manual_total": 46
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 8,
+      "manual_total": 188
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 8,
+      "manual_total": 188
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 6,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 6,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 810,
+      "manual_oibu": 64,
+      "manual_total": 874
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 810,
+      "manual_oibu": 64,
+      "manual_total": 874
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 310,
+      "manual_oibu": 53,
+      "manual_total": 363
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 310,
+      "manual_oibu": 53,
+      "manual_total": 363
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 10,
+      "manual_oibu": 0,
+      "manual_total": 10
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1600,
+      "manual_oibu": 146,
+      "manual_total": 1746
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1600,
+      "manual_oibu": 146,
+      "manual_total": 1746
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 730,
+      "manual_oibu": 100,
+      "manual_total": 830
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 580,
+      "manual_oibu": 125,
+      "manual_total": 705
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 580,
+      "manual_oibu": 125,
+      "manual_total": 705
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 260,
+      "manual_oibu": 91,
+      "manual_total": 351
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 355,
+      "manual_oibu": 37,
+      "manual_total": 392
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 355,
+      "manual_oibu": 37,
+      "manual_total": 392
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 310,
+      "manual_oibu": 36,
+      "manual_total": 346
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 28,
+      "manual_total": 148
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 28,
+      "manual_total": 148
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 28,
+      "manual_total": 128
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 340,
+      "manual_oibu": 22,
+      "manual_total": 362
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 340,
+      "manual_oibu": 22,
+      "manual_total": 362
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 200,
+      "manual_oibu": 19,
+      "manual_total": 219
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 14,
+      "manual_total": 104
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 14,
+      "manual_total": 104
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 13,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 590,
+      "manual_oibu": 69,
+      "manual_total": 659
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 590,
+      "manual_oibu": 69,
+      "manual_total": 659
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 430,
+      "manual_oibu": 66,
+      "manual_total": 496
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 160,
+      "manual_oibu": 45,
+      "manual_total": 205
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 160,
+      "manual_oibu": 45,
+      "manual_total": 205
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 44,
+      "manual_total": 164
+    }
+  ],
+  "2026-03-17": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 50,
+      "manual_oibu": 4,
+      "manual_total": 54
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 75,
+      "manual_oibu": 4,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 30,
+      "manual_oibu": 4,
+      "manual_total": 34
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 8,
+      "manual_total": 118
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 8,
+      "manual_total": 118
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 27,
+      "manual_oibu": 8,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 27,
+      "manual_oibu": 8,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 590,
+      "manual_oibu": 55,
+      "manual_total": 645
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 590,
+      "manual_oibu": 55,
+      "manual_total": 645
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 160,
+      "manual_oibu": 46,
+      "manual_total": 206
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 155,
+      "manual_oibu": 46,
+      "manual_total": 201
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 10,
+      "manual_oibu": 0,
+      "manual_total": 10
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1100,
+      "manual_oibu": 120,
+      "manual_total": 1220
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1085,
+      "manual_oibu": 120,
+      "manual_total": 1205
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 490,
+      "manual_oibu": 82,
+      "manual_total": 572
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 280,
+      "manual_oibu": 99,
+      "manual_total": 379
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 270,
+      "manual_oibu": 99,
+      "manual_total": 369
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 150,
+      "manual_oibu": 70,
+      "manual_total": 220
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 33,
+      "manual_total": 318
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 33,
+      "manual_total": 318
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 33,
+      "manual_total": 273
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 24,
+      "manual_total": 89
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 24,
+      "manual_total": 89
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 24,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 265,
+      "manual_oibu": 14,
+      "manual_total": 279
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 265,
+      "manual_oibu": 14,
+      "manual_total": 279
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 135,
+      "manual_oibu": 14,
+      "manual_total": 149
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 11,
+      "manual_total": 76
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 11,
+      "manual_total": 76
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 30,
+      "manual_oibu": 11,
+      "manual_total": 41
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 460,
+      "manual_oibu": 57,
+      "manual_total": 517
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 460,
+      "manual_oibu": 57,
+      "manual_total": 517
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 330,
+      "manual_oibu": 57,
+      "manual_total": 387
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 38,
+      "manual_total": 128
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 38,
+      "manual_total": 128
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 38,
+      "manual_total": 103
+    }
+  ],
+  "2026-03-18": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 30,
+      "manual_oibu": 4,
+      "manual_total": 34
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 115,
+      "manual_oibu": 5,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 47,
+      "manual_oibu": 4,
+      "manual_total": 51
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 8,
+      "manual_total": 168
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 8,
+      "manual_total": 168
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 6,
+      "manual_total": 71
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 6,
+      "manual_total": 71
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 750,
+      "manual_oibu": 58,
+      "manual_total": 808
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 740,
+      "manual_oibu": 58,
+      "manual_total": 798
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 330,
+      "manual_oibu": 50,
+      "manual_total": 380
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 320,
+      "manual_oibu": 50,
+      "manual_total": 370
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1400,
+      "manual_oibu": 137,
+      "manual_total": 1537
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1380,
+      "manual_oibu": 137,
+      "manual_total": 1517
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 600,
+      "manual_oibu": 96,
+      "manual_total": 696
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 510,
+      "manual_oibu": 121,
+      "manual_total": 631
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 510,
+      "manual_oibu": 121,
+      "manual_total": 631
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 230,
+      "manual_oibu": 89,
+      "manual_total": 319
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 310,
+      "manual_oibu": 29,
+      "manual_total": 339
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 310,
+      "manual_oibu": 29,
+      "manual_total": 339
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 29,
+      "manual_total": 279
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 23,
+      "manual_total": 113
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 23,
+      "manual_total": 113
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 23,
+      "manual_total": 103
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 20,
+      "manual_total": 310
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 20,
+      "manual_total": 310
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 170,
+      "manual_oibu": 19,
+      "manual_total": 189
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 14,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 14,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 13,
+      "manual_total": 53
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 510,
+      "manual_oibu": 63,
+      "manual_total": 573
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 510,
+      "manual_oibu": 63,
+      "manual_total": 573
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 62,
+      "manual_total": 432
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 42,
+      "manual_total": 162
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 42,
+      "manual_total": 162
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 41,
+      "manual_total": 126
+    }
+  ],
+  "2026-03-19": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 45,
+      "manual_oibu": 4,
+      "manual_total": 49
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 100,
+      "manual_oibu": 5,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 4,
+      "manual_total": 54
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 150,
+      "manual_oibu": 9,
+      "manual_total": 159
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 150,
+      "manual_oibu": 9,
+      "manual_total": 159
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 8,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 8,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 540,
+      "manual_oibu": 62,
+      "manual_total": 602
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 540,
+      "manual_oibu": 62,
+      "manual_total": 602
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 190,
+      "manual_oibu": 53,
+      "manual_total": 243
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 180,
+      "manual_oibu": 53,
+      "manual_total": 233
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 11,
+      "manual_oibu": 42,
+      "manual_total": 53
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1130,
+      "manual_oibu": 131,
+      "manual_total": 1261
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1120,
+      "manual_oibu": 131,
+      "manual_total": 1251
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 582,
+      "manual_oibu": 86,
+      "manual_total": 668
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 113,
+      "manual_total": 463
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 113,
+      "manual_total": 463
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 230,
+      "manual_oibu": 75,
+      "manual_total": 305
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 280,
+      "manual_oibu": 40,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 280,
+      "manual_oibu": 40,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 235,
+      "manual_oibu": 39,
+      "manual_total": 274
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 30,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 30,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 30,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 225,
+      "manual_oibu": 23,
+      "manual_total": 248
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 225,
+      "manual_oibu": 23,
+      "manual_total": 248
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 120,
+      "manual_oibu": 21,
+      "manual_total": 141
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 17,
+      "manual_total": 82
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 17,
+      "manual_total": 82
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 17,
+      "manual_total": 57
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 67,
+      "manual_total": 457
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 67,
+      "manual_total": 447
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 65,
+      "manual_total": 315
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 48,
+      "manual_total": 143
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 48,
+      "manual_total": 143
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 63,
+      "manual_oibu": 48,
+      "manual_total": 111
+    }
+  ],
+  "2026-03-20": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 65,
+      "manual_oibu": 6,
+      "manual_total": 71
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 150,
+      "manual_oibu": 7,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 5,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 9,
+      "manual_total": 269
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 9,
+      "manual_total": 269
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 104,
+      "manual_oibu": 7,
+      "manual_total": 111
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 104,
+      "manual_oibu": 7,
+      "manual_total": 111
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1100,
+      "manual_oibu": 95,
+      "manual_total": 1195
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1100,
+      "manual_oibu": 95,
+      "manual_total": 1195
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 620,
+      "manual_oibu": 73,
+      "manual_total": 693
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 610,
+      "manual_oibu": 73,
+      "manual_total": 683
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 45,
+      "manual_oibu": 0,
+      "manual_total": 45
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 2040,
+      "manual_oibu": 176,
+      "manual_total": 2216
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 2040,
+      "manual_oibu": 176,
+      "manual_total": 2216
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 990,
+      "manual_oibu": 113,
+      "manual_total": 1103
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 980,
+      "manual_oibu": 133,
+      "manual_total": 1113
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 950,
+      "manual_oibu": 133,
+      "manual_total": 1083
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 500,
+      "manual_oibu": 91,
+      "manual_total": 591
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 43,
+      "manual_total": 493
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 43,
+      "manual_total": 493
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 384,
+      "manual_oibu": 43,
+      "manual_total": 427
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 180,
+      "manual_oibu": 36,
+      "manual_total": 216
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 180,
+      "manual_oibu": 36,
+      "manual_total": 216
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 160,
+      "manual_oibu": 36,
+      "manual_total": 196
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 25,
+      "manual_total": 395
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 25,
+      "manual_total": 395
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 190,
+      "manual_oibu": 22,
+      "manual_total": 212
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 21,
+      "manual_total": 151
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 21,
+      "manual_total": 141
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 19,
+      "manual_total": 94
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 630,
+      "manual_oibu": 85,
+      "manual_total": 715
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 630,
+      "manual_oibu": 85,
+      "manual_total": 715
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 82,
+      "manual_total": 532
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 235,
+      "manual_oibu": 65,
+      "manual_total": 300
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 235,
+      "manual_oibu": 65,
+      "manual_total": 300
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 63,
+      "manual_total": 228
+    }
+  ],
+  "2026-03-21": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 90,
+      "manual_oibu": 3,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 90,
+      "manual_oibu": 3,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 2,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 2,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 520,
+      "manual_oibu": 25,
+      "manual_total": 545
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 520,
+      "manual_oibu": 25,
+      "manual_total": 545
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 18,
+      "manual_total": 368
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 18,
+      "manual_total": 368
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 15,
+      "manual_oibu": 0,
+      "manual_total": 15
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 880,
+      "manual_oibu": 65,
+      "manual_total": 945
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 880,
+      "manual_oibu": 65,
+      "manual_total": 945
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 41,
+      "manual_total": 421
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 630,
+      "manual_oibu": 44,
+      "manual_total": 674
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 630,
+      "manual_oibu": 44,
+      "manual_total": 674
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 280,
+      "manual_oibu": 33,
+      "manual_total": 313
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 33,
+      "manual_oibu": 0,
+      "manual_total": 33
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 12,
+      "manual_total": 242
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 12,
+      "manual_total": 242
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 185,
+      "manual_oibu": 12,
+      "manual_total": 197
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 8,
+      "manual_total": 128
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 8,
+      "manual_total": 128
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 8,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 200,
+      "manual_oibu": 11,
+      "manual_total": 211
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 200,
+      "manual_oibu": 11,
+      "manual_total": 211
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 11,
+      "manual_total": 121
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 4,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 4,
+      "manual_total": 79
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 4,
+      "manual_total": 44
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 20,
+      "manual_total": 390
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 20,
+      "manual_total": 390
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 300,
+      "manual_oibu": 20,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 140,
+      "manual_oibu": 10,
+      "manual_total": 150
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 140,
+      "manual_oibu": 10,
+      "manual_total": 150
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 10,
+      "manual_total": 110
+    }
+  ],
+  "2026-03-23": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 60,
+      "manual_oibu": 4,
+      "manual_total": 64
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 125,
+      "manual_oibu": 6,
+      "manual_total": 131
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 5,
+      "manual_total": 55
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 220,
+      "manual_oibu": 18,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 220,
+      "manual_oibu": 18,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 9,
+      "manual_total": 89
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 9,
+      "manual_total": 89
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 920,
+      "manual_oibu": 76,
+      "manual_total": 996
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 920,
+      "manual_oibu": 76,
+      "manual_total": 996
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 469,
+      "manual_oibu": 60,
+      "manual_total": 529
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 470,
+      "manual_oibu": 60,
+      "manual_total": 530
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1601,
+      "manual_oibu": 136,
+      "manual_total": 1737
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1597,
+      "manual_oibu": 136,
+      "manual_total": 1733
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 739,
+      "manual_oibu": 86,
+      "manual_total": 825
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 604,
+      "manual_oibu": 116,
+      "manual_total": 720
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 599,
+      "manual_oibu": 116,
+      "manual_total": 715
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 262,
+      "manual_oibu": 75,
+      "manual_total": 337
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 38,
+      "manual_oibu": 0,
+      "manual_total": 38
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 391,
+      "manual_oibu": 35,
+      "manual_total": 426
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 391,
+      "manual_oibu": 35,
+      "manual_total": 426
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 293,
+      "manual_oibu": 34,
+      "manual_total": 327
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 103,
+      "manual_oibu": 28,
+      "manual_total": 131
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 103,
+      "manual_oibu": 28,
+      "manual_total": 131
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 84,
+      "manual_oibu": 28,
+      "manual_total": 112
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 327,
+      "manual_oibu": 20,
+      "manual_total": 347
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 327,
+      "manual_oibu": 18,
+      "manual_total": 345
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 188,
+      "manual_oibu": 14,
+      "manual_total": 202
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 88,
+      "manual_oibu": 14,
+      "manual_total": 102
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 88,
+      "manual_oibu": 13,
+      "manual_total": 101
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 49,
+      "manual_oibu": 9,
+      "manual_total": 58
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 591,
+      "manual_oibu": 67,
+      "manual_total": 658
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 591,
+      "manual_oibu": 67,
+      "manual_total": 658
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 426,
+      "manual_oibu": 65,
+      "manual_total": 491
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 174,
+      "manual_oibu": 46,
+      "manual_total": 220
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 174,
+      "manual_oibu": 46,
+      "manual_total": 220
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 139,
+      "manual_oibu": 45,
+      "manual_total": 184
+    }
+  ],
+  "2026-03-24": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 38,
+      "manual_oibu": 4,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 80,
+      "manual_oibu": 2,
+      "manual_total": 82
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 30,
+      "manual_oibu": 2,
+      "manual_total": 32
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 141,
+      "manual_oibu": 16,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 141,
+      "manual_oibu": 16,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 14,
+      "manual_total": 72
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 14,
+      "manual_total": 72
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 712,
+      "manual_oibu": 57,
+      "manual_total": 769
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 710,
+      "manual_oibu": 57,
+      "manual_total": 767
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 268,
+      "manual_oibu": 46,
+      "manual_total": 314
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 268,
+      "manual_oibu": 46,
+      "manual_total": 314
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 10,
+      "manual_oibu": 0,
+      "manual_total": 10
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1136,
+      "manual_oibu": 110,
+      "manual_total": 1246
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1135,
+      "manual_oibu": 110,
+      "manual_total": 1245
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 514,
+      "manual_oibu": 73,
+      "manual_total": 587
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 297,
+      "manual_oibu": 93,
+      "manual_total": 390
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 295,
+      "manual_oibu": 93,
+      "manual_total": 388
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 137,
+      "manual_oibu": 64,
+      "manual_total": 201
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 33,
+      "manual_oibu": 0,
+      "manual_total": 33
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 257,
+      "manual_oibu": 51,
+      "manual_total": 308
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 257,
+      "manual_oibu": 51,
+      "manual_total": 308
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 195,
+      "manual_oibu": 29,
+      "manual_total": 224
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 69,
+      "manual_oibu": 29,
+      "manual_total": 98
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 69,
+      "manual_oibu": 29,
+      "manual_total": 98
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 64,
+      "manual_oibu": 23,
+      "manual_total": 87
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 246,
+      "manual_oibu": 19,
+      "manual_total": 265
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 232,
+      "manual_oibu": 19,
+      "manual_total": 251
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 126,
+      "manual_oibu": 14,
+      "manual_total": 140
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 51,
+      "manual_oibu": 17,
+      "manual_total": 68
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 51,
+      "manual_oibu": 17,
+      "manual_total": 68
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 34,
+      "manual_oibu": 16,
+      "manual_total": 50
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 444,
+      "manual_oibu": 47,
+      "manual_total": 491
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 441,
+      "manual_oibu": 47,
+      "manual_total": 488
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 319,
+      "manual_oibu": 46,
+      "manual_total": 365
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 89,
+      "manual_oibu": 47,
+      "manual_total": 136
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 86,
+      "manual_oibu": 52,
+      "manual_total": 138
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 52,
+      "manual_total": 117
+    }
+  ],
+  "2026-03-25": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 38,
+      "manual_oibu": 2,
+      "manual_total": 40
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 96,
+      "manual_oibu": 9,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 41,
+      "manual_oibu": 8,
+      "manual_total": 49
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 13,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 13,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 53,
+      "manual_oibu": 11,
+      "manual_total": 64
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 53,
+      "manual_oibu": 11,
+      "manual_total": 64
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 800,
+      "manual_oibu": 76,
+      "manual_total": 876
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 797,
+      "manual_oibu": 76,
+      "manual_total": 873
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 372,
+      "manual_oibu": 67,
+      "manual_total": 439
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 371,
+      "manual_oibu": 67,
+      "manual_total": 438
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 21,
+      "manual_oibu": 0,
+      "manual_total": 21
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1419,
+      "manual_oibu": 119,
+      "manual_total": 1538
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1409,
+      "manual_oibu": 119,
+      "manual_total": 1528
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 646,
+      "manual_oibu": 71,
+      "manual_total": 717
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 558,
+      "manual_oibu": 95,
+      "manual_total": 653
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 554,
+      "manual_oibu": 95,
+      "manual_total": 649
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 257,
+      "manual_oibu": 63,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 309,
+      "manual_oibu": 27,
+      "manual_total": 336
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 309,
+      "manual_oibu": 27,
+      "manual_total": 336
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 244,
+      "manual_oibu": 27,
+      "manual_total": 271
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 99,
+      "manual_oibu": 24,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 99,
+      "manual_oibu": 24,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 68,
+      "manual_oibu": 24,
+      "manual_total": 92
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 274,
+      "manual_oibu": 18,
+      "manual_total": 292
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 273,
+      "manual_oibu": 18,
+      "manual_total": 291
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 142,
+      "manual_oibu": 17,
+      "manual_total": 159
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 74,
+      "manual_oibu": 11,
+      "manual_total": 85
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 74,
+      "manual_oibu": 11,
+      "manual_total": 85
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 37,
+      "manual_oibu": 11,
+      "manual_total": 48
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 467,
+      "manual_oibu": 42,
+      "manual_total": 509
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 448,
+      "manual_oibu": 42,
+      "manual_total": 490
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 277,
+      "manual_oibu": 41,
+      "manual_total": 318
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 112,
+      "manual_oibu": 32,
+      "manual_total": 144
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 112,
+      "manual_oibu": 32,
+      "manual_total": 144
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 76,
+      "manual_oibu": 32,
+      "manual_total": 108
+    }
+  ],
+  "2026-03-26": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 42,
+      "manual_oibu": 6,
+      "manual_total": 48
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 98,
+      "manual_oibu": 9,
+      "manual_total": 107
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 47,
+      "manual_oibu": 4,
+      "manual_total": 51
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 177,
+      "manual_oibu": 20,
+      "manual_total": 197
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 177,
+      "manual_oibu": 20,
+      "manual_total": 197
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 16,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 16,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 683,
+      "manual_oibu": 115,
+      "manual_total": 798
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 679,
+      "manual_oibu": 115,
+      "manual_total": 794
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 232,
+      "manual_oibu": 112,
+      "manual_total": 344
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 232,
+      "manual_oibu": 112,
+      "manual_total": 344
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 21,
+      "manual_oibu": 0,
+      "manual_total": 21
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1190,
+      "manual_oibu": 209,
+      "manual_total": 1399
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1190,
+      "manual_oibu": 196,
+      "manual_total": 1386
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 558,
+      "manual_oibu": 128,
+      "manual_total": 686
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 373,
+      "manual_oibu": 174,
+      "manual_total": 547
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 373,
+      "manual_oibu": 156,
+      "manual_total": 529
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 213,
+      "manual_oibu": 111,
+      "manual_total": 324
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 34,
+      "manual_oibu": 0,
+      "manual_total": 34
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 269,
+      "manual_oibu": 58,
+      "manual_total": 327
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 269,
+      "manual_oibu": 56,
+      "manual_total": 325
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 184,
+      "manual_oibu": 59,
+      "manual_total": 243
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 68,
+      "manual_oibu": 54,
+      "manual_total": 122
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 68,
+      "manual_oibu": 53,
+      "manual_total": 121
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 63,
+      "manual_oibu": 44,
+      "manual_total": 107
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 26,
+      "manual_total": 266
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 18,
+      "manual_total": 258
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 128,
+      "manual_oibu": 25,
+      "manual_total": 153
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 79,
+      "manual_oibu": 25,
+      "manual_total": 104
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 79,
+      "manual_oibu": 24,
+      "manual_total": 103
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 22,
+      "manual_total": 57
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 432,
+      "manual_oibu": 89,
+      "manual_total": 521
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 432,
+      "manual_oibu": 85,
+      "manual_total": 517
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 259,
+      "manual_oibu": 85,
+      "manual_total": 344
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 85,
+      "manual_total": 195
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 84,
+      "manual_total": 194
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 72,
+      "manual_oibu": 80,
+      "manual_total": 152
+    }
+  ],
+  "2026-03-27": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 48,
+      "manual_oibu": 4,
+      "manual_total": 52
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 132,
+      "manual_oibu": 14,
+      "manual_total": 146
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 12,
+      "manual_total": 82
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 21,
+      "manual_total": 261
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 21,
+      "manual_total": 261
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 114,
+      "manual_oibu": 9,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 114,
+      "manual_oibu": 9,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1088,
+      "manual_oibu": 88,
+      "manual_total": 1176
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1088,
+      "manual_oibu": 88,
+      "manual_total": 1176
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 536,
+      "manual_oibu": 53,
+      "manual_total": 589
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 536,
+      "manual_oibu": 53,
+      "manual_total": 589
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 12,
+      "manual_oibu": 0,
+      "manual_total": 12
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1898,
+      "manual_oibu": 220,
+      "manual_total": 2118
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1888,
+      "manual_oibu": 220,
+      "manual_total": 2108
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 860,
+      "manual_oibu": 156,
+      "manual_total": 1016
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 771,
+      "manual_oibu": 147,
+      "manual_total": 918
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 771,
+      "manual_oibu": 147,
+      "manual_total": 918
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 359,
+      "manual_oibu": 109,
+      "manual_total": 468
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 414,
+      "manual_oibu": 40,
+      "manual_total": 454
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 414,
+      "manual_oibu": 40,
+      "manual_total": 454
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 318,
+      "manual_oibu": 40,
+      "manual_total": 358
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 154,
+      "manual_oibu": 19,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 154,
+      "manual_oibu": 30,
+      "manual_total": 184
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 126,
+      "manual_oibu": 30,
+      "manual_total": 156
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 336,
+      "manual_oibu": 10,
+      "manual_total": 346
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 336,
+      "manual_oibu": 24,
+      "manual_total": 360
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 168,
+      "manual_oibu": 24,
+      "manual_total": 192
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 101,
+      "manual_oibu": 22,
+      "manual_total": 124
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 101,
+      "manual_oibu": 16,
+      "manual_total": 118
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 16,
+      "manual_total": 74
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 603,
+      "manual_oibu": 34,
+      "manual_total": 637
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 600,
+      "manual_oibu": 68,
+      "manual_total": 668
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 426,
+      "manual_oibu": 68,
+      "manual_total": 494
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 204,
+      "manual_oibu": 67,
+      "manual_total": 271
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 201,
+      "manual_oibu": 49,
+      "manual_total": 250
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 140,
+      "manual_oibu": 49,
+      "manual_total": 189
+    }
+  ],
+  "2026-03-28": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 36,
+      "manual_oibu": 0,
+      "manual_total": 36
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 47,
+      "manual_oibu": 0,
+      "manual_total": 47
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 111,
+      "manual_oibu": 12,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 111,
+      "manual_oibu": 12,
+      "manual_total": 123
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 7,
+      "manual_total": 65
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 8,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 469,
+      "manual_oibu": 37,
+      "manual_total": 506
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 468,
+      "manual_oibu": 37,
+      "manual_total": 505
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 357,
+      "manual_oibu": 24,
+      "manual_total": 381
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 357,
+      "manual_oibu": 24,
+      "manual_total": 381
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 15,
+      "manual_oibu": 0,
+      "manual_total": 15
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 882,
+      "manual_oibu": 80,
+      "manual_total": 962
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 879,
+      "manual_oibu": 90,
+      "manual_total": 969
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 387,
+      "manual_oibu": 44,
+      "manual_total": 431
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 622,
+      "manual_oibu": 41,
+      "manual_total": 663
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 623,
+      "manual_oibu": 41,
+      "manual_total": 664
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 291,
+      "manual_oibu": 37,
+      "manual_total": 328
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 217,
+      "manual_oibu": 15,
+      "manual_total": 232
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 217,
+      "manual_oibu": 15,
+      "manual_total": 232
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 170,
+      "manual_oibu": 15,
+      "manual_total": 185
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 11,
+      "manual_total": 111
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 11,
+      "manual_total": 111
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 11,
+      "manual_total": 91
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 207,
+      "manual_oibu": 17,
+      "manual_total": 224
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 207,
+      "manual_oibu": 17,
+      "manual_total": 224
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 107,
+      "manual_oibu": 17,
+      "manual_total": 124
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 11,
+      "manual_total": 86
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 11,
+      "manual_total": 86
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 38,
+      "manual_oibu": 11,
+      "manual_total": 49
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 354,
+      "manual_oibu": 26,
+      "manual_total": 380
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 354,
+      "manual_oibu": 26,
+      "manual_total": 380
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 247,
+      "manual_oibu": 36,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 129,
+      "manual_oibu": 15,
+      "manual_total": 144
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 129,
+      "manual_oibu": 15,
+      "manual_total": 144
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 86,
+      "manual_oibu": 15,
+      "manual_total": 101
+    }
+  ],
+  "2026-03-30": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 52,
+      "manual_oibu": 1,
+      "manual_total": 53
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 125,
+      "manual_oibu": 8,
+      "manual_total": 133
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 7,
+      "manual_total": 52
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 215,
+      "manual_oibu": 18,
+      "manual_total": 233
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 215,
+      "manual_oibu": 18,
+      "manual_total": 233
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 10,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 10,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 900,
+      "manual_oibu": 76,
+      "manual_total": 976
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 898,
+      "manual_oibu": 76,
+      "manual_total": 974
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 390,
+      "manual_oibu": 64,
+      "manual_total": 454
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 390,
+      "manual_oibu": 64,
+      "manual_total": 454
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 12,
+      "manual_oibu": 0,
+      "manual_total": 12
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1601,
+      "manual_oibu": 165,
+      "manual_total": 1766
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1601,
+      "manual_oibu": 165,
+      "manual_total": 1766
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 740,
+      "manual_oibu": 95,
+      "manual_total": 835
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 129,
+      "manual_total": 729
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 598,
+      "manual_oibu": 129,
+      "manual_total": 727
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 280,
+      "manual_oibu": 76,
+      "manual_total": 356
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 350,
+      "manual_oibu": 36,
+      "manual_total": 386
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 350,
+      "manual_oibu": 36,
+      "manual_total": 386
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 36,
+      "manual_total": 326
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 320,
+      "manual_oibu": 20,
+      "manual_total": 340
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 320,
+      "manual_oibu": 20,
+      "manual_total": 340
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 165,
+      "manual_oibu": 19,
+      "manual_total": 184
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 15,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 15,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 14,
+      "manual_total": 64
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 610,
+      "manual_oibu": 65,
+      "manual_total": 675
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 610,
+      "manual_oibu": 65,
+      "manual_total": 675
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 415,
+      "manual_oibu": 64,
+      "manual_total": 479
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 46,
+      "manual_total": 211
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 46,
+      "manual_total": 211
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 45,
+      "manual_total": 155
+    }
+  ],
+  "2026-03-31": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 30,
+      "manual_oibu": 1,
+      "manual_total": 31
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 80,
+      "manual_oibu": 3,
+      "manual_total": 83
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 26,
+      "manual_oibu": 3,
+      "manual_total": 29
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 140,
+      "manual_oibu": 14,
+      "manual_total": 154
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 140,
+      "manual_oibu": 14,
+      "manual_total": 154
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 10,
+      "manual_total": 60
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 10,
+      "manual_total": 60
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 600,
+      "manual_oibu": 55,
+      "manual_total": 655
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 600,
+      "manual_oibu": 55,
+      "manual_total": 655
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 43,
+      "manual_total": 208
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 160,
+      "manual_oibu": 43,
+      "manual_total": 203
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 10,
+      "manual_oibu": 0,
+      "manual_total": 10
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1050,
+      "manual_oibu": 101,
+      "manual_total": 1151
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1045,
+      "manual_oibu": 101,
+      "manual_total": 1146
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 490,
+      "manual_oibu": 53,
+      "manual_total": 543
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 250,
+      "manual_oibu": 83,
+      "manual_total": 333
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 250,
+      "manual_oibu": 83,
+      "manual_total": 333
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 44,
+      "manual_total": 154
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 26,
+      "manual_total": 276
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 26,
+      "manual_total": 276
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 200,
+      "manual_oibu": 26,
+      "manual_total": 226
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 67,
+      "manual_oibu": 20,
+      "manual_total": 87
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 67,
+      "manual_oibu": 20,
+      "manual_total": 87
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 20,
+      "manual_total": 70
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 14,
+      "manual_total": 244
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 14,
+      "manual_total": 244
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 130,
+      "manual_oibu": 13,
+      "manual_total": 143
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 11,
+      "manual_total": 56
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 11,
+      "manual_total": 56
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 27,
+      "manual_oibu": 10,
+      "manual_total": 37
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 400,
+      "manual_oibu": 47,
+      "manual_total": 447
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 400,
+      "manual_oibu": 47,
+      "manual_total": 447
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 46,
+      "manual_total": 331
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 34,
+      "manual_total": 129
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 34,
+      "manual_total": 129
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 33,
+      "manual_total": 93
+    }
+  ],
+  "2026-04-01": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 38,
+      "manual_oibu": 1,
+      "manual_total": 39
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 5,
+      "manual_total": 115
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 5,
+      "manual_total": 40
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 215,
+      "manual_oibu": 10,
+      "manual_total": 225
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 215,
+      "manual_oibu": 10,
+      "manual_total": 225
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 8,
+      "manual_total": 88
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 8,
+      "manual_total": 88
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 800,
+      "manual_oibu": 66,
+      "manual_total": 866
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 800,
+      "manual_oibu": 66,
+      "manual_total": 866
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 57,
+      "manual_total": 407
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 350,
+      "manual_oibu": 57,
+      "manual_total": 407
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 13,
+      "manual_oibu": 0,
+      "manual_total": 13
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1400,
+      "manual_oibu": 136,
+      "manual_total": 1536
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1390,
+      "manual_oibu": 136,
+      "manual_total": 1526
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 630,
+      "manual_oibu": 78,
+      "manual_total": 708
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 550,
+      "manual_oibu": 103,
+      "manual_total": 653
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 550,
+      "manual_oibu": 103,
+      "manual_total": 653
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 265,
+      "manual_oibu": 68,
+      "manual_total": 333
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 25,
+      "manual_total": 310
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 25,
+      "manual_total": 310
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 25,
+      "manual_total": 265
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 20,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 20,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 20,
+      "manual_total": 90
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 16,
+      "manual_total": 306
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 16,
+      "manual_total": 306
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 140,
+      "manual_oibu": 16,
+      "manual_total": 156
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 12,
+      "manual_total": 92
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 12,
+      "manual_total": 92
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 12,
+      "manual_total": 57
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 540,
+      "manual_oibu": 47,
+      "manual_total": 587
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 540,
+      "manual_oibu": 47,
+      "manual_total": 587
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 340,
+      "manual_oibu": 47,
+      "manual_total": 387
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 35,
+      "manual_total": 165
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 35,
+      "manual_total": 165
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 35,
+      "manual_total": 115
+    }
+  ],
+  "2026-04-02": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 30,
+      "manual_oibu": 4,
+      "manual_total": 34
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 90,
+      "manual_oibu": 10,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 10,
+      "manual_total": 45
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 15,
+      "manual_total": 195
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 15,
+      "manual_total": 195
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 56,
+      "manual_oibu": 11,
+      "manual_total": 67
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 56,
+      "manual_oibu": 11,
+      "manual_total": 67
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 570,
+      "manual_oibu": 77,
+      "manual_total": 647
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 570,
+      "manual_oibu": 77,
+      "manual_total": 647
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 170,
+      "manual_oibu": 68,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 170,
+      "manual_oibu": 68,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 6,
+      "manual_oibu": 0,
+      "manual_total": 6
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1090,
+      "manual_oibu": 157,
+      "manual_total": 1247
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1090,
+      "manual_oibu": 157,
+      "manual_total": 1247
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 500,
+      "manual_oibu": 86,
+      "manual_total": 586
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 320,
+      "manual_oibu": 146,
+      "manual_total": 466
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 320,
+      "manual_oibu": 146,
+      "manual_total": 466
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 180,
+      "manual_oibu": 82,
+      "manual_total": 262
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 27,
+      "manual_oibu": 0,
+      "manual_total": 27
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 49,
+      "manual_total": 259
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 49,
+      "manual_total": 259
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 48,
+      "manual_total": 228
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 40,
+      "manual_total": 90
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 40,
+      "manual_total": 90
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 39,
+      "manual_total": 74
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 28,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 28,
+      "manual_total": 238
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 125,
+      "manual_oibu": 26,
+      "manual_total": 151
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 25,
+      "manual_total": 75
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 25,
+      "manual_total": 75
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 30,
+      "manual_oibu": 24,
+      "manual_total": 54
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 79,
+      "manual_total": 459
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 79,
+      "manual_total": 459
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 77,
+      "manual_total": 337
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 67,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 67,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 66,
+      "manual_total": 116
+    }
+  ],
+  "2026-04-03": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 35,
+      "manual_oibu": 2,
+      "manual_total": 37
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 145,
+      "manual_oibu": 10,
+      "manual_total": 155
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 4,
+      "manual_total": 69
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 278,
+      "manual_oibu": 28,
+      "manual_total": 306
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 278,
+      "manual_oibu": 28,
+      "manual_total": 306
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 127,
+      "manual_oibu": 12,
+      "manual_total": 139
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 127,
+      "manual_oibu": 12,
+      "manual_total": 139
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1140,
+      "manual_oibu": 121,
+      "manual_total": 1261
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1140,
+      "manual_oibu": 121,
+      "manual_total": 1261
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 510,
+      "manual_oibu": 73,
+      "manual_total": 583
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 510,
+      "manual_oibu": 73,
+      "manual_total": 583
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 17,
+      "manual_oibu": 0,
+      "manual_total": 17
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1870,
+      "manual_oibu": 196,
+      "manual_total": 2066
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1870,
+      "manual_oibu": 196,
+      "manual_total": 2066
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 890,
+      "manual_oibu": 119,
+      "manual_total": 1009
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 880,
+      "manual_oibu": 129,
+      "manual_total": 1009
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 880,
+      "manual_oibu": 129,
+      "manual_total": 1009
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 410,
+      "manual_oibu": 82,
+      "manual_total": 492
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 40,
+      "manual_oibu": 0,
+      "manual_total": 40
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 395,
+      "manual_oibu": 42,
+      "manual_total": 437
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 395,
+      "manual_oibu": 42,
+      "manual_total": 437
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 320,
+      "manual_oibu": 41,
+      "manual_total": 361
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 155,
+      "manual_oibu": 33,
+      "manual_total": 188
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 155,
+      "manual_oibu": 33,
+      "manual_total": 188
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 33,
+      "manual_total": 153
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 335,
+      "manual_oibu": 22,
+      "manual_total": 357
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 335,
+      "manual_oibu": 22,
+      "manual_total": 357
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 175,
+      "manual_oibu": 20,
+      "manual_total": 195
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 14,
+      "manual_total": 124
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 14,
+      "manual_total": 124
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 13,
+      "manual_total": 68
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 630,
+      "manual_oibu": 68,
+      "manual_total": 698
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 630,
+      "manual_oibu": 68,
+      "manual_total": 698
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 66,
+      "manual_total": 516
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 235,
+      "manual_oibu": 48,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 235,
+      "manual_oibu": 48,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 170,
+      "manual_oibu": 47,
+      "manual_total": 217
+    }
+  ],
+  "2026-04-04": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 46,
+      "manual_oibu": 5,
+      "manual_total": 51
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 25,
+      "manual_oibu": 5,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 4,
+      "manual_total": 114
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 4,
+      "manual_total": 114
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 4,
+      "manual_total": 54
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 4,
+      "manual_total": 54
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 535,
+      "manual_oibu": 41,
+      "manual_total": 576
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 535,
+      "manual_oibu": 41,
+      "manual_total": 576
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 370,
+      "manual_oibu": 25,
+      "manual_total": 395
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 370,
+      "manual_oibu": 25,
+      "manual_total": 395
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 11,
+      "manual_oibu": 0,
+      "manual_total": 11
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 880,
+      "manual_oibu": 69,
+      "manual_total": 949
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 870,
+      "manual_oibu": 69,
+      "manual_total": 939
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 31,
+      "manual_total": 421
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 35,
+      "manual_total": 635
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 35,
+      "manual_total": 635
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 260,
+      "manual_oibu": 17,
+      "manual_total": 277
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 13,
+      "manual_total": 243
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 13,
+      "manual_total": 243
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 190,
+      "manual_oibu": 13,
+      "manual_total": 203
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 5,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 5,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 5,
+      "manual_total": 85
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 205,
+      "manual_oibu": 14,
+      "manual_total": 219
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 205,
+      "manual_oibu": 14,
+      "manual_total": 219
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 14,
+      "manual_total": 124
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 6,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 6,
+      "manual_total": 66
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 6,
+      "manual_total": 41
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 21,
+      "manual_total": 401
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 380,
+      "manual_oibu": 21,
+      "manual_total": 401
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 21,
+      "manual_total": 281
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 7,
+      "manual_total": 127
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 7,
+      "manual_total": 127
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 7,
+      "manual_total": 82
+    }
+  ],
+  "2026-04-06": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 42,
+      "manual_oibu": 2,
+      "manual_total": 44
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 130,
+      "manual_oibu": 10,
+      "manual_total": 140
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 8,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 18,
+      "manual_total": 258
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 18,
+      "manual_total": 258
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 10,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 90,
+      "manual_oibu": 10,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 960,
+      "manual_oibu": 68,
+      "manual_total": 1028
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 960,
+      "manual_oibu": 68,
+      "manual_total": 1028
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 420,
+      "manual_oibu": 56,
+      "manual_total": 476
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 420,
+      "manual_oibu": 56,
+      "manual_total": 476
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 17,
+      "manual_oibu": 0,
+      "manual_total": 17
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1650,
+      "manual_oibu": 154,
+      "manual_total": 1804
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1650,
+      "manual_oibu": 154,
+      "manual_total": 1804
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 770,
+      "manual_oibu": 91,
+      "manual_total": 861
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 645,
+      "manual_oibu": 129,
+      "manual_total": 774
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 645,
+      "manual_oibu": 129,
+      "manual_total": 774
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 295,
+      "manual_oibu": 79,
+      "manual_total": 374
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 38,
+      "manual_total": 408
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 38,
+      "manual_total": 408
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 288,
+      "manual_oibu": 38,
+      "manual_total": 326
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 124,
+      "manual_oibu": 28,
+      "manual_total": 152
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 124,
+      "manual_oibu": 28,
+      "manual_total": 152
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 92,
+      "manual_oibu": 28,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 330,
+      "manual_oibu": 18,
+      "manual_total": 348
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 330,
+      "manual_oibu": 18,
+      "manual_total": 348
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 140,
+      "manual_oibu": 18,
+      "manual_total": 158
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 14,
+      "manual_total": 99
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 14,
+      "manual_total": 99
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 14,
+      "manual_total": 64
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 640,
+      "manual_oibu": 58,
+      "manual_total": 698
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 640,
+      "manual_oibu": 58,
+      "manual_total": 698
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 430,
+      "manual_oibu": 58,
+      "manual_total": 488
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 177,
+      "manual_oibu": 40,
+      "manual_total": 217
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 177,
+      "manual_oibu": 40,
+      "manual_total": 217
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 124,
+      "manual_oibu": 40,
+      "manual_total": 164
+    }
+  ],
+  "2026-04-07": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 100,
+      "manual_oibu": 5,
+      "manual_total": 105
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 5,
+      "manual_total": 45
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 163,
+      "manual_oibu": 15,
+      "manual_total": 178
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 163,
+      "manual_oibu": 15,
+      "manual_total": 178
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 12,
+      "manual_total": 67
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 12,
+      "manual_total": 67
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 625,
+      "manual_oibu": 60,
+      "manual_total": 685
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 625,
+      "manual_oibu": 60,
+      "manual_total": 685
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 185,
+      "manual_oibu": 50,
+      "manual_total": 235
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 185,
+      "manual_oibu": 50,
+      "manual_total": 235
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 15,
+      "manual_oibu": 0,
+      "manual_total": 15
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1170,
+      "manual_oibu": 107,
+      "manual_total": 1277
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1160,
+      "manual_oibu": 107,
+      "manual_total": 1267
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 550,
+      "manual_oibu": 56,
+      "manual_total": 606
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 340,
+      "manual_oibu": 83,
+      "manual_total": 423
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 340,
+      "manual_oibu": 83,
+      "manual_total": 423
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 48,
+      "manual_total": 178
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 270,
+      "manual_oibu": 25,
+      "manual_total": 295
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 270,
+      "manual_oibu": 25,
+      "manual_total": 295
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 220,
+      "manual_oibu": 25,
+      "manual_total": 245
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 18,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 18,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 18,
+      "manual_total": 68
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 245,
+      "manual_oibu": 15,
+      "manual_total": 260
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 245,
+      "manual_oibu": 15,
+      "manual_total": 260
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 120,
+      "manual_oibu": 15,
+      "manual_total": 135
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 12,
+      "manual_total": 72
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 12,
+      "manual_total": 72
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 30,
+      "manual_oibu": 12,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 42,
+      "manual_total": 492
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 450,
+      "manual_oibu": 42,
+      "manual_total": 492
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 308,
+      "manual_oibu": 42,
+      "manual_total": 350
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 30,
+      "manual_total": 140
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 30,
+      "manual_total": 140
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 66,
+      "manual_oibu": 30,
+      "manual_total": 96
+    }
+  ],
+  "2026-04-08": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 34,
+      "manual_oibu": 2,
+      "manual_total": 36
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 120,
+      "manual_oibu": 10,
+      "manual_total": 130
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 8,
+      "manual_total": 58
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 222,
+      "manual_oibu": 10,
+      "manual_total": 232
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 222,
+      "manual_oibu": 10,
+      "manual_total": 232
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 77,
+      "manual_oibu": 10,
+      "manual_total": 87
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 77,
+      "manual_oibu": 10,
+      "manual_total": 87
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 840,
+      "manual_oibu": 79,
+      "manual_total": 919
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 830,
+      "manual_oibu": 79,
+      "manual_total": 909
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 385,
+      "manual_oibu": 64,
+      "manual_total": 449
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 385,
+      "manual_oibu": 64,
+      "manual_total": 449
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 18,
+      "manual_oibu": 0,
+      "manual_total": 18
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1500,
+      "manual_oibu": 123,
+      "manual_total": 1623
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1500,
+      "manual_oibu": 123,
+      "manual_total": 1623
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 710,
+      "manual_oibu": 66,
+      "manual_total": 776
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 103,
+      "manual_total": 703
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 600,
+      "manual_oibu": 103,
+      "manual_total": 703
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 260,
+      "manual_oibu": 59,
+      "manual_total": 319
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 320,
+      "manual_oibu": 20,
+      "manual_total": 340
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 320,
+      "manual_oibu": 20,
+      "manual_total": 340
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 245,
+      "manual_oibu": 20,
+      "manual_total": 265
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 18,
+      "manual_total": 113
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 18,
+      "manual_total": 113
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 18,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 17,
+      "manual_total": 302
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 285,
+      "manual_oibu": 17,
+      "manual_total": 302
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 140,
+      "manual_oibu": 17,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 11,
+      "manual_total": 96
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 11,
+      "manual_total": 96
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 11,
+      "manual_total": 56
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 495,
+      "manual_oibu": 47,
+      "manual_total": 542
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 495,
+      "manual_oibu": 47,
+      "manual_total": 542
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 330,
+      "manual_oibu": 47,
+      "manual_total": 377
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 125,
+      "manual_oibu": 33,
+      "manual_total": 158
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 125,
+      "manual_oibu": 33,
+      "manual_total": 158
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 85,
+      "manual_oibu": 33,
+      "manual_total": 118
+    }
+  ],
+  "2026-04-09": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 40,
+      "manual_oibu": 6,
+      "manual_total": 46
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 12,
+      "manual_total": 122
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 10,
+      "manual_total": 60
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 15,
+      "manual_total": 225
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 210,
+      "manual_oibu": 15,
+      "manual_total": 225
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 13,
+      "manual_total": 78
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 13,
+      "manual_total": 78
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 746,
+      "manual_oibu": 90,
+      "manual_total": 836
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 746,
+      "manual_oibu": 90,
+      "manual_total": 836
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 240,
+      "manual_oibu": 80,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 240,
+      "manual_oibu": 80,
+      "manual_total": 320
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 13,
+      "manual_oibu": 0,
+      "manual_total": 13
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1270,
+      "manual_oibu": 171,
+      "manual_total": 1441
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1270,
+      "manual_oibu": 171,
+      "manual_total": 1441
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 595,
+      "manual_oibu": 94,
+      "manual_total": 689
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 375,
+      "manual_oibu": 150,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 375,
+      "manual_oibu": 150,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 180,
+      "manual_oibu": 87,
+      "manual_total": 267
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 38,
+      "manual_oibu": 0,
+      "manual_total": 38
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 270,
+      "manual_oibu": 46,
+      "manual_total": 316
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 270,
+      "manual_oibu": 46,
+      "manual_total": 316
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 224,
+      "manual_oibu": 45,
+      "manual_total": 269
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 40,
+      "manual_total": 110
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 40,
+      "manual_total": 110
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 58,
+      "manual_oibu": 39,
+      "manual_total": 97
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 33,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 250,
+      "manual_oibu": 33,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 125,
+      "manual_oibu": 30,
+      "manual_total": 155
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 72,
+      "manual_oibu": 24,
+      "manual_total": 96
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 72,
+      "manual_oibu": 24,
+      "manual_total": 96
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 22,
+      "manual_total": 62
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 443,
+      "manual_oibu": 80,
+      "manual_total": 523
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 443,
+      "manual_oibu": 80,
+      "manual_total": 523
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 295,
+      "manual_oibu": 77,
+      "manual_total": 372
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 139,
+      "manual_oibu": 72,
+      "manual_total": 211
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 134,
+      "manual_oibu": 72,
+      "manual_total": 206
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 86,
+      "manual_oibu": 70,
+      "manual_total": 156
+    }
+  ],
+  "2026-04-10": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 30,
+      "manual_oibu": 4,
+      "manual_total": 34
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 14,
+      "manual_total": 174
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 77,
+      "manual_oibu": 8,
+      "manual_total": 85
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 295,
+      "manual_oibu": 32,
+      "manual_total": 327
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 295,
+      "manual_oibu": 32,
+      "manual_total": 327
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 20,
+      "manual_total": 135
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 20,
+      "manual_total": 135
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1180,
+      "manual_oibu": 158,
+      "manual_total": 1338
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 1180,
+      "manual_oibu": 158,
+      "manual_total": 1338
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 555,
+      "manual_oibu": 105,
+      "manual_total": 660
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 550,
+      "manual_oibu": 105,
+      "manual_total": 655
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1990,
+      "manual_oibu": 223,
+      "manual_total": 2213
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1990,
+      "manual_oibu": 223,
+      "manual_total": 2213
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 915,
+      "manual_oibu": 141,
+      "manual_total": 1056
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 830,
+      "manual_oibu": 169,
+      "manual_total": 999
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 830,
+      "manual_oibu": 169,
+      "manual_total": 999
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 370,
+      "manual_oibu": 112,
+      "manual_total": 482
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 43,
+      "manual_oibu": 0,
+      "manual_total": 43
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 398,
+      "manual_oibu": 53,
+      "manual_total": 451
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 398,
+      "manual_oibu": 53,
+      "manual_total": 451
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 330,
+      "manual_oibu": 53,
+      "manual_total": 383
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 150,
+      "manual_oibu": 39,
+      "manual_total": 189
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 150,
+      "manual_oibu": 39,
+      "manual_total": 189
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 39,
+      "manual_total": 159
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 335,
+      "manual_oibu": 27,
+      "manual_total": 362
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 335,
+      "manual_oibu": 27,
+      "manual_total": 362
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 27,
+      "manual_total": 187
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 22,
+      "manual_total": 137
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 22,
+      "manual_total": 137
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 66,
+      "manual_oibu": 22,
+      "manual_total": 88
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 615,
+      "manual_oibu": 72,
+      "manual_total": 687
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 615,
+      "manual_oibu": 72,
+      "manual_total": 687
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 440,
+      "manual_oibu": 72,
+      "manual_total": 512
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 225,
+      "manual_oibu": 56,
+      "manual_total": 281
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 225,
+      "manual_oibu": 56,
+      "manual_total": 281
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 145,
+      "manual_oibu": 56,
+      "manual_total": 201
+    }
+  ],
+  "2026-04-11": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 26,
+      "manual_oibu": 0,
+      "manual_total": 26
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 65,
+      "manual_oibu": 6,
+      "manual_total": 71
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 5,
+      "manual_total": 45
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 143,
+      "manual_oibu": 5,
+      "manual_total": 148
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 143,
+      "manual_oibu": 5,
+      "manual_total": 148
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 5,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 5,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 530,
+      "manual_oibu": 50,
+      "manual_total": 580
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 530,
+      "manual_oibu": 50,
+      "manual_total": 580
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 380,
+      "manual_oibu": 30,
+      "manual_total": 410
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 380,
+      "manual_oibu": 30,
+      "manual_total": 410
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 25,
+      "manual_oibu": 0,
+      "manual_total": 25
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 950,
+      "manual_oibu": 71,
+      "manual_total": 1021
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 940,
+      "manual_oibu": 71,
+      "manual_total": 1011
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 410,
+      "manual_oibu": 39,
+      "manual_total": 449
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 670,
+      "manual_oibu": 40,
+      "manual_total": 710
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 670,
+      "manual_oibu": 40,
+      "manual_total": 710
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 290,
+      "manual_oibu": 27,
+      "manual_total": 317
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 35,
+      "manual_oibu": 0,
+      "manual_total": 35
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 238,
+      "manual_oibu": 13,
+      "manual_total": 251
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 238,
+      "manual_oibu": 13,
+      "manual_total": 251
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 13,
+      "manual_total": 193
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 109,
+      "manual_oibu": 9,
+      "manual_total": 118
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 109,
+      "manual_oibu": 9,
+      "manual_total": 118
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 84,
+      "manual_oibu": 9,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 190,
+      "manual_oibu": 12,
+      "manual_total": 202
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 190,
+      "manual_oibu": 12,
+      "manual_total": 202
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 89,
+      "manual_oibu": 12,
+      "manual_total": 101
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 76,
+      "manual_oibu": 8,
+      "manual_total": 84
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 76,
+      "manual_oibu": 8,
+      "manual_total": 84
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 34,
+      "manual_oibu": 8,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 23,
+      "manual_total": 393
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 370,
+      "manual_oibu": 23,
+      "manual_total": 393
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 23,
+      "manual_total": 283
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 15,
+      "manual_total": 145
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 15,
+      "manual_total": 145
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 77,
+      "manual_oibu": 15,
+      "manual_total": 92
+    }
+  ],
+  "2026-04-13": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 66,
+      "manual_oibu": 2,
+      "manual_total": 68
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 130,
+      "manual_oibu": 9,
+      "manual_total": 139
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 9,
+      "manual_total": 59
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 13,
+      "manual_total": 253
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 240,
+      "manual_oibu": 13,
+      "manual_total": 253
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 12,
+      "manual_total": 92
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 80,
+      "manual_oibu": 12,
+      "manual_total": 92
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 990,
+      "manual_oibu": 103,
+      "manual_total": 1093
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 980,
+      "manual_oibu": 103,
+      "manual_total": 1083
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 400,
+      "manual_oibu": 95,
+      "manual_total": 495
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 400,
+      "manual_oibu": 95,
+      "manual_total": 495
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 15,
+      "manual_oibu": 0,
+      "manual_total": 15
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1646,
+      "manual_oibu": 212,
+      "manual_total": 1858
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1630,
+      "manual_oibu": 212,
+      "manual_total": 1842
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 767,
+      "manual_oibu": 126,
+      "manual_total": 893
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 635,
+      "manual_oibu": 167,
+      "manual_total": 802
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 635,
+      "manual_oibu": 167,
+      "manual_total": 802
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 290,
+      "manual_oibu": 93,
+      "manual_total": 383
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 30,
+      "manual_oibu": 0,
+      "manual_total": 30
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 45,
+      "manual_total": 435
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 45,
+      "manual_total": 435
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 315,
+      "manual_oibu": 45,
+      "manual_total": 360
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 42,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 115,
+      "manual_oibu": 42,
+      "manual_total": 157
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 98,
+      "manual_oibu": 42,
+      "manual_total": 140
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 350,
+      "manual_oibu": 23,
+      "manual_total": 373
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 350,
+      "manual_oibu": 23,
+      "manual_total": 373
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 180,
+      "manual_oibu": 22,
+      "manual_total": 202
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 20,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 100,
+      "manual_oibu": 20,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 50,
+      "manual_oibu": 20,
+      "manual_total": 70
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 625,
+      "manual_oibu": 83,
+      "manual_total": 708
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 625,
+      "manual_oibu": 83,
+      "manual_total": 708
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 425,
+      "manual_oibu": 82,
+      "manual_total": 507
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 66,
+      "manual_total": 231
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 165,
+      "manual_oibu": 66,
+      "manual_total": 231
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 110,
+      "manual_oibu": 66,
+      "manual_total": 176
+    }
+  ],
+  "2026-04-14": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 35,
+      "manual_oibu": 2,
+      "manual_total": 37
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 110,
+      "manual_oibu": 6,
+      "manual_total": 116
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 6,
+      "manual_total": 46
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 11,
+      "manual_total": 171
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 160,
+      "manual_oibu": 11,
+      "manual_total": 171
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 8,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 8,
+      "manual_total": 63
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 695,
+      "manual_oibu": 81,
+      "manual_total": 776
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 695,
+      "manual_oibu": 81,
+      "manual_total": 776
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 170,
+      "manual_oibu": 75,
+      "manual_total": 245
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 170,
+      "manual_oibu": 75,
+      "manual_total": 245
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1196,
+      "manual_oibu": 146,
+      "manual_total": 1342
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1196,
+      "manual_oibu": 146,
+      "manual_total": 1342
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 525,
+      "manual_oibu": 71,
+      "manual_total": 596
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 285,
+      "manual_oibu": 115,
+      "manual_total": 400
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 285,
+      "manual_oibu": 115,
+      "manual_total": 400
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 130,
+      "manual_oibu": 71,
+      "manual_total": 201
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 21,
+      "manual_oibu": 0,
+      "manual_total": 21
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 41,
+      "manual_total": 301
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 260,
+      "manual_oibu": 41,
+      "manual_total": 301
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 220,
+      "manual_oibu": 41,
+      "manual_total": 261
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 35,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 35,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 45,
+      "manual_oibu": 35,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 17,
+      "manual_total": 247
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 230,
+      "manual_oibu": 17,
+      "manual_total": 247
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 120,
+      "manual_oibu": 17,
+      "manual_total": 137
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 15,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 15,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 35,
+      "manual_oibu": 15,
+      "manual_total": 50
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 425,
+      "manual_oibu": 58,
+      "manual_total": 483
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 425,
+      "manual_oibu": 58,
+      "manual_total": 483
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 300,
+      "manual_oibu": 58,
+      "manual_total": 358
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 105,
+      "manual_oibu": 51,
+      "manual_total": 156
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 105,
+      "manual_oibu": 51,
+      "manual_total": 156
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 51,
+      "manual_total": 121
+    }
+  ],
+  "2026-04-15": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 40,
+      "manual_oibu": 2,
+      "manual_total": 42
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 130,
+      "manual_oibu": 7,
+      "manual_total": 137
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 40,
+      "manual_oibu": 7,
+      "manual_total": 47
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 193,
+      "manual_oibu": 11,
+      "manual_total": 204
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 193,
+      "manual_oibu": 11,
+      "manual_total": 204
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 66,
+      "manual_oibu": 10,
+      "manual_total": 76
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 66,
+      "manual_oibu": 10,
+      "manual_total": 76
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 874,
+      "manual_oibu": 86,
+      "manual_total": 960
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 869,
+      "manual_oibu": 86,
+      "manual_total": 955
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 360,
+      "manual_oibu": 65,
+      "manual_total": 425
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 355,
+      "manual_oibu": 65,
+      "manual_total": 420
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1500,
+      "manual_oibu": 176,
+      "manual_total": 1676
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1500,
+      "manual_oibu": 176,
+      "manual_total": 1676
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 680,
+      "manual_oibu": 99,
+      "manual_total": 779
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 545,
+      "manual_oibu": 143,
+      "manual_total": 688
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 540,
+      "manual_oibu": 143,
+      "manual_total": 683
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 267,
+      "manual_oibu": 76,
+      "manual_total": 343
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 42,
+      "manual_total": 332
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 290,
+      "manual_oibu": 42,
+      "manual_total": 332
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 235,
+      "manual_oibu": 42,
+      "manual_total": 277
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 38,
+      "manual_total": 133
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 38,
+      "manual_total": 133
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 38,
+      "manual_total": 103
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 275,
+      "manual_oibu": 20,
+      "manual_total": 295
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 275,
+      "manual_oibu": 20,
+      "manual_total": 295
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 130,
+      "manual_oibu": 20,
+      "manual_total": 150
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 78,
+      "manual_oibu": 16,
+      "manual_total": 94
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 78,
+      "manual_oibu": 16,
+      "manual_total": 94
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 41,
+      "manual_oibu": 16,
+      "manual_total": 57
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 470,
+      "manual_oibu": 65,
+      "manual_total": 535
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 470,
+      "manual_oibu": 65,
+      "manual_total": 535
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 310,
+      "manual_oibu": 65,
+      "manual_total": 375
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 53,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 120,
+      "manual_oibu": 53,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 71,
+      "manual_oibu": 53,
+      "manual_total": 124
+    }
+  ],
+  "2026-04-16": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "label": "본",
+      "manual_jasa": 40,
+      "manual_oibu": 4,
+      "manual_total": 44
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "본",
+      "manual_jasa": 105,
+      "manual_oibu": 6,
+      "manual_total": 111
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "label": "추",
+      "manual_jasa": 43,
+      "manual_oibu": 6,
+      "manual_total": 49
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 194,
+      "manual_oibu": 15,
+      "manual_total": 209
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "본",
+      "manual_jasa": 194,
+      "manual_oibu": 15,
+      "manual_total": 209
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 15,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "label": "추",
+      "manual_jasa": 65,
+      "manual_oibu": 15,
+      "manual_total": 80
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 720,
+      "manual_oibu": 93,
+      "manual_total": 813
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "본",
+      "manual_jasa": 710,
+      "manual_oibu": 93,
+      "manual_total": 803
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 220,
+      "manual_oibu": 89,
+      "manual_total": 309
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "추",
+      "manual_jasa": 215,
+      "manual_oibu": 89,
+      "manual_total": 304
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "label": "케어",
+      "manual_jasa": 20,
+      "manual_oibu": 0,
+      "manual_total": 20
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1210,
+      "manual_oibu": 187,
+      "manual_total": 1397
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 1210,
+      "manual_oibu": 187,
+      "manual_total": 1397
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "본",
+      "manual_jasa": 570,
+      "manual_oibu": 90,
+      "manual_total": 660
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 360,
+      "manual_oibu": 165,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 360,
+      "manual_oibu": 165,
+      "manual_total": 525
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "추",
+      "manual_jasa": 150,
+      "manual_oibu": 90,
+      "manual_total": 240
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "label": "케어",
+      "manual_jasa": 28,
+      "manual_oibu": 0,
+      "manual_total": 28
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 263,
+      "manual_oibu": 48,
+      "manual_total": 311
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 263,
+      "manual_oibu": 48,
+      "manual_total": 311
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "본",
+      "manual_jasa": 220,
+      "manual_oibu": 48,
+      "manual_total": 268
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 45,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 75,
+      "manual_oibu": 45,
+      "manual_total": 120
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "label": "추",
+      "manual_jasa": 55,
+      "manual_oibu": 45,
+      "manual_total": 100
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 235,
+      "manual_oibu": 24,
+      "manual_total": 259
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 235,
+      "manual_oibu": 24,
+      "manual_total": 259
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "본",
+      "manual_jasa": 125,
+      "manual_oibu": 24,
+      "manual_total": 149
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 23,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 70,
+      "manual_oibu": 23,
+      "manual_total": 93
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "label": "추",
+      "manual_jasa": 38,
+      "manual_oibu": 23,
+      "manual_total": 61
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 85,
+      "manual_total": 475
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 390,
+      "manual_oibu": 85,
+      "manual_total": 475
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "본",
+      "manual_jasa": 275,
+      "manual_oibu": 85,
+      "manual_total": 360
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 78,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 95,
+      "manual_oibu": 78,
+      "manual_total": 173
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "label": "추",
+      "manual_jasa": 60,
+      "manual_oibu": 78,
+      "manual_total": 138
+    }
+  ]
+}
