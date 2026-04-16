@@ -3588,6 +3588,15 @@
       "qty": 86,
       "jasa": 44,
       "oibu": 42
+    },
+    {
+      "stage_code": "1440",
+      "stage": "",
+      "product_code": "10652",
+      "product_name": "그릭요거트",
+      "qty": 6,
+      "jasa": 6,
+      "oibu": 0
     }
   ],
   "2026-04-10": [
