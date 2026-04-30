@@ -9188,5 +9188,403 @@
       "jasa": 121,
       "oibu": 81
     }
+  ],
+  "2026-04-25": [
+    {
+      "stage_code": "1110",
+      "stage": "준비기",
+      "product_code": "10000",
+      "product_name": "쌀죽",
+      "qty": 22,
+      "jasa": 22,
+      "oibu": 0
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "product_code": "10004",
+      "product_name": "뉴그린죽",
+      "qty": 53,
+      "jasa": 50,
+      "oibu": 3
+    },
+    {
+      "stage_code": "1210",
+      "stage": "초기1",
+      "product_code": "10009",
+      "product_name": "사과죽",
+      "qty": 29,
+      "jasa": 28,
+      "oibu": 1
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "product_code": "10044",
+      "product_name": "한우퀴노아죽",
+      "qty": 118,
+      "jasa": 113,
+      "oibu": 5
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "product_code": "10720",
+      "product_name": "비타민병아리콩죽",
+      "qty": 118,
+      "jasa": 113,
+      "oibu": 5
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "product_code": "10022",
+      "product_name": "한우뉴그린죽",
+      "qty": 57,
+      "jasa": 55,
+      "oibu": 2
+    },
+    {
+      "stage_code": "1220",
+      "stage": "초기2",
+      "product_code": "10723",
+      "product_name": "검은콩현미죽",
+      "qty": 57,
+      "jasa": 55,
+      "oibu": 2
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "product_code": "10111",
+      "product_name": "한우양송이죽",
+      "qty": 601,
+      "jasa": 565,
+      "oibu": 36
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "product_code": "10056",
+      "product_name": "닭가슴살치즈죽",
+      "qty": 597,
+      "jasa": 561,
+      "oibu": 36
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "product_code": "10087",
+      "product_name": "한우두부죽",
+      "qty": 418,
+      "jasa": 399,
+      "oibu": 19
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "product_code": "10074",
+      "product_name": "영양닭죽",
+      "qty": 417,
+      "jasa": 398,
+      "oibu": 19
+    },
+    {
+      "stage_code": "1230",
+      "stage": "중기",
+      "product_code": "10082",
+      "product_name": "한우근대죽",
+      "qty": 3,
+      "jasa": 3,
+      "oibu": 0
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10183",
+      "product_name": "한우시금치죽",
+      "qty": 985,
+      "jasa": 922,
+      "oibu": 63
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10162",
+      "product_name": "치킨캐비지",
+      "qty": 984,
+      "jasa": 921,
+      "oibu": 63
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "12147",
+      "product_name": "팽이버섯멸치죽",
+      "qty": 423,
+      "jasa": 391,
+      "oibu": 32
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10179",
+      "product_name": "한우비타민죽",
+      "qty": 688,
+      "jasa": 655,
+      "oibu": 33
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10732",
+      "product_name": "순두부감자죽",
+      "qty": 686,
+      "jasa": 653,
+      "oibu": 33
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10135",
+      "product_name": "닭살버섯죽",
+      "qty": 301,
+      "jasa": 282,
+      "oibu": 19
+    },
+    {
+      "stage_code": "1240",
+      "stage": "후기",
+      "product_code": "10167",
+      "product_name": "한우근대죽",
+      "qty": 10,
+      "jasa": 10,
+      "oibu": 0
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10275",
+      "product_name": "한우무나물다시마무른밥",
+      "qty": 685,
+      "jasa": 646,
+      "oibu": 39
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "12155",
+      "product_name": "비타민애호박무른밥",
+      "qty": 682,
+      "jasa": 643,
+      "oibu": 39
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10231",
+      "product_name": "병아리콩영양무른밥",
+      "qty": 1049,
+      "jasa": 979,
+      "oibu": 70
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10293",
+      "product_name": "한우야채무른밥",
+      "qty": 466,
+      "jasa": 445,
+      "oibu": 21
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10210",
+      "product_name": "고구마흑미배무른밥",
+      "qty": 465,
+      "jasa": 444,
+      "oibu": 21
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10237",
+      "product_name": "새송이닭무른밥",
+      "qty": 706,
+      "jasa": 671,
+      "oibu": 35
+    },
+    {
+      "stage_code": "1250",
+      "stage": "후기 무른밥",
+      "product_code": "10269",
+      "product_name": "한우근대무른밥",
+      "qty": 14,
+      "jasa": 14,
+      "oibu": 0
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10388",
+      "product_name": "한우버섯리조또",
+      "qty": 237,
+      "jasa": 224,
+      "oibu": 13
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10315",
+      "product_name": "가지나물근대밥",
+      "qty": 237,
+      "jasa": 224,
+      "oibu": 13
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10376",
+      "product_name": "콩나물우엉조림밥",
+      "qty": 194,
+      "jasa": 181,
+      "oibu": 13
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10434",
+      "product_name": "한우프렌치빈계란볶음밥",
+      "qty": 91,
+      "jasa": 86,
+      "oibu": 5
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10372",
+      "product_name": "청경채양배추밥",
+      "qty": 91,
+      "jasa": 86,
+      "oibu": 5
+    },
+    {
+      "stage_code": "1310",
+      "stage": "영양밥",
+      "product_code": "10318",
+      "product_name": "고구마닭살밥",
+      "qty": 72,
+      "jasa": 67,
+      "oibu": 5
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "10635",
+      "product_name": "한우숙주전골",
+      "qty": 227,
+      "jasa": 221,
+      "oibu": 6
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "10632",
+      "product_name": "청경채콩국",
+      "qty": 227,
+      "jasa": 221,
+      "oibu": 6
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "12448",
+      "product_name": "가자미미역국",
+      "qty": 120,
+      "jasa": 114,
+      "oibu": 6
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "10616",
+      "product_name": "한우애호박찌개",
+      "qty": 66,
+      "jasa": 65,
+      "oibu": 1
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "10640",
+      "product_name": "시금치닭살탕",
+      "qty": 66,
+      "jasa": 65,
+      "oibu": 1
+    },
+    {
+      "stage_code": "1320",
+      "stage": "영양국",
+      "product_code": "10586",
+      "product_name": "오징어전골",
+      "qty": 27,
+      "jasa": 26,
+      "oibu": 1
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10480",
+      "product_name": "한우단호박찜",
+      "qty": 430,
+      "jasa": 409,
+      "oibu": 21
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10456",
+      "product_name": "버섯불고기",
+      "qty": 430,
+      "jasa": 409,
+      "oibu": 21
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10770",
+      "product_name": "닭가슴살들깨영양찜",
+      "qty": 304,
+      "jasa": 283,
+      "oibu": 21
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10492",
+      "product_name": "한우감자치즈조림",
+      "qty": 131,
+      "jasa": 129,
+      "oibu": 2
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10444",
+      "product_name": "닭가슴살깻잎볶음",
+      "qty": 131,
+      "jasa": 129,
+      "oibu": 2
+    },
+    {
+      "stage_code": "1330",
+      "stage": "영양찬",
+      "product_code": "10790",
+      "product_name": "새우컬리볶음",
+      "qty": 82,
+      "jasa": 80,
+      "oibu": 2
+    }
   ]
 }
